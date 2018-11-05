@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Module id="${project.name}" class="org.modelio.microservicesnetcore.impl.MicroserviceDotnetCoreModule" binaryversion="3.8.00" version="${project.version}" schema-level="2" uid="7c295a62-1a74-4c10-a0ca-6e66f158052b">
+    <ClassPath>
+        <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
+        <PathEntry path="lib/commons-lang3-3.1.jar"/>
+        <PathEntry path="lib/modeliotools-0.0.1.jar"/>
+    </ClassPath>
+    <Profiles>
+        <Profile uid="e8beb02f-eb12-4f70-9307-c7980ae15a6b" id="MicroserviceDotnetCorePIMProfile">
+            <Stereotype name="PIM" metaclass="Package" is-hidden="false" label="%stereotype.PIM.label" uid="24b9041d-001b-489c-82d8-8b963f923e85">
+                <Icon path="res/icons/Stereotype1_16.png"/>
+                <Image path="res/icons/Stereotype1_48.png"/>
+            </Stereotype>
+            <Stereotype name="PIMMicroservice" metaclass="Package" is-hidden="false" label="%stereotype.Microservice.label" uid="02fb2973-fd15-421a-976a-461f09048ff1">
+                <Icon path="res/icons/CsMicroservice_16x.png"/>
+                <Image path="res/icons/CsMicroservice_16x.png"/>
+            </Stereotype>
+            <Stereotype name="PIMVersionPackage" metaclass="Package" is-hidden="false" label="%stereotype.Version.label" uid="f64fa391-e2f8-4651-84d6-b879ab55bc8e">
+                <Icon path="res/icons/Version_16x.png"/>
+                <Image path="res/icons/Version_16x.png"/>
+            </Stereotype>
+            <Stereotype name="PIMModelPackage" metaclass="Package" is-hidden="false" label="%stereotype.Model.label" uid="cb129a07-6b28-495a-9d76-c0a75418f388">
+                <Icon path="res/icons/Model_16x.png"/>
+                <Image path="res/icons/Model_16x.png"/>
+            </Stereotype>
+            <Stereotype name="PIMApiPackage" metaclass="Package" is-hidden="false" label="%stereotype.Api.label" uid="fd948e27-1e50-4768-8ce5-83c5367a385b">
+                <Icon path="res/icons/Api_16x.png"/>
+                <Image path="res/icons/Api_16x.png"/>
+            </Stereotype>
+        </Profile>
+        <Profile uid="29fd6091-a4e9-4499-922b-206b2055c769" id="MicroserviceDotnetCorePSMProfile">
+            <Stereotype name="PSM" metaclass="Package" is-hidden="false" label="%stereotype.PSM.label" uid="7135f71c-4231-41c7-a694-efbf475a1f6d">
+                <Icon path="res/icons/Stereotype1_16.png"/>
+                <Image path="res/icons/Stereotype1_48.png"/>
+            </Stereotype>
+            <Stereotype name="PSMMicroservice" metaclass="Package" is-hidden="false" label="%stereotype.Microservice.label" uid="2761d11a-0fb9-4e7c-892d-a3d290c7949b">
+                <Icon path="res/icons/CsMicroservice_16x.png"/>
+                <Image path="res/icons/CsMicroservice_16x.png"/>
+            </Stereotype>
+            <Stereotype name="PSMVersionPackage" metaclass="Package" is-hidden="false" label="%stereotype.Version.label" uid="015d739e-8c47-4295-b407-269a7a0bc0a1">
+                <Icon path="res/icons/Version_16x.png"/>
+                <Image path="res/icons/Version_16x.png"/>
+            </Stereotype>
+        </Profile>
+        <Profile uid="8c469d79-2f1d-45b0-87c6-a6c1e11c9db4" id="DotnetCoreProfile">
+            <Stereotype name="CsMicroservice" metaclass="Package" is-hidden="false" label="%stereotype.CsMicroservice.label" uid="f5f980b7-94d5-4396-b2e5-635cbd8a064d">
+                <Icon path="res/icons/CsMicroservice_16x.png"/>
+                <Image path="res/icons/CsMicroservice_16x.png"/>
+                <TagTypes>
+                    <TagType name="Name" uid="cb3dc78e-b6ea-4be6-9575-d6d85c2561c9" label="%tagtype.SoluctionName.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="CsStandardProject" metaclass="Package" is-hidden="false" label="%stereotype.CsStandardProject.label" uid="5b1fb435-ad36-476e-8cab-f528fa05db2c">
+                <Icon path="res/icons/CsStandardProject_16x.png"/>
+                <Image path="res/icons/CsStandardProject_16x.png"/>
+                <TagTypes>
+                    <TagType name="Name" uid="cb4f1370-72ab-465b-8afa-16dd1a6d9f22" label="%tagtype.ProjectName.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="CsWebApiProject" metaclass="Package" is-hidden="false" label="%stereotype.CsWebApiProject.label" uid="73ff1b78-be84-4fa4-80cd-4d8e67b34053">
+                <Icon path="res/icons/CsWebApiProject_16x.png"/>
+                <Image path="res/icons/CsWebApiProject_16x.png"/>
+                <TagTypes>
+                    <TagType name="Name" uid="c53d5e7b-ce57-45fe-a790-32e3223a5db4" label="%tagtype.ProjectName.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="CsPackage" metaclass="Package" is-hidden="false" label="%stereotype.CsPackage.label" uid="159fd4b4-0e17-4811-971d-7a1e2686c516">
+                <Icon path="res/icons/CsPackage_16x.png"/>
+                <Image path="res/icons/CsPackage_16x.png"/>
+                <TagTypes>
+                    <TagType name="GenerateDirectory" uid="acbb5461-a480-4dc3-8c74-08c5dd7a2559" label="%tagtype.GenerateDirectory.label" parameter-card="0" is-hidden="false" is-signed="false"/>
+                    <TagType name="IncludeNamespace" uid="c7fe36a4-c1b6-4b5e-8c9e-f878486fe1a9" label="%tagtype.IncludeNamespace.label" parameter-card="0" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="CsProjectFolder" metaclass="Package" is-hidden="false" label="%stereotype.CsProjectFolder.label" uid="9c6a6a49-d108-46ca-ba5d-04b7f47232a3">
+                <Icon path="res/icons/CsProjectFolder_16x.png"/>
+                <Image path="res/icons/CsProjectFolder_16x.png"/>
+                <TagTypes>
+                    <TagType name="GenerateDirectory" uid="a6053e32-adbe-4839-92c8-2042c1405fa8" label="%tagtype.GenerateDirectory.label" parameter-card="0" is-hidden="false" is-signed="false"/>
+                    <TagType name="IncludeNamespace" uid="748f4bac-d7fc-406a-ae92-832965605916" label="%tagtype.IncludeNamespace.label" parameter-card="0" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="CsController" metaclass="Class" is-hidden="false" label="%stereotype.CsClass.label" uid="d269b6b2-d13e-4f58-8acd-33dc1236324b">
+                <Icon path="res/icons/CsClass_16x.png"/>
+                <Image path="res/icons/CsClass_16x.png"/>
+                <TagTypes>
+                    <TagType name="Using" uid="053b76b1-ab22-4f02-a02f-2a2e9375f661" label="%tagtype.Using.label" parameter-card="*" is-hidden="false" is-signed="false"/>
+                    <TagType name="Name" uid="03c88783-1a61-4c5a-a4fa-742b05557b21" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+                <NoteTypes>
+                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="3e014f63-4aac-4e40-972c-9751da141ef5"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="CsClass" metaclass="Class" is-hidden="false" label="%stereotype.CsClass.label" uid="4859d73b-96b5-4d28-be4d-ab8a64175e18">
+                <Icon path="res/icons/CsClass_16x.png"/>
+                <Image path="res/icons/CsClass_16x.png"/>
+                <TagTypes>
+                    <TagType name="Using" uid="06b9ee82-4924-4376-8310-9721ad1fd149" label="%tagtype.Using.label" parameter-card="*" is-hidden="false" is-signed="false"/>
+                    <TagType name="Name" uid="9879b13d-715b-42e1-84e6-dbeab2de9f0a" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+                <NoteTypes>
+                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="87fdcfa4-141f-4811-9902-ef17711226fd"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="CsAttribute" metaclass="Attribute" is-hidden="false" label="%stereotype.CsAttribute.label" uid="f873bbfd-7357-4b64-88ad-c506c55b8fe7">
+                <Icon path="res/icons/CsField_16x.png"/>
+                <Image path="res/icons/CsField_16x.png"/>
+                <TagTypes>
+                    <TagType name="Name" uid="2c51d2ba-e1bc-409c-b428-a54c88ed2404" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+                <NoteTypes>
+                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="fbed685a-71b2-4692-a3d2-39eee21a5e8a"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="CsProperty" metaclass="Attribute" is-hidden="false" label="%stereotype.CsProperty.label" uid="bae993c5-855a-4352-9b70-02a64baff777">
+                <Icon path="res/icons/CsProperty_16x.png"/>
+                <Image path="res/icons/CsProperty_16x.png"/>
+                <TagTypes>
+                    <TagType name="Name" uid="9ef1ef1b-dfcc-411a-b79f-1a10b45070a4" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+                <NoteTypes>
+                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="4de51c3e-1925-4df0-94b3-818c7658f8ae"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="CsMethod" metaclass="Operation" is-hidden="false" label="%stereotype.CsMethode.label" uid="a6ecc8d8-1ab3-495f-bc6d-7076256faa0d">
+                <Icon path="res/icons/CsMethod_16x.png"/>
+                <Image path="res/icons/CsMethod_16x.png"/>
+                <TagTypes>
+                    <TagType name="Name" uid="1d117138-e0b2-44b4-8d06-2da69079cf19" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+                <NoteTypes>
+                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="db2bb78f-8418-4cfc-a558-16a2c2d736a3"/>
+                </NoteTypes>
+            </Stereotype>
+            <Stereotype name="CsExposedOperation" metaclass="Operation" is-hidden="false" label="%stereotype.CsExposedOperation.label" uid="fc6ae241-e133-4d5e-a450-f1b7d3156fc2">
+                <Icon path="res/icons/CsExposedOperation_16x.png"/>
+                <Image path="res/icons/CsExposedOperation_16x.png"/>
+                <TagTypes>
+                    <TagType name="Name" uid="64898de5-e18d-419f-a95f-34dadb0e54a2" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+                <NoteTypes>
+                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="9d6ecb07-c77b-4d4f-a5b4-ece30e4740af"/>
+                </NoteTypes>
+            </Stereotype>
+        </Profile>
+    </Profiles>
+    <Gui>
+        <Commands>
+            <Command id="GenerateMicroservicePSMVersionCommand" label="%command.GenerateMicroservicePSMVersion.label" tooltip="%command.GenerateMicroservicePSMVersion.tooltip" image="res/icons/HelloWorldCommand_16.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="Package" stereotype="PIMVersionPackage"/>
+                <Handler class="org.modelio.microservicesnetcore.command.GenerateMicroservicePsmVersionCommand"/>
+            </Command>
+            <Command id="CreateMicroserviceDiagramCommand" label="%command.CreateMicroserviceCommand.label" tooltip="%command.CreateMicroserviceCommand.label" image="res/icons/Stereotype2_16.png" group="" modify-model="true" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="DiagramCreate">
+                    <HParameter name="name" value="%command.CreateMicroserviceCommand.name"/>
+                    <HParameter name="metaclass" value="ClassDiagram"/>
+                    <HParameter name="stereotype" value="stereotype2"/>
+                </Handler>
+            </Command>
+        </Commands>
+        <Tools>
+            <Tool id="CreateElementDiagramCommandExample" label="%CreateElementDiagramCommandExampleLabel" tooltip="%CreateElementDiagramCommandExampleTooltip" image="res/icons/Stereotype1_16.png">
+                <Scope-source metaclass="ModelTree"/>
+                <Handler class="Box">
+                    <HParameter name="name" value="%CreateElementDiagramCommandExampleName"/>
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="stereotype1"/>
+                </Handler>
+            </Tool>
+        </Tools>
+        <ContextualMenu>
+            <CommandRef refid="GenerateMicroservicePSMVersionCommand"/>
+            <CommandRef refid="CreateElementCommandExample"/>
+            <CommandRef refid="CreateDiagramCommandExample"/>
+        </ContextualMenu>
+        <Diagrams>
+            <DiagramType base-diagram="ClassDiagram" stereotype="stereotype2">
+                <Palette keepBasePalette="false">
+                    <ToolRef refid="CreateElementDiagramCommandExample" group="Customization"/>
+                </Palette>
+                <Handler class="StandardCustomizer"/>
+            </DiagramType>
+        </Diagrams>
+        <Views/>
+    </Gui>
+    <Dependencies/>
+</Module>
