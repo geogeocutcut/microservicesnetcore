@@ -8,7 +8,7 @@ import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.api.module.context.log.ILogService;
 import org.modelio.metamodel.uml.statik.Package;
-import org.modelio.microservicesnetcore.psm.generator.GeneratePsmVersionOrchestrator;
+import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmModelOrchestrator;
 import org.modelio.microservicesnetcore.psm.helper.PimStereotypeValidator;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
@@ -52,7 +52,7 @@ public class GenerateMicroservicePsmVersionCommand extends DefaultModuleCommandH
 
         for(MObject e :selectedElements )
         {
-	        GeneratePsmVersionOrchestrator orchestrator = new GeneratePsmVersionOrchestrator(module);
+	        GeneratePsmModelOrchestrator orchestrator = new GeneratePsmModelOrchestrator(module);
 	        orchestrator.Execute(e);
         }
         

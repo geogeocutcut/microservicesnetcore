@@ -3,7 +3,7 @@
     <ClassPath>
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
-        <PathEntry path="lib/modeliotools-0.0.1.jar"/>
+        <PathEntry path="lib/modeliotools-0.0.2.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="e8beb02f-eb12-4f70-9307-c7980ae15a6b" id="MicroserviceDotnetCorePIMProfile">
@@ -14,10 +14,6 @@
             <Stereotype name="PIMMicroservice" metaclass="Package" is-hidden="false" label="%stereotype.Microservice.label" uid="02fb2973-fd15-421a-976a-461f09048ff1">
                 <Icon path="res/icons/CsMicroservice_16x.png"/>
                 <Image path="res/icons/CsMicroservice_16x.png"/>
-            </Stereotype>
-            <Stereotype name="PIMVersionPackage" metaclass="Package" is-hidden="false" label="%stereotype.Version.label" uid="f64fa391-e2f8-4651-84d6-b879ab55bc8e">
-                <Icon path="res/icons/Version_16x.png"/>
-                <Image path="res/icons/Version_16x.png"/>
             </Stereotype>
             <Stereotype name="PIMModelPackage" metaclass="Package" is-hidden="false" label="%stereotype.Model.label" uid="cb129a07-6b28-495a-9d76-c0a75418f388">
                 <Icon path="res/icons/Model_16x.png"/>
@@ -36,10 +32,6 @@
             <Stereotype name="PSMMicroservice" metaclass="Package" is-hidden="false" label="%stereotype.Microservice.label" uid="2761d11a-0fb9-4e7c-892d-a3d290c7949b">
                 <Icon path="res/icons/CsMicroservice_16x.png"/>
                 <Image path="res/icons/CsMicroservice_16x.png"/>
-            </Stereotype>
-            <Stereotype name="PSMVersionPackage" metaclass="Package" is-hidden="false" label="%stereotype.Version.label" uid="015d739e-8c47-4295-b407-269a7a0bc0a1">
-                <Icon path="res/icons/Version_16x.png"/>
-                <Image path="res/icons/Version_16x.png"/>
             </Stereotype>
         </Profile>
         <Profile uid="8c469d79-2f1d-45b0-87c6-a6c1e11c9db4" id="DotnetCoreProfile">

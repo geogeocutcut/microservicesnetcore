@@ -11,10 +11,6 @@ public class PimStereotypeValidator {
 		return e.isStereotyped(ModuleConstants.MODULE_NAME, ModuleStereotype.STEREO_PIM);
 	}
 
-	public static boolean isMicroserviceVersion(ModelElement e) {
-		return e.isStereotyped(ModuleConstants.MODULE_NAME, ModuleStereotype.STEREO_PIM_VERSION);
-	}
-
 	public static boolean isMicroserviceModel(Package e) {
 		return e.isStereotyped(ModuleConstants.MODULE_NAME, ModuleStereotype.STEREO_PIM_MODEL);
 	}
