@@ -1,4 +1,4 @@
-package org.modelio.microservicesnetcore.psm.helper;
+package org.modelio.microservicesnetcore.helper;
 
 import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;

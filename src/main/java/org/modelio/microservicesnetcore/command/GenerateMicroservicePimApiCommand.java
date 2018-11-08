@@ -8,15 +8,15 @@ import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.api.module.context.log.ILogService;
 import org.modelio.metamodel.uml.statik.Package;
+import org.modelio.microservicesnetcore.helper.PimStereotypeValidator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmModelOrchestrator;
-import org.modelio.microservicesnetcore.psm.helper.PimStereotypeValidator;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-public class GenerateMicroservicePsmVersionCommand extends DefaultModuleCommandHandler {
+public class GenerateMicroservicePimApiCommand extends DefaultModuleCommandHandler {
     /**
      * Constructor.
      */
-    public GenerateMicroservicePsmVersionCommand() {
+    public GenerateMicroservicePimApiCommand() {
         super();
     }
 
@@ -33,7 +33,7 @@ public class GenerateMicroservicePsmVersionCommand extends DefaultModuleCommandH
     		{
     			return false;
     		}
-    		if(!PimStereotypeValidator.isMicroserviceModel((Package)elt))
+    		if(!PimStereotypeValidator.isMicroservice((Package)elt))
     		{
     			return false;
     		}
@@ -48,15 +48,15 @@ public class GenerateMicroservicePsmVersionCommand extends DefaultModuleCommandH
     @Override
     public void actionPerformed(List<MObject> selectedElements, IModule module) {
         ILogService logService = module.getModuleContext().getLogService();
-        logService.info("Generate PSM Packages - actionPerformed(...)");
+        logService.info("Generate PIM Api - actionPerformed(...)");
 
         for(MObject e :selectedElements )
         {
-	        GeneratePsmModelOrchestrator orchestrator = new GeneratePsmModelOrchestrator(module);
+	        GeneratePimApiOrchestrator orchestrator = new GeneratePimApiOrchestrator(module);
 	        orchestrator.Execute(e);
         }
         
-        MessageDialog.openInformation(null, "Information", "PSM has been generated !");
+        MessageDialog.openInformation(null, "Information", "PIM has been generated !");
     }
 
 

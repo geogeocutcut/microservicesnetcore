@@ -12,10 +12,10 @@ import org.modelio.modeliotools.treevisitor.OwnerVisitor;
 import org.modelio.vcore.smkernel.mapi.MObject;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.ModuleHelper;
-import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
 import org.modelio.microservicesnetcore.psm.helper.PimPsmMapper;
+import org.modelio.microservicesnetcore.psm.helper.PsmBuilder;
 
-public class GeneratePsmServiceInterfaceOrchestrator {
+public class GeneratePsmWebApiOrchestrator {
 
 	private ModelElement _umlPimPackage = null;
 	private ModelElement _umlPsmPackage = null;
@@ -23,7 +23,7 @@ public class GeneratePsmServiceInterfaceOrchestrator {
 	private IModelingSession _session;
 	private ILogService _logService;
 	
-	public GeneratePsmServiceInterfaceOrchestrator(IModule module)
+	public GeneratePsmWebApiOrchestrator(IModule module)
 	{
 		_logService = module.getModuleContext().getLogService();
 
@@ -43,7 +43,7 @@ public class GeneratePsmServiceInterfaceOrchestrator {
 			if(_umlPsmPackage==null)
 			{
 				try (ITransaction t = _session.createTransaction("Create PSM Package")) {
-					_umlPsmPackage= PsmModelBuilder.CreatePsmPackage(_session,_umlPimPackage);
+					_umlPsmPackage= PsmBuilder.CreatePsmPackage(_session,_umlPimPackage);
 					t.commit();
 				}
 				catch (Exception e) {

@@ -7,33 +7,40 @@
     </ClassPath>
     <Profiles>
         <Profile uid="e8beb02f-eb12-4f70-9307-c7980ae15a6b" id="MicroserviceDotnetCorePIMProfile">
+            <Stereotype name="PIMIdAttribute" metaclass="Attribute" is-hidden="false"  uid=""/>
             <Stereotype name="PIM" metaclass="Package" is-hidden="false" label="%stereotype.PIM.label" uid="24b9041d-001b-489c-82d8-8b963f923e85">
-                <Icon path="res/icons/Stereotype1_16.png"/>
-                <Image path="res/icons/Stereotype1_48.png"/>
             </Stereotype>
-            <Stereotype name="PIMMicroservice" metaclass="Package" is-hidden="false" label="%stereotype.Microservice.label" uid="02fb2973-fd15-421a-976a-461f09048ff1">
+            <Stereotype name="PIMMicroservice" metaclass="Package" is-hidden="false"  uid="02fb2973-fd15-421a-976a-461f09048ff1">
                 <Icon path="res/icons/CsMicroservice_16x.png"/>
                 <Image path="res/icons/CsMicroservice_16x.png"/>
             </Stereotype>
-            <Stereotype name="PIMModelPackage" metaclass="Package" is-hidden="false" label="%stereotype.Model.label" uid="cb129a07-6b28-495a-9d76-c0a75418f388">
-                <Icon path="res/icons/Model_16x.png"/>
-                <Image path="res/icons/Model_16x.png"/>
-            </Stereotype>
-            <Stereotype name="PIMApiPackage" metaclass="Package" is-hidden="false" label="%stereotype.Api.label" uid="fd948e27-1e50-4768-8ce5-83c5367a385b">
-                <Icon path="res/icons/Api_16x.png"/>
-                <Image path="res/icons/Api_16x.png"/>
-            </Stereotype>
+            <Stereotype name="PIMImpact" metaclass="Dependency" is-hidden="false" uid=""/>
         </Profile>
+        
         <Profile uid="29fd6091-a4e9-4499-922b-206b2055c769" id="MicroserviceDotnetCorePSMProfile">
-            <Stereotype name="PSM" metaclass="Package" is-hidden="false" label="%stereotype.PSM.label" uid="7135f71c-4231-41c7-a694-efbf475a1f6d">
-                <Icon path="res/icons/Stereotype1_16.png"/>
-                <Image path="res/icons/Stereotype1_48.png"/>
+            <Stereotype name="PSMIdAttribute" metaclass="Attribute" is-hidden="false"  uid=""/>
+            <Stereotype name="PSM" metaclass="Package" is-hidden="false"  uid="7135f71c-4231-41c7-a694-efbf475a1f6d">
             </Stereotype>
-            <Stereotype name="PSMMicroservice" metaclass="Package" is-hidden="false" label="%stereotype.Microservice.label" uid="2761d11a-0fb9-4e7c-892d-a3d290c7949b">
+            <Stereotype name="PSMMicroservice" metaclass="Package" is-hidden="false"  uid="2761d11a-0fb9-4e7c-892d-a3d290c7949b">
                 <Icon path="res/icons/CsMicroservice_16x.png"/>
                 <Image path="res/icons/CsMicroservice_16x.png"/>
             </Stereotype>
+            <Stereotype name="PSMModelPackage" metaclass="Package" is-hidden="false"  uid="">
+            </Stereotype>
+            <Stereotype name="PSMIRepositoryPackage" metaclass="Package" is-hidden="false" uid="">
+            </Stereotype>
+            <Stereotype name="PSMRepositoryPackage" metaclass="Package" is-hidden="false" uid="">
+            </Stereotype>
+            <Stereotype name="PSMIServicePackage" metaclass="Package" is-hidden="false" uid="">
+            </Stereotype>
+            <Stereotype name="PSMServicePackage" metaclass="Package" is-hidden="false" uid="">
+            </Stereotype>
+            <Stereotype name="PSMApiPackage" metaclass="Package" is-hidden="false" uid="">
+            </Stereotype>
+            <Stereotype name="PSMController" metaclass="Class" is-hidden="false" uid="">
+            </Stereotype>
         </Profile>
+        
         <Profile uid="8c469d79-2f1d-45b0-87c6-a6c1e11c9db4" id="DotnetCoreProfile">
             <Stereotype name="CsMicroservice" metaclass="Package" is-hidden="false" label="%stereotype.CsMicroservice.label" uid="f5f980b7-94d5-4396-b2e5-635cbd8a064d">
                 <Icon path="res/icons/CsMicroservice_16x.png"/>

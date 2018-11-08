@@ -12,10 +12,11 @@ import org.modelio.modeliotools.treevisitor.OwnerVisitor;
 import org.modelio.vcore.smkernel.mapi.MObject;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.ModuleHelper;
-import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
+import org.modelio.microservicesnetcore.psm.generator.handler.GeneratePsmVersionHandler;
 import org.modelio.microservicesnetcore.psm.helper.PimPsmMapper;
+import org.modelio.microservicesnetcore.psm.helper.PsmBuilder;
 
-public class GeneratePsmServiceInterfaceOrchestrator {
+public class GeneratePsmModelOrchestrator {
 
 	private ModelElement _umlPimPackage = null;
 	private ModelElement _umlPsmPackage = null;
@@ -23,14 +24,13 @@ public class GeneratePsmServiceInterfaceOrchestrator {
 	private IModelingSession _session;
 	private ILogService _logService;
 	
-	public GeneratePsmServiceInterfaceOrchestrator(IModule module)
+	public GeneratePsmModelOrchestrator(IModule module)
 	{
 		_logService = module.getModuleContext().getLogService();
 
 		this._module = module;
 		this._session  =module.getModuleContext().getModelingSession();
 		_umlPimPackage=ModuleHelper.getPimPackage(module.getModuleContext().getModelingSession());
-		_umlPsmPackage=ModuleHelper.getPsmPackage(module.getModuleContext().getModelingSession());
 		
 	}
 	
@@ -43,15 +43,13 @@ public class GeneratePsmServiceInterfaceOrchestrator {
 			if(_umlPsmPackage==null)
 			{
 				try (ITransaction t = _session.createTransaction("Create PSM Package")) {
-					_umlPsmPackage= PsmModelBuilder.CreatePsmPackage(_session,_umlPimPackage);
+					_umlPsmPackage= PsmBuilder.CreatePsmPackage(_session,_umlPimPackage);
 					t.commit();
 				}
 				catch (Exception e) {
 					throw e;
 				}
 			}
-			
-			
 			
 		}
 	}

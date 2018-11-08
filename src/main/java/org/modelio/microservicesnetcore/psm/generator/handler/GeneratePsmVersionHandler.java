@@ -8,9 +8,9 @@ import org.modelio.api.module.context.log.ILogService;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
+import org.modelio.microservicesnetcore.helper.PimStereotypeValidator;
+import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
 import org.modelio.microservicesnetcore.psm.helper.PimPsmMapper;
-import org.modelio.microservicesnetcore.psm.helper.PimStereotypeValidator;
-import org.modelio.microservicesnetcore.psm.helper.PsmBuilder;
 import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 import org.modelio.modeliotools.treevisitor.OwnedVisitor;
 
@@ -39,7 +39,7 @@ public class GeneratePsmVersionHandler extends HandlerAdapter {
 			{
 				if(PimStereotypeValidator.isMicroserviceVersion(visited))
 				{
-					psmElt = PsmBuilder.CreatePsmMicroserviceVersion(_session,visited,psmOwner);
+					psmElt = PsmModelBuilder.CreatePsmMicroserviceVersion(_session,visited,psmOwner);
 				}
 				else if(PimStereotypeValidator.isMicroserviceModel(visited))
 				{

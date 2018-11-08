@@ -9,9 +9,9 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.statik.Attribute;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
+import org.modelio.microservicesnetcore.helper.PimStereotypeValidator;
+import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
 import org.modelio.microservicesnetcore.psm.helper.PimPsmMapper;
-import org.modelio.microservicesnetcore.psm.helper.PimStereotypeValidator;
-import org.modelio.microservicesnetcore.psm.helper.PsmBuilder;
 import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 
 
@@ -45,11 +45,11 @@ public class GeneratePsmModelHandler extends HandlerAdapter {
 					if(PimStereotypeValidator.isMicroserviceModel(visited))
 					{
 						_isInPackageModel =true;
-						psmElt = PsmBuilder.CreatePsmMicroserviceModel(_session,visited,psmOwner);
+						psmElt = PsmModelBuilder.CreatePsmMicroserviceModel(_session,visited,psmOwner);
 					}
 					else
 					{
-						psmElt = PsmBuilder.CreatePsmGenericPackage(_session,visited,psmOwner);
+						psmElt = PsmModelBuilder.CreatePsmGenericPackage(_session,visited,psmOwner);
 					}
 				}
 			}
@@ -67,7 +67,7 @@ public class GeneratePsmModelHandler extends HandlerAdapter {
 		{
 			Classifier psmElt = (Classifier)PimPsmMapper.GetPsmFromPim(visited);
 			if (psmElt==null) {
-				psmElt = PsmBuilder.createClassModel( _session,visited, (Package)_ctx.peek());
+				psmElt = PsmModelBuilder.createClassModel( _session,visited, (Package)_ctx.peek());
 			}
 			_ctx.push(psmElt);
 		}
@@ -78,7 +78,7 @@ public class GeneratePsmModelHandler extends HandlerAdapter {
 	{
 		Attribute newModelElement = (Attribute)PimPsmMapper.GetPsmFromPim(visited);
 		if (newModelElement==null){
-			newModelElement = PsmBuilder.createAttribute(visited, (Classifier)_ctx.peek(), _session);
+			newModelElement = PsmModelBuilder.createAttribute(visited, (Classifier)_ctx.peek(), _session);
 		}
 		_ctx.push(newModelElement);
 	}

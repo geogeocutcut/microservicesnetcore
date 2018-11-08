@@ -13,23 +13,22 @@ public class ModuleStereotype {
 	
 	private static MicroserviceDotnetCoreModule myModule = MicroserviceDotnetCoreModule.getInstance();
 
-	public static String STEREO_PIMPSMDependency = "PIMPSMDependency";
-			
+	public static String STEREO_PIMDependency = "PimImpact";
+	
 	public static String STEREO_PIM = "PIM";
 	public static String STEREO_PIM_MICROSERVICE = "PIMMicroservice";
-	public static String STEREO_PIM_VERSION = "PIMVersionPackage";
-	public static String STEREO_PIM_MODEL = "PIMModelPackage";
-	public static String STEREO_PIM_API = "PIMApiPackage";
+	public static String STEREO_PIM_IDATTRIBUTE = "PIMIdAttribute";
 	
 	public static String STEREO_PSM = "PSM";
 	public static String STEREO_PSM_MICROSERVICE = "PSMMicroservice";
-	public static String STEREO_PSM_VERSION = "PSMVersionPackage";
 	public static String STEREO_PSM_MODEL = "PSMModelPackage";
-	public static String STEREO_PSM_REPOSITORY_IMPL = "PSMReporsitoryPackage";
-	public static String STEREO_PSM_REPOSITORY_INTERFACE = "PSMIReporsitoryPackage";
-	public static String STEREO_PSM_SERVICE_IMPL = "PSMServicePackage";
-	public static String STEREO_PSM_SERVICE_INTERFACE = "PSMIReporsitoryPackage";
+	public static String STEREO_PSM_REPOSITORY = "PSMReporsitoryPackage";
+	public static String STEREO_PSM_IREPOSITORY = "PSMIReporsitoryPackage";
+	public static String STEREO_PSM_SERVICE = "PSMServicePackage";
+	public static String STEREO_PSM_ISERVICE = "PSMIServicePackage";
 	public static String STEREO_PSM_API = "PSMAPIPackage";
+	public static String STEREO_PSM_CONTROLLER = "PSMController";
+	public static String STEREO_PSM_IDATTRIBUTE = "PSMIdAttribute";
 	
 	public static String STEREO_CS_MICROSERVICE = "CsMicroservice";
 	public static String STEREO_CS_STANDARD_PROJECT = "CsStandardProject";

@@ -1,4 +1,4 @@
-package org.modelio.microservicesnetcore.psm.helper;
+package org.modelio.microservicesnetcore.helper;
 
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.IUmlModel;
@@ -15,11 +15,11 @@ import org.modelio.metamodel.uml.statik.VisibilityMode;
 import org.modelio.microservicesnetcore.api.ModuleConstants;
 import org.modelio.microservicesnetcore.api.ModuleStereotype;
 
-public class PsmBuilder {
+public class PsmModelBuilder {
 	public static void CreatePimDependency(IModelingSession session,ModelElement pimElt,ModelElement psmElt)
 	{
 		// Stereotype PimPsmDependency
-		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PIMPSMDependency);
+		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PIMDependency);
 
 		IUmlModel model= session.getModel();
 		model.createDependency(psmElt, pimElt,pimImpactStereotype);
@@ -44,24 +44,13 @@ public class PsmBuilder {
 		return psmElt;
 	}
 	
-	
-
-	public static ModelElement CreatePsmMicroserviceVersion(IModelingSession session, Package visited, ModelElement psmOwner) {
-		ModelElement psmElt = CreatePsmGenericPackage(session,visited,psmOwner);
-		
-		// Stereotype PSM
-		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PIM_VERSION);
-		psmElt.getExtension().add(psmStereo);
-		
-		return psmElt;
-	}
 
 	public static ModelElement CreatePsmMicroserviceModel(IModelingSession session, Package visited, ModelElement psmOwner) 
 	{
 		ModelElement psmElt = CreatePsmGenericPackage(session,visited,psmOwner);
 		
 		// Stereotype PSM
-		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PIM_MODEL);
+		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_MODEL);
 		psmElt.getExtension().add(psmStereo);
 		
 		return psmElt;

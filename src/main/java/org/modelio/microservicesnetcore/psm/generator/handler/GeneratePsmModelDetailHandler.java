@@ -8,8 +8,8 @@ import org.modelio.api.module.context.log.ILogService;
 import org.modelio.metamodel.uml.statik.AssociationEnd;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
+import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
 import org.modelio.microservicesnetcore.psm.helper.PimPsmMapper;
-import org.modelio.microservicesnetcore.psm.helper.PsmBuilder;
 import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 
 public class GeneratePsmModelDetailHandler extends HandlerAdapter{
@@ -42,7 +42,7 @@ public class GeneratePsmModelDetailHandler extends HandlerAdapter{
 		AssociationEnd dataModelAssociationEnd = (AssociationEnd)PimPsmMapper.GetPsmFromPim(visited);
 		if(dataModelAssociationEnd == null)
 		{
-			dataModelAssociationEnd = PsmBuilder.createAssociationEnd(visited, _session);
+			dataModelAssociationEnd = PsmModelBuilder.createAssociationEnd(visited, _session);
 		}
 	}
 

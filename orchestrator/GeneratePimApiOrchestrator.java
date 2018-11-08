@@ -12,39 +12,52 @@ import org.modelio.modeliotools.treevisitor.OwnerVisitor;
 import org.modelio.vcore.smkernel.mapi.MObject;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.ModuleHelper;
-import org.modelio.microservicesnetcore.helper.PimStereotypeValidator;
-import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
 import org.modelio.microservicesnetcore.psm.generator.handler.GeneratePsmVersionHandler;
 import org.modelio.microservicesnetcore.psm.helper.PimPsmMapper;
+import org.modelio.microservicesnetcore.psm.helper.PimStereotypeValidator;
+import org.modelio.microservicesnetcore.psm.helper.PsmBuilder;
 
-public class GeneratePsmMicroserviceOrchestrator {
+public class GeneratePimApiOrchestrator {
 
-	private ModelElement _umlPimPackage = null;
-	private ModelElement _umlPsmPackage = null;
 	private IModule _module;
 	private IModelingSession _session;
 	private ILogService _logService;
 	
-	public GeneratePsmMicroserviceOrchestrator(IModule module)
+	public GeneratePimApiOrchestrator(IModule module)
 	{
 		_logService = module.getModuleContext().getLogService();
 
 		this._module = module;
 		this._session  =module.getModuleContext().getModelingSession();
-		_umlPimPackage=ModuleHelper.getPimPackage(module.getModuleContext().getModelingSession());
 		
 	}
 	
 	public void Execute(Package selectedMicroservice) 
 	{
+		Package apiPackage =null;
+		for(Package child : selectedMicroservice.getOwnedElement(Package.class))
+		{
+			if(PimStereotypeValidator.isMicroserviceApi(child))
+			{
+				apiPackage=child;
+				break;
+			}
+		}
+		if(apiPackage==null)
+		{
+			try (ITransaction t = _session.createTransaction("Create PSM Package")) {
+				apiPackage=PimBuilder.CreatePimApiPackage(_session,selectedMicroservice);
+				t.commit();
+			}
+		}
 		if(_umlPimPackage!=null)
 		{
-			// 1 create Psm Package if not exist
+			// 1 create Api Package if not exist
 			_umlPsmPackage= PimPsmMapper.GetPsmFromPim(_umlPimPackage);
 			if(_umlPsmPackage==null)
 			{
 				try (ITransaction t = _session.createTransaction("Create PSM Package")) {
-					_umlPsmPackage= PsmModelBuilder.CreatePsmPackage(_session,_umlPimPackage);
+					_umlPsmPackage= PsmBuilder.CreatePsmPackage(_session,_umlPimPackage);
 					t.commit();
 				}
 				catch (Exception e) {
