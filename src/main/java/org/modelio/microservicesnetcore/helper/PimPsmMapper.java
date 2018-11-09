@@ -12,7 +12,7 @@ public class PimPsmMapper {
 		// TODO Auto-generated method stub
 		ModelElement result = null;
 		for (Dependency dep : from.getImpactedDependency()) {
-			if (dep.isStereotyped(ModuleConstants.MODULE_NAME,  (ModuleStereotype.STEREO_PIMPSMDependency)))
+			if (dep.isStereotyped(ModuleConstants.MODULE_NAME,  (ModuleStereotype.STEREO_PIMDependency)))
 			{		
 				result = (ModelElement)dep.getImpacted();
 				break;
@@ -25,7 +25,7 @@ public class PimPsmMapper {
 		// TODO Auto-generated method stub
 		ModelElement result = null;
 		for (Dependency dep : from.getDependsOnDependency()) {
-			if (dep.isStereotyped(ModuleConstants.MODULE_NAME,  (ModuleStereotype.STEREO_PIMPSMDependency)))
+			if (dep.isStereotyped(ModuleConstants.MODULE_NAME,  (ModuleStereotype.STEREO_PIMDependency)))
 			{		
 				result = (ModelElement)dep.getDependsOn();
 				break;

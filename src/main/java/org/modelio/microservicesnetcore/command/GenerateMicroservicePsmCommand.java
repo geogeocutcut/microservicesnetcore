@@ -3,7 +3,6 @@ package org.modelio.microservicesnetcore.command;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.api.module.context.log.ILogService;
@@ -33,7 +32,7 @@ public class GenerateMicroservicePsmCommand extends DefaultModuleCommandHandler 
     		{
     			return false;
     		}
-    		if(!PimStereotypeValidator.isMicroserviceModel((Package)elt))
+    		if(!PimStereotypeValidator.isMicroservice((Package)elt))
     		{
     			return false;
     		}
@@ -52,8 +51,23 @@ public class GenerateMicroservicePsmCommand extends DefaultModuleCommandHandler 
 
         for(MObject e :selectedElements )
         {
-	        GeneratePsmModelOrchestrator orchestrator = new GeneratePsmModelOrchestrator(module);
-	        orchestrator.Execute(e);
+	        GeneratePsmModelOrchestrator orchestModel = new GeneratePsmModelOrchestrator(module);
+	        orchestModel.Execute(e);
+	        
+//	        GeneratePsmIRepositoryOrchestrator orchestIRepo = new GeneratePsmIRepositoryOrchestrator(module);
+//	        orchestIRepo.Execute(e);
+//	        
+//	        GeneratePsmRepositoryOrchestrator orchestRepo = new GeneratePsmRepositoryOrchestrator(module);
+//	        orchestRepo.Execute(e);
+//	        
+//	        GeneratePsmIServiceOrchestrator orchestIServ = new GeneratePsmIServiceOrchestrator(module);
+//	        orchestIServ.Execute(e);
+//	        
+//	        GeneratePsmServiceOrchestrator orchestServ = new GeneratePsmServiceOrchestrator(module);
+//	        orchestServ.Execute(e);
+//	        
+//	        GeneratePsmWebApiOrchestrator orchestApi = new GeneratePsmWebApiOrchestrator(module);
+//	        orchestApi.Execute(e);
         }
         
         MessageDialog.openInformation(null, "Information", "PSM has been generated !");

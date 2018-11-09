@@ -15,7 +15,7 @@ import org.modelio.microservicesnetcore.helper.ModuleHelper;
 import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
 import org.modelio.microservicesnetcore.psm.helper.PimPsmMapper;
 
-public class GeneratePsmServiceImplOrchestrator {
+public class GeneratePsmServiceOrchestrator {
 
 	private ModelElement _umlPimPackage = null;
 	private ModelElement _umlPsmPackage = null;
@@ -23,7 +23,7 @@ public class GeneratePsmServiceImplOrchestrator {
 	private IModelingSession _session;
 	private ILogService _logService;
 	
-	public GeneratePsmServiceImplOrchestrator(IModule module)
+	public GeneratePsmServiceOrchestrator(IModule module)
 	{
 		_logService = module.getModuleContext().getLogService();
 

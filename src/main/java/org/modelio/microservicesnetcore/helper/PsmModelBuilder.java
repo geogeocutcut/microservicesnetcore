@@ -14,60 +14,13 @@ import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.metamodel.uml.statik.VisibilityMode;
 import org.modelio.microservicesnetcore.api.ModuleConstants;
 import org.modelio.microservicesnetcore.api.ModuleStereotype;
+import org.modelio.vcore.smkernel.mapi.MObject;
 
 public class PsmModelBuilder {
-	public static void CreatePimDependency(IModelingSession session,ModelElement pimElt,ModelElement psmElt)
-	{
-		// Stereotype PimPsmDependency
-		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PIMDependency);
-
-		IUmlModel model= session.getModel();
-		model.createDependency(psmElt, pimElt,pimImpactStereotype);
-	}
-
-	public static ModelElement CreatePsmPackage(IModelingSession session, ModelElement umlPimPackage) {
-		IUmlModel model= session.getModel();
-		Project root = (Project)model.getModelRoots().get(0);
-		
-		String name = ModuleConstants.getPSMName(umlPimPackage.getName());
-		// Stereotype PSM
-		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM);
-		Package psmElt = model.createPackage();
-		psmElt.setName(name);
-		psmElt.getExtension().add(psmStereo);
-		root.getModel().add(psmElt);
-		
-		
-		// Stereotype PimDependency
-		CreatePimDependency(session ,umlPimPackage,psmElt);
-		
-		return psmElt;
-	}
 	
-
-	public static ModelElement CreatePsmMicroserviceModel(IModelingSession session, Package visited, ModelElement psmOwner) 
-	{
-		ModelElement psmElt = CreatePsmGenericPackage(session,visited,psmOwner);
-		
-		// Stereotype PSM
-		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_MODEL);
-		psmElt.getExtension().add(psmStereo);
-		
-		return psmElt;
-	}
 	
-	public static ModelElement CreatePsmGenericPackage(IModelingSession session, Package visited, ModelElement psmOwner) 
-	{
-		IUmlModel model= session.getModel();
-		
-		Package psmElt = model.createPackage(visited.getName(),(NameSpace)psmOwner);
-		
-		// Stereotype PimDependency
-		CreatePimDependency(session ,visited,psmElt);
-		
-		return psmElt;
-	}
-
+	
+	
 	public static Classifier createClassModel(IModelingSession session,Classifier visited, Package psmOwner ) {
 		Classifier psmElt;
 		IUmlModel model = session.getModel();
@@ -76,12 +29,12 @@ public class PsmModelBuilder {
 		psmElt = model.createClass(visited.getName(), psmOwner);
 		
 		// Stereotype PimDependency
-		CreatePimDependency(session ,visited,psmElt);
+		PsmBuilder.CreatePimDependency(session ,visited,psmElt);
 		
 		return psmElt;
 	}
 
-	public static Attribute createAttribute(Attribute visited, Classifier owner, IModelingSession session) {
+	public static Attribute createAttribute(IModelingSession session,Attribute visited, Classifier owner) {
 		// TODO Auto-generated method stub
 		Attribute psmElt;
 		IUmlModel model = session.getModel();
@@ -95,12 +48,12 @@ public class PsmModelBuilder {
 		psmElt.setMultiplicityMax(visited.getMultiplicityMax());
 
 		// Stereotype PimDependency
-		CreatePimDependency(session ,visited,psmElt);
+		PsmBuilder.CreatePimDependency(session ,visited,psmElt);
 		
 		return psmElt;
 	}
 
-	public static AssociationEnd createAssociationEnd(AssociationEnd visited, IModelingSession _session) {
+	public static AssociationEnd createAssociationEnd(IModelingSession _session,AssociationEnd visited) {
 		// TODO Auto-generated method stub
 		AssociationEnd psmElt;
 		Classifier pimSrcClass = visited.getSource();
@@ -118,9 +71,9 @@ public class PsmModelBuilder {
 		psmElt.setAggregation(visited.getAggregation());
 
 		// Stereotype PimDependency
-		CreatePimDependency(_session ,visited,psmElt);
+		PsmBuilder.CreatePimDependency(_session ,visited,psmElt);
 		
 		return psmElt;
 	}
-	
+
 }

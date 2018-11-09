@@ -70,12 +70,12 @@ public class PsmIRepositoryBuilder {
 		return psmElt;
 	}
 
-	public static Classifier createClass(IModelingSession session,Classifier visited, Package psmOwner ) {
+	public static Classifier createInterface(IModelingSession session,Classifier visited, Package psmOwner ) {
 		Classifier psmElt;
 		IUmlModel model = session.getModel();
 		
 		//Create Class
-		psmElt = model.createClass(ModuleConstants.getIRepositoryName(visited.getName()), psmOwner);
+		psmElt = model.createInterface(ModuleConstants.getIRepositoryName(visited.getName()), psmOwner);
 		
 		createGetAllOperation(session, psmElt);
 		createGetByIdOperation(session, psmElt);
