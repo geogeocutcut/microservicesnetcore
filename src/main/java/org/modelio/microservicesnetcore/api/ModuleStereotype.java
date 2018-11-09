@@ -12,8 +12,13 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 public class ModuleStereotype {
 	
 	private static MicroserviceDotnetCoreModule myModule = MicroserviceDotnetCoreModule.getInstance();
-
-	public static String STEREO_PIMDependency = "PimImpact";
+	public static String STEREO_PSMDependency = "PSMDependency";
+	public static String STEREO_PSMModelDependency = "PSMModelDependency";
+	public static String STEREO_PSMIRepositoryDependency = "PSMIRepositoryDependency";
+	public static String STEREO_PSMRepositoryDependency = "PSMRepositoryDependency";
+	public static String STEREO_PSMIServiceDependency = "PSMIServiceDependency";
+	public static String STEREO_PSMServiceDependency = "PSMServiceDependency";
+	public static String STEREO_PSMWebApiDependency = "PSMWebApiDependency";
 	
 	public static String STEREO_PIM = "PIM";
 	public static String STEREO_PIM_MICROSERVICE = "PIMMicroservice";

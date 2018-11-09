@@ -14,7 +14,6 @@
                 <Icon path="res/icons/CsMicroservice_16x.png"/>
                 <Image path="res/icons/CsMicroservice_16x.png"/>
             </Stereotype>
-            <Stereotype name="PIMImpact" metaclass="Dependency" is-hidden="false" uid=""/>
         </Profile>
         
         <Profile uid="29fd6091-a4e9-4499-922b-206b2055c769" id="MicroserviceDotnetCorePSMProfile">
@@ -39,6 +38,14 @@
             </Stereotype>
             <Stereotype name="PSMController" metaclass="Class" is-hidden="false" uid="">
             </Stereotype>
+            
+            <Stereotype name="PSMDependency" metaclass="Dependency" is-hidden="false" uid=""/>
+            <Stereotype name="PSMModelDependency" metaclass="Dependency" is-hidden="false" uid=""/>
+            <Stereotype name="PSMIRepositoryDependency" metaclass="Dependency" is-hidden="false" uid=""/>
+            <Stereotype name="PSMRepositoryDependency" metaclass="Dependency" is-hidden="false" uid=""/>
+            <Stereotype name="PSMIServiceDependency" metaclass="Dependency" is-hidden="false" uid=""/>
+            <Stereotype name="PSMServiceDependency" metaclass="Dependency" is-hidden="false" uid=""/>
+            <Stereotype name="PSMWebApiDependency" metaclass="Dependency" is-hidden="false" uid=""/>
         </Profile>
         
         <Profile uid="8c469d79-2f1d-45b0-87c6-a6c1e11c9db4" id="DotnetCoreProfile">
@@ -83,7 +90,9 @@
                 <Icon path="res/icons/CsClass_16x.png"/>
                 <Image path="res/icons/CsClass_16x.png"/>
                 <TagTypes>
-                    <TagType name="Using" uid="053b76b1-ab22-4f02-a02f-2a2e9375f661" label="%tagtype.Using.label" parameter-card="*" is-hidden="false" is-signed="false"/>
+                    <TagType name="Usings" uid="053b76b1-ab22-4f02-a02f-2a2e9375f661" label="%tagtype.Usings.label" parameter-card="*" is-hidden="false" is-signed="false"/>
+                    <TagType name="PrefixRoute" uid="" label="%tagtype.PrefixRoute.label" parameter-card="*" is-hidden="false" is-signed="false"/>
+                    <TagType name="Extends" uid="" label="%tagtype.Extends.label" parameter-card="*" is-hidden="false" is-signed="false"/>
                     <TagType name="Name" uid="03c88783-1a61-4c5a-a4fa-742b05557b21" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
                 <NoteTypes>
@@ -94,7 +103,7 @@
                 <Icon path="res/icons/CsClass_16x.png"/>
                 <Image path="res/icons/CsClass_16x.png"/>
                 <TagTypes>
-                    <TagType name="Using" uid="06b9ee82-4924-4376-8310-9721ad1fd149" label="%tagtype.Using.label" parameter-card="*" is-hidden="false" is-signed="false"/>
+                    <TagType name="Usings" uid="06b9ee82-4924-4376-8310-9721ad1fd149" label="%tagtype.Using.label" parameter-card="*" is-hidden="false" is-signed="false"/>
                     <TagType name="Name" uid="9879b13d-715b-42e1-84e6-dbeab2de9f0a" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
                 <NoteTypes>
@@ -135,6 +144,7 @@
                 <Icon path="res/icons/CsExposedOperation_16x.png"/>
                 <Image path="res/icons/CsExposedOperation_16x.png"/>
                 <TagTypes>
+                	<TagType name="Route" uid="" label="%tagtype.Route.label" parameter-card="*" is-hidden="false" is-signed="false"/>
                     <TagType name="Name" uid="64898de5-e18d-419f-a95f-34dadb0e54a2" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
                 <NoteTypes>

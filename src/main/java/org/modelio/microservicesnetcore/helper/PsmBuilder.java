@@ -5,22 +5,16 @@ import org.modelio.api.modelio.model.IUmlModel;
 import org.modelio.metamodel.mda.Project;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
-import org.modelio.metamodel.uml.statik.Association;
-import org.modelio.metamodel.uml.statik.AssociationEnd;
-import org.modelio.metamodel.uml.statik.Attribute;
-import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.NameSpace;
 import org.modelio.metamodel.uml.statik.Package;
-import org.modelio.metamodel.uml.statik.VisibilityMode;
 import org.modelio.microservicesnetcore.api.ModuleConstants;
 import org.modelio.microservicesnetcore.api.ModuleStereotype;
-import org.modelio.vcore.smkernel.mapi.MObject;
 
 public class PsmBuilder {
 	public static void CreatePimDependency(IModelingSession session,ModelElement pimElt,ModelElement psmElt)
 	{
 		// Stereotype PimPsmDependency
-		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PIMDependency);
+		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSMDependency);
 
 		IUmlModel model= session.getModel();
 		model.createDependency(psmElt, pimElt,pimImpactStereotype);
@@ -73,7 +67,63 @@ public class PsmBuilder {
 		IUmlModel model= session.getModel();
 		
 		Package psmElt = model.createPackage(ModuleConstants.PSM_ModelPackageName,(NameSpace)psmOwner);
+		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_MODEL);
+		psmElt.getExtension().add(psmStereo);
 		
+		return psmElt;
+	}
+
+	public static ModelElement CreatePsmMicroserviceIRepository(IModelingSession session, ModelElement psmOwner) {
+		// TODO Auto-generated method stub
+		IUmlModel model= session.getModel();
+		
+		Package psmElt = model.createPackage(ModuleConstants.PSM_IRepositoryPackageName,(NameSpace)psmOwner);
+		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_IREPOSITORY);
+		psmElt.getExtension().add(psmStereo);
+		
+		return psmElt;
+	}
+
+	public static ModelElement CreatePsmMicroserviceRepository(IModelingSession session, ModelElement psmOwner) {
+		// TODO Auto-generated method stub
+		IUmlModel model= session.getModel();
+		
+		Package psmElt = model.createPackage(ModuleConstants.PSM_RepositoryPackageName,(NameSpace)psmOwner);
+		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_REPOSITORY);
+		psmElt.getExtension().add(psmStereo);
+		
+		return psmElt;
+	}
+
+	public static ModelElement CreatePsmMicroserviceIService(IModelingSession session, ModelElement psmOwner) {
+		// TODO Auto-generated method stub
+		IUmlModel model= session.getModel();
+		
+		Package psmElt = model.createPackage(ModuleConstants.PSM_IServicePackageName,(NameSpace)psmOwner);
+		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_ISERVICE);
+		psmElt.getExtension().add(psmStereo);
+		
+		return psmElt;
+	}
+
+	public static ModelElement CreatePsmMicroserviceService(IModelingSession session, ModelElement psmOwner) {
+		// TODO Auto-generated method stub
+		IUmlModel model= session.getModel();
+		
+		Package psmElt = model.createPackage(ModuleConstants.PSM_ServicePackageName,(NameSpace)psmOwner);
+		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_SERVICE);
+		psmElt.getExtension().add(psmStereo);
+		
+		return psmElt;
+	}
+	
+	public static ModelElement CreatePsmMicroserviceWebApi(IModelingSession session, ModelElement psmOwner) {
+		// TODO Auto-generated method stub
+		IUmlModel model= session.getModel();
+		
+		Package psmElt = model.createPackage(ModuleConstants.PSM_WebApiPackageName,(NameSpace)psmOwner);
+		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_API);
+		psmElt.getExtension().add(psmStereo);
 		
 		return psmElt;
 	}

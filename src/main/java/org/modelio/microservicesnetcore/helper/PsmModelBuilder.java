@@ -18,7 +18,28 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 
 public class PsmModelBuilder {
 	
+	public static void CreatePimDependency(IModelingSession session,ModelElement pimElt,ModelElement psmElt)
+	{
+		// Stereotype PimPsmDependency
+		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSMModelDependency);
+
+		IUmlModel model= session.getModel();
+		model.createDependency(psmElt, pimElt,pimImpactStereotype);
+	}
+
 	
+	
+	public static ModelElement CreatePsmGenericPackage(IModelingSession session, Package visited, ModelElement psmOwner) 
+	{
+		IUmlModel model= session.getModel();
+		
+		Package psmElt = model.createPackage(visited.getName(),(NameSpace)psmOwner);
+		
+		// Stereotype PimDependency
+		CreatePimDependency(session ,visited,psmElt);
+		
+		return psmElt;
+	}
 	
 	
 	public static Classifier createClassModel(IModelingSession session,Classifier visited, Package psmOwner ) {
@@ -29,7 +50,7 @@ public class PsmModelBuilder {
 		psmElt = model.createClass(visited.getName(), psmOwner);
 		
 		// Stereotype PimDependency
-		PsmBuilder.CreatePimDependency(session ,visited,psmElt);
+		CreatePimDependency(session ,visited,psmElt);
 		
 		return psmElt;
 	}
@@ -48,7 +69,7 @@ public class PsmModelBuilder {
 		psmElt.setMultiplicityMax(visited.getMultiplicityMax());
 
 		// Stereotype PimDependency
-		PsmBuilder.CreatePimDependency(session ,visited,psmElt);
+		CreatePimDependency(session ,visited,psmElt);
 		
 		return psmElt;
 	}
@@ -58,8 +79,8 @@ public class PsmModelBuilder {
 		AssociationEnd psmElt;
 		Classifier pimSrcClass = visited.getSource();
 		Classifier pimTargetClass = visited.getTarget();
-		Classifier psmSrcClass = (Classifier)PimPsmMapper.GetPsmFromPim(pimSrcClass);
-		Classifier psmTargetClass = (Classifier)PimPsmMapper.GetPsmFromPim(pimTargetClass);
+		Classifier psmSrcClass = (Classifier)PimPsmMapper.GetPsmModelFromPim(pimSrcClass);
+		Classifier psmTargetClass = (Classifier)PimPsmMapper.GetPsmModelFromPim(pimTargetClass);
 
 		IUmlModel model = _session.getModel();
 
@@ -71,7 +92,7 @@ public class PsmModelBuilder {
 		psmElt.setAggregation(visited.getAggregation());
 
 		// Stereotype PimDependency
-		PsmBuilder.CreatePimDependency(_session ,visited,psmElt);
+		CreatePimDependency(_session ,visited,psmElt);
 		
 		return psmElt;
 	}

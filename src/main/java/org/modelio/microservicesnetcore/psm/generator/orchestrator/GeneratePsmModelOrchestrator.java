@@ -63,6 +63,7 @@ public class GeneratePsmModelOrchestrator {
 			OwnerVisitor visitor = new OwnerVisitor(handler);
 			visitor.process((Package)selectedPimMicroservice);
 			
+			// 4 create Psm Microservice model association
 			GeneratePsmModelDetailHandler handlerDetail =new GeneratePsmModelDetailHandler(_module);
 			visitor = new OwnerVisitor(handlerDetail);
 			visitor.process((Package)selectedPimMicroservice);

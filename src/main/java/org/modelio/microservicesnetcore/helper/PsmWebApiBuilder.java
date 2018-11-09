@@ -21,42 +21,12 @@ public class PsmWebApiBuilder {
 	public static void CreatePimDependency(IModelingSession session,ModelElement pimElt,ModelElement psmElt)
 	{
 		// Stereotype PimPsmDependency
-		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PIMDependency);
+		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSMWebApiDependency);
 
 		IUmlModel model= session.getModel();
 		model.createDependency(psmElt, pimElt,pimImpactStereotype);
 	}
 
-	public static ModelElement CreatePsmPackage(IModelingSession session, ModelElement umlPimPackage) {
-		IUmlModel model= session.getModel();
-		Project root = (Project)model.getModelRoots().get(0);
-		
-		String name = ModuleConstants.getPSMName(umlPimPackage.getName());
-		// Stereotype PSM
-		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM);
-		Package psmElt = model.createPackage();
-		psmElt.setName(name);
-		psmElt.getExtension().add(psmStereo);
-		root.getModel().add(psmElt);
-		
-		
-		// Stereotype PimDependency
-		CreatePimDependency(session ,umlPimPackage,psmElt);
-		
-		return psmElt;
-	}
-	
-
-	public static ModelElement CreatePsmWebApi(IModelingSession session, Package visited, ModelElement psmOwner) 
-	{
-		ModelElement psmElt = CreatePsmGenericPackage(session,visited,psmOwner);
-		
-		// Stereotype PSM
-		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_API);
-		psmElt.getExtension().add(psmStereo);
-		
-		return psmElt;
-	}
 	
 	public static ModelElement CreatePsmGenericPackage(IModelingSession session, Package visited, ModelElement psmOwner) 
 	{
@@ -70,13 +40,14 @@ public class PsmWebApiBuilder {
 		return psmElt;
 	}
 
-	public static Classifier createClass(IModelingSession session,Classifier visited, Package psmOwner ) {
+	public static Classifier createController(IModelingSession session,Classifier visited, Package psmOwner ) {
 		Classifier psmElt;
 		IUmlModel model = session.getModel();
 		
 		//Create Class
 		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_CONTROLLER);
 		psmElt = model.createClass(ModuleConstants.getControllerName(visited.getName()), psmOwner,psmStereo);
+		
 		
 		createGetAllOperation(session, psmElt);
 		createGetByIdOperation(session, psmElt);

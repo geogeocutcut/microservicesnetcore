@@ -8,6 +8,7 @@ import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.Attribute;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.GeneralClass;
+import org.modelio.metamodel.uml.statik.Interface;
 import org.modelio.metamodel.uml.statik.NameSpace;
 import org.modelio.metamodel.uml.statik.Operation;
 import org.modelio.metamodel.uml.statik.Package;
@@ -21,7 +22,7 @@ public class PsmRepositoryBuilder {
 	public static void CreatePimDependency(IModelingSession session,ModelElement pimElt,ModelElement psmElt)
 	{
 		// Stereotype PimPsmDependency
-		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PIMDependency);
+		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSMRepositoryDependency);
 
 		IUmlModel model= session.getModel();
 		model.createDependency(psmElt, pimElt,pimImpactStereotype);
@@ -70,7 +71,7 @@ public class PsmRepositoryBuilder {
 		return psmElt;
 	}
 
-	public static Classifier createClass(IModelingSession session,Classifier visited, Package psmOwner ) {
+	public static Classifier createRepository(IModelingSession session,Classifier visited, Package psmOwner ) {
 		Classifier psmElt;
 		IUmlModel model = session.getModel();
 		
@@ -81,6 +82,9 @@ public class PsmRepositoryBuilder {
 		createGetByIdOperation(session, psmElt);
 		createSaveOrUpdateOperation(session, psmElt);
 		createDeleteOperation(session, psmElt);
+		
+		Interface psmIRepo = (Interface)PimPsmMapper.GetPimFromPsmIRepository(visited);
+		model.createInterfaceRealization(psmElt, psmIRepo);
 		
 		// Stereotype PimDependency
 		CreatePimDependency(session ,visited,psmElt);

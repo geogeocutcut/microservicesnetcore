@@ -8,6 +8,7 @@ import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.Attribute;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.GeneralClass;
+import org.modelio.metamodel.uml.statik.Interface;
 import org.modelio.metamodel.uml.statik.NameSpace;
 import org.modelio.metamodel.uml.statik.Operation;
 import org.modelio.metamodel.uml.statik.Package;
@@ -21,41 +22,10 @@ public class PsmIServiceBuilder {
 	public static void CreatePimDependency(IModelingSession session,ModelElement pimElt,ModelElement psmElt)
 	{
 		// Stereotype PimPsmDependency
-		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PIMDependency);
+		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSMIServiceDependency);
 
 		IUmlModel model= session.getModel();
 		model.createDependency(psmElt, pimElt,pimImpactStereotype);
-	}
-
-	public static ModelElement CreatePsmPackage(IModelingSession session, ModelElement umlPimPackage) {
-		IUmlModel model= session.getModel();
-		Project root = (Project)model.getModelRoots().get(0);
-		
-		String name = ModuleConstants.getPSMName(umlPimPackage.getName());
-		// Stereotype PSM
-		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM);
-		Package psmElt = model.createPackage();
-		psmElt.setName(name);
-		psmElt.getExtension().add(psmStereo);
-		root.getModel().add(psmElt);
-		
-		
-		// Stereotype PimDependency
-		CreatePimDependency(session ,umlPimPackage,psmElt);
-		
-		return psmElt;
-	}
-	
-
-	public static ModelElement CreatePsmIService(IModelingSession session, Package visited, ModelElement psmOwner) 
-	{
-		ModelElement psmElt = CreatePsmGenericPackage(session,visited,psmOwner);
-		
-		// Stereotype PSM
-		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_ISERVICE);
-		psmElt.getExtension().add(psmStereo);
-		
-		return psmElt;
 	}
 	
 	public static ModelElement CreatePsmGenericPackage(IModelingSession session, Package visited, ModelElement psmOwner) 
@@ -70,12 +40,12 @@ public class PsmIServiceBuilder {
 		return psmElt;
 	}
 
-	public static Classifier createClass(IModelingSession session,Classifier visited, Package psmOwner ) {
-		Classifier psmElt;
+	public static Interface createIService(IModelingSession session,Classifier visited, Package psmOwner ) {
+		Interface psmElt;
 		IUmlModel model = session.getModel();
 		
 		//Create Class
-		psmElt = model.createClass(ModuleConstants.getIServiceName(visited.getName()), psmOwner);
+		psmElt = model.createInterface(ModuleConstants.getIServiceName(visited.getName()), psmOwner);
 		
 		createGetAllOperation(session, psmElt);
 		createGetByIdOperation(session, psmElt);

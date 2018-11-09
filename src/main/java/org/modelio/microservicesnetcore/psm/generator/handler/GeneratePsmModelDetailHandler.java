@@ -30,7 +30,7 @@ public class GeneratePsmModelDetailHandler extends HandlerAdapter{
 	@Override
 	protected void beginVisitingAssociationEnd(AssociationEnd visited) 
 	{
-		AssociationEnd psmModelAssociationEnd = (AssociationEnd)PimPsmMapper.GetPsmFromPim(visited);
+		AssociationEnd psmModelAssociationEnd = (AssociationEnd)PimPsmMapper.GetPsmModelFromPim(visited);
 		if(psmModelAssociationEnd == null)
 		{
 			psmModelAssociationEnd = PsmModelBuilder.createAssociationEnd(_session,visited );

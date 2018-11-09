@@ -21,42 +21,13 @@ public class PsmServiceBuilder {
 	public static void CreatePimDependency(IModelingSession session,ModelElement pimElt,ModelElement psmElt)
 	{
 		// Stereotype PimPsmDependency
-		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PIMDependency);
+		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSMServiceDependency);
 
 		IUmlModel model= session.getModel();
 		model.createDependency(psmElt, pimElt,pimImpactStereotype);
 	}
 
-	public static ModelElement CreatePsmPackage(IModelingSession session, ModelElement umlPimPackage) {
-		IUmlModel model= session.getModel();
-		Project root = (Project)model.getModelRoots().get(0);
-		
-		String name = ModuleConstants.getPSMName(umlPimPackage.getName());
-		// Stereotype PSM
-		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM);
-		Package psmElt = model.createPackage();
-		psmElt.setName(name);
-		psmElt.getExtension().add(psmStereo);
-		root.getModel().add(psmElt);
-		
-		
-		// Stereotype PimDependency
-		CreatePimDependency(session ,umlPimPackage,psmElt);
-		
-		return psmElt;
-	}
 	
-
-	public static ModelElement CreatePsmService(IModelingSession session, Package visited, ModelElement psmOwner) 
-	{
-		ModelElement psmElt = CreatePsmGenericPackage(session,visited,psmOwner);
-		
-		// Stereotype PSM
-		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_SERVICE);
-		psmElt.getExtension().add(psmStereo);
-		
-		return psmElt;
-	}
 	
 	public static ModelElement CreatePsmGenericPackage(IModelingSession session, Package visited, ModelElement psmOwner) 
 	{
@@ -70,7 +41,7 @@ public class PsmServiceBuilder {
 		return psmElt;
 	}
 
-	public static Classifier createClass(IModelingSession session,Classifier visited, Package psmOwner ) {
+	public static Classifier createService(IModelingSession session,Classifier visited, Package psmOwner ) {
 		Classifier psmElt;
 		IUmlModel model = session.getModel();
 		

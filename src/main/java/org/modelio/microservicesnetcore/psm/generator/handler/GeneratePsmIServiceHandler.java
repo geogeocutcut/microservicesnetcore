@@ -10,32 +10,32 @@ import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.PimPsmMapper;
 import org.modelio.microservicesnetcore.helper.PsmBuilder;
-import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
+import org.modelio.microservicesnetcore.helper.PsmIServiceBuilder;
 import org.modelio.microservicesnetcore.helper.PsmStereotypeValidator;
 import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 
 
-public class GeneratePsmModelHandler extends HandlerAdapter {
+public class GeneratePsmIServiceHandler extends HandlerAdapter {
 	private Stack<Object> _ctx;
 	private IModelingSession _session;
 	
-	public GeneratePsmModelHandler(IModule module,Package psmMicroservice)
+	public GeneratePsmIServiceHandler(IModule module,Package psmMicroservice)
 	{
 		_session = module.getModuleContext().getModelingSession();
-		ModelElement psmMicroserviceModel=null;
+		ModelElement psmMicroserviceIService=null;
 		for(ModelElement child : psmMicroservice.getOwnedElement())
 		{
-			if(PsmStereotypeValidator.IsPsmModelPackage(child))
+			if(PsmStereotypeValidator.IsPsmIServicePackage(child))
 			{
-				psmMicroserviceModel=child;
+				psmMicroserviceIService=child;
 				break;
 			}
 		}
-		if(psmMicroserviceModel==null)
+		if(psmMicroserviceIService==null)
 		{
-			psmMicroserviceModel = PsmBuilder.CreatePsmMicroserviceModel(_session, psmMicroservice);
+			psmMicroserviceIService = PsmBuilder.CreatePsmMicroserviceIService(_session, psmMicroservice);
 		}
-		_ctx.push(psmMicroserviceModel);
+		_ctx.push(psmMicroserviceIService);
 	}
 	// ==========================================
 	// Begin
@@ -43,10 +43,10 @@ public class GeneratePsmModelHandler extends HandlerAdapter {
 	@Override
 	protected void beginVisitingPackage(Package visited) 
 	{
-		ModelElement psmElt = PimPsmMapper.GetPsmModelFromPim(visited);
+		ModelElement psmElt = PimPsmMapper.GetPsmIServiceFromPim(visited);
 		if(psmElt==null)
 		{
-			psmElt = PsmModelBuilder.CreatePsmGenericPackage(_session,visited,(Package)_ctx.peek());
+			psmElt = PsmIServiceBuilder.CreatePsmGenericPackage(_session,visited,(Package)_ctx.peek());
 		}
 		_ctx.push(psmElt);
 	}
@@ -54,21 +54,11 @@ public class GeneratePsmModelHandler extends HandlerAdapter {
 	@Override
 	protected void beginVisitingClassifier(Classifier visited) 
 	{
-		Classifier psmElt = (Classifier)PimPsmMapper.GetPsmModelFromPim(visited);
+		Classifier psmElt = (Classifier)PimPsmMapper.GetPsmIServiceFromPim(visited);
 		if (psmElt==null) {
-			psmElt = PsmModelBuilder.createClassModel( _session,visited, (Package)_ctx.peek());
+			psmElt = PsmIServiceBuilder.createIService( _session,visited, (Package)_ctx.peek());
 		}
 		_ctx.push(psmElt);
-	}
-	
-	@Override
-	protected void beginVisitingAttribute(Attribute visited) 
-	{
-		Attribute newModelElement = (Attribute)PimPsmMapper.GetPsmModelFromPim(visited);
-		if (newModelElement==null){
-			newModelElement = PsmModelBuilder.createAttribute(_session,visited, (Classifier)_ctx.peek());
-		}
-		_ctx.push(newModelElement);
 	}
 	
 	// =============================================
@@ -86,9 +76,4 @@ public class GeneratePsmModelHandler extends HandlerAdapter {
 		_ctx.pop();
 	}
 	
-	@Override
-	protected void endVisitingAttribute(Attribute visited) {
-		// TODO Auto-generated method stub
-		_ctx.pop();
-	}
 }

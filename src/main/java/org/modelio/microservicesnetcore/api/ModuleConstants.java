@@ -18,6 +18,11 @@ public class ModuleConstants {
 	public static String PSM_ServiceName = "%service%Service";
 	public static String PSM_ControllerName = "%controller%Controller";
 	public static String PSM_ModelPackageName = "Model";
+	public static String PSM_IRepositoryPackageName = "IRepository";
+	public static String PSM_RepositoryPackageName = "Repository";
+	public static String PSM_IServicePackageName = "IService";
+	public static String PSM_ServicePackageName = "Service";
+	public static String PSM_WebApiPackageName = "WebApi";
 	
 	public static String getPSMName(String PIMname)
 	{
