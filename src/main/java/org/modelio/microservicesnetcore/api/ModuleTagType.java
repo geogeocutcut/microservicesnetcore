@@ -3,8 +3,6 @@ package org.modelio.microservicesnetcore.api;
 import org.modelio.api.modelio.meta.IMetamodelService;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.module.context.IModuleContext;
-import org.modelio.metamodel.uml.infrastructure.NoteType;
-import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.infrastructure.TagType;
 import org.modelio.microservicesnetcore.impl.MicroserviceDotnetCoreModule;
 import org.modelio.vcore.smkernel.mapi.MClass;

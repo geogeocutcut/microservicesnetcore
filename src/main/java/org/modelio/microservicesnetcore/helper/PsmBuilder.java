@@ -3,6 +3,7 @@ package org.modelio.microservicesnetcore.helper;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.IUmlModel;
 import org.modelio.metamodel.mda.Project;
+import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.NameSpace;
@@ -14,7 +15,7 @@ public class PsmBuilder {
 	public static void CreatePimDependency(IModelingSession session,ModelElement pimElt,ModelElement psmElt)
 	{
 		// Stereotype PimPsmDependency
-		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSMDependency);
+		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Dependency.class, ModuleStereotype.STEREO_PSMDependency);
 
 		IUmlModel model= session.getModel();
 		model.createDependency(psmElt, pimElt,pimImpactStereotype);

@@ -5,19 +5,17 @@ import java.util.Stack;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.module.IModule;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
-import org.modelio.metamodel.uml.statik.Attribute;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.PimPsmMapper;
 import org.modelio.microservicesnetcore.helper.PsmBuilder;
 import org.modelio.microservicesnetcore.helper.PsmIRepositoryBuilder;
-import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
 import org.modelio.microservicesnetcore.helper.PsmStereotypeValidator;
 import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 
 
 public class GeneratePsmIRepositoryHandler extends HandlerAdapter {
-	private Stack<Object> _ctx;
+	private Stack<Object> _ctx=new Stack<Object>();
 	private IModelingSession _session;
 	
 	public GeneratePsmIRepositoryHandler(IModule module,Package psmMicroservice)
@@ -26,7 +24,7 @@ public class GeneratePsmIRepositoryHandler extends HandlerAdapter {
 		ModelElement psmMicroserviceIRepository=null;
 		for(ModelElement child : psmMicroservice.getOwnedElement())
 		{
-			if(PsmStereotypeValidator.IsPsmIRepository(child))
+			if(PsmStereotypeValidator.IsPsmIRepositoryPackage(child))
 			{
 				psmMicroserviceIRepository=child;
 				break;

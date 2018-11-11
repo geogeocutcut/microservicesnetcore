@@ -28,7 +28,7 @@ public class ModuleHelper {
 			ModelElement root =(ModelElement)session.getModel().getModelRoots().get(0);
 			for(MObject e : root.getCompositionChildren())
 			{
-				if(PsmStereotypeValidator.IsPsm((ModelElement)e))
+				if(PsmStereotypeValidator.IsPsmPackage((ModelElement)e))
 				{
 					return (ModelElement)e;
 				}

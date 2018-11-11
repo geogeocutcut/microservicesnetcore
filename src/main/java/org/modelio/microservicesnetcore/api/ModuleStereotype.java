@@ -27,11 +27,11 @@ public class ModuleStereotype {
 	public static String STEREO_PSM = "PSM";
 	public static String STEREO_PSM_MICROSERVICE = "PSMMicroservice";
 	public static String STEREO_PSM_MODEL = "PSMModelPackage";
-	public static String STEREO_PSM_REPOSITORY = "PSMReporsitoryPackage";
-	public static String STEREO_PSM_IREPOSITORY = "PSMIReporsitoryPackage";
+	public static String STEREO_PSM_REPOSITORY = "PSMRepositoryPackage";
+	public static String STEREO_PSM_IREPOSITORY = "PSMIRepositoryPackage";
 	public static String STEREO_PSM_SERVICE = "PSMServicePackage";
 	public static String STEREO_PSM_ISERVICE = "PSMIServicePackage";
-	public static String STEREO_PSM_API = "PSMAPIPackage";
+	public static String STEREO_PSM_API = "PSMWebApiApiPackage";
 	public static String STEREO_PSM_CONTROLLER = "PSMController";
 	public static String STEREO_PSM_IDATTRIBUTE = "PSMIdAttribute";
 	

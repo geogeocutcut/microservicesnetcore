@@ -2,18 +2,16 @@ package org.modelio.microservicesnetcore.psm.generator.orchestrator;
 
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.ITransaction;
-import org.modelio.api.modelio.model.IUmlModel;
 import org.modelio.api.module.IModule;
 import org.modelio.api.module.context.log.ILogService;
-import org.modelio.metamodel.mda.Project;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.modeliotools.treevisitor.OwnedVisitor;
-import org.modelio.modeliotools.treevisitor.OwnerVisitor;
 import org.modelio.vcore.smkernel.mapi.MObject;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.ModuleHelper;
-import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
-import org.modelio.microservicesnetcore.psm.helper.PimPsmMapper;
+import org.modelio.microservicesnetcore.helper.PimPsmMapper;
+import org.modelio.microservicesnetcore.helper.PsmBuilder;
+import org.modelio.microservicesnetcore.psm.generator.handler.GeneratePsmIServiceHandler;
 
 public class GeneratePsmIServiceOrchestrator {
 
@@ -34,7 +32,7 @@ public class GeneratePsmIServiceOrchestrator {
 		
 	}
 	
-	public void Execute(MObject selectedPimVersionPackage) 
+	public void Execute(MObject selectedPimMicroservice) 
 	{
 		if(_umlPimPackage!=null)
 		{
@@ -42,16 +40,22 @@ public class GeneratePsmIServiceOrchestrator {
 			_umlPsmPackage= PimPsmMapper.GetPsmFromPim(_umlPimPackage);
 			if(_umlPsmPackage==null)
 			{
-				try (ITransaction t = _session.createTransaction("Create PSM Package")) {
-					_umlPsmPackage= PsmModelBuilder.CreatePsmPackage(_session,_umlPimPackage);
-					t.commit();
-				}
-				catch (Exception e) {
-					throw e;
-				}
+				_umlPsmPackage= PsmBuilder.CreatePsmPackage(_session,(Package)_umlPimPackage);
+				
 			}
 			
+			// 2 create Psm Microservice if not exist
+			ModelElement psmMicroservice= PimPsmMapper.GetPsmFromPim((ModelElement)selectedPimMicroservice);
+			if(psmMicroservice==null)
+			{
+				psmMicroservice= PsmBuilder.CreatePsmMicroservice(_session,(Package)selectedPimMicroservice,_umlPsmPackage);
+				
+			}
 			
+			// 3 create Psm Microservice Repository
+			GeneratePsmIServiceHandler handler =new GeneratePsmIServiceHandler(_module, (Package)psmMicroservice);
+			OwnedVisitor visitor = new OwnedVisitor(handler);
+			visitor.process((Package)selectedPimMicroservice);
 			
 		}
 	}

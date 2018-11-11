@@ -16,7 +16,7 @@ import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 
 
 public class GeneratePsmModelHandler extends HandlerAdapter {
-	private Stack<Object> _ctx;
+	private Stack<Object> _ctx= new Stack<Object>();
 	private IModelingSession _session;
 	
 	public GeneratePsmModelHandler(IModule module,Package psmMicroservice)

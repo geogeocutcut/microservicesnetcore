@@ -139,11 +139,11 @@ public class PimPsmMapper {
 		return result;
 	}
 	
-	public static ModelElement GetPsmApiFromPim(ModelElement from) {
+	public static ModelElement GetPsmWebApiFromPim(ModelElement from) {
 		// TODO Auto-generated method stub
 		ModelElement result = null;
 		for (Dependency dep : from.getImpactedDependency()) {
-			if (dep.isStereotyped(ModuleConstants.MODULE_NAME,  (ModuleStereotype.STEREO_PSMApiDependency)))
+			if (dep.isStereotyped(ModuleConstants.MODULE_NAME,  (ModuleStereotype.STEREO_PSMWebApiDependency)))
 			{		
 				result = (ModelElement)dep.getImpacted();
 				break;
@@ -152,11 +152,37 @@ public class PimPsmMapper {
 		return result;
 	}
 	
-	public static ModelElement GetPimFromPsmApi(ModelElement from) {
+	public static ModelElement GetPimFromPsmWebApiApi(ModelElement from) {
 		// TODO Auto-generated method stub
 		ModelElement result = null;
 		for (Dependency dep : from.getDependsOnDependency()) {
-			if (dep.isStereotyped(ModuleConstants.MODULE_NAME,  (ModuleStereotype.STEREO_PSMApiDependency)))
+			if (dep.isStereotyped(ModuleConstants.MODULE_NAME,  (ModuleStereotype.STEREO_PSMWebApiDependency)))
+			{		
+				result = (ModelElement)dep.getDependsOn();
+				break;
+			}
+		}
+		return result;
+	}
+
+	public static ModelElement GetPsmFromPim(ModelElement from) {
+		// TODO Auto-generated method stub
+		ModelElement result = null;
+		for (Dependency dep : from.getImpactedDependency()) {
+			if (dep.isStereotyped(ModuleConstants.MODULE_NAME,  (ModuleStereotype.STEREO_PSMDependency)))
+			{		
+				result = (ModelElement)dep.getImpacted();
+				break;
+			}
+        }
+		return result;
+	}
+	
+	public static ModelElement GetPimFromPsm(ModelElement from) {
+		// TODO Auto-generated method stub
+		ModelElement result = null;
+		for (Dependency dep : from.getDependsOnDependency()) {
+			if (dep.isStereotyped(ModuleConstants.MODULE_NAME,  (ModuleStereotype.STEREO_PSMDependency)))
 			{		
 				result = (ModelElement)dep.getDependsOn();
 				break;

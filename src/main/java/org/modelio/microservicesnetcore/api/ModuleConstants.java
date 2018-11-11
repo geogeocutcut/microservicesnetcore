@@ -1,5 +1,6 @@
 package org.modelio.microservicesnetcore.api;
 
+import org.modelio.microservicesnetcore.helper.StringConverter;
 import org.modelio.microservicesnetcore.impl.MicroserviceDotnetCoreModule;
 
 public class ModuleConstants {
@@ -31,22 +32,22 @@ public class ModuleConstants {
 	
 	public static String getIRepositoryName(String conceptName)
 	{
-		return PSM_IRepositoryName.replaceFirst("%repository%", conceptName);
+		return PSM_IRepositoryName.replaceFirst("%repository%", StringConverter.SnakeCaseToCamelCase(conceptName));
 	}
 	public static String getRepositoryName(String conceptName)
 	{
-		return PSM_RepositoryName.replaceFirst("%repository%", conceptName);
+		return PSM_RepositoryName.replaceFirst("%repository%", StringConverter.SnakeCaseToCamelCase(conceptName));
 	}
 	public static String getIServiceName(String conceptName)
 	{
-		return PSM_IServiceName.replaceFirst("%service%", conceptName);
+		return PSM_IServiceName.replaceFirst("%service%", StringConverter.SnakeCaseToCamelCase(conceptName));
 	}
 	public static String getServiceName(String conceptName)
 	{
-		return PSM_ServiceName.replaceFirst("%service%", conceptName);
+		return PSM_ServiceName.replaceFirst("%service%", StringConverter.SnakeCaseToCamelCase(conceptName));
 	}
 	public static String getControllerName(String conceptName)
 	{
-		return PSM_ControllerName.replaceFirst("%controller%", conceptName);
+		return PSM_ControllerName.replaceFirst("%controller%", StringConverter.SnakeCaseToCamelCase(conceptName));
 	}
 }
