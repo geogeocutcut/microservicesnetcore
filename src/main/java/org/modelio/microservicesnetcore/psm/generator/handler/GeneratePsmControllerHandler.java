@@ -8,18 +8,19 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.PimPsmMapper;
+import org.modelio.microservicesnetcore.helper.PimStereotypeValidator;
 import org.modelio.microservicesnetcore.helper.PsmBuilder;
 import org.modelio.microservicesnetcore.helper.PsmServiceBuilder;
 import org.modelio.microservicesnetcore.helper.PsmStereotypeValidator;
-import org.modelio.microservicesnetcore.helper.PsmWebApiBuilder;
+import org.modelio.microservicesnetcore.helper.PsmControllerBuilder;
 import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 
 
-public class GeneratePsmWebApiHandler extends HandlerAdapter {
+public class GeneratePsmControllerHandler extends HandlerAdapter {
 	private Stack<Object> _ctx=new Stack<Object>();
 	private IModelingSession _session;
 	
-	public GeneratePsmWebApiHandler(IModule module,Package psmMicroservice)
+	public GeneratePsmControllerHandler(IModule module,Package psmMicroservice)
 	{
 		_session = module.getModuleContext().getModelingSession();
 		ModelElement psmMicroserviceService=null;
@@ -33,7 +34,7 @@ public class GeneratePsmWebApiHandler extends HandlerAdapter {
 		}
 		if(psmMicroserviceService==null)
 		{
-			psmMicroserviceService = PsmBuilder.CreatePsmMicroserviceWebApi(_session, psmMicroservice);
+			psmMicroserviceService = PsmBuilder.CreatePsmMicroserviceController(_session, psmMicroservice);
 		}
 		_ctx.push(psmMicroserviceService);
 	}
@@ -43,20 +44,24 @@ public class GeneratePsmWebApiHandler extends HandlerAdapter {
 	@Override
 	protected void beginVisitingPackage(Package visited) 
 	{
-		ModelElement psmElt = PimPsmMapper.GetPsmWebApiFromPim(visited);
-		if(psmElt==null)
+		if(!PimStereotypeValidator.isMicroservice(visited))
 		{
-			psmElt = PsmWebApiBuilder.CreatePsmGenericPackage(_session,visited,(Package)_ctx.peek());
+			ModelElement psmElt = PimPsmMapper.GetPsmControllerFromPim(visited);
+		
+			if(psmElt==null)
+			{
+				psmElt = PsmControllerBuilder.CreatePsmGenericPackage(_session,visited,(Package)_ctx.peek());
+			}
+			_ctx.push(psmElt);
 		}
-		_ctx.push(psmElt);
 	}
 	
 	@Override
 	protected void beginVisitingClassifier(Classifier visited) 
 	{
-		Classifier psmElt = (Classifier)PimPsmMapper.GetPsmWebApiFromPim(visited);
+		Classifier psmElt = (Classifier)PimPsmMapper.GetPsmControllerFromPim(visited);
 		if (psmElt==null) {
-			psmElt = PsmWebApiBuilder.createController( _session,visited, (Package)_ctx.peek());
+			psmElt = PsmControllerBuilder.createController( _session,visited, (Package)_ctx.peek());
 		}
 		_ctx.push(psmElt);
 	}

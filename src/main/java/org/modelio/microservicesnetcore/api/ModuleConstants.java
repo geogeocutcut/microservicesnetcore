@@ -3,6 +3,7 @@ package org.modelio.microservicesnetcore.api;
 import org.modelio.microservicesnetcore.helper.StringConverter;
 import org.modelio.microservicesnetcore.impl.MicroserviceDotnetCoreModule;
 
+
 public class ModuleConstants {
 	
 	private static MicroserviceDotnetCoreModule myModule = MicroserviceDotnetCoreModule.getInstance();
@@ -23,7 +24,10 @@ public class ModuleConstants {
 	public static String PSM_RepositoryPackageName = "Repository";
 	public static String PSM_IServicePackageName = "IService";
 	public static String PSM_ServicePackageName = "Service";
-	public static String PSM_WebApiPackageName = "WebApi";
+	public static String PSM_ControllerPackageName = "Controller";
+	
+
+	private static String CONTROLLER_ENDPOINT_VALUE="api/%controller%";
 	
 	public static String getPSMName(String PIMname)
 	{
@@ -49,5 +53,11 @@ public class ModuleConstants {
 	public static String getControllerName(String conceptName)
 	{
 		return PSM_ControllerName.replaceFirst("%controller%", StringConverter.SnakeCaseToCamelCase(conceptName));
+	}
+
+	public static String getControllerRoute(String name) {
+		// TODO Auto-generated method stub
+		return CONTROLLER_ENDPOINT_VALUE.replace("%controller%", StringConverter.CamelCaseToSnakeCase(name));
+		
 	}
 }

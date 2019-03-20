@@ -26,7 +26,7 @@
             <Stereotype name="PSMRepositoryPackage" metaclass="Package" is-hidden="false" uid="74c15471-883b-4b45-bd93-98b1682f7606"/>
             <Stereotype name="PSMIServicePackage" metaclass="Package" is-hidden="false" uid="5f732002-77ea-4251-be6c-cf794b31f41f"/>
             <Stereotype name="PSMServicePackage" metaclass="Package" is-hidden="false" uid="a2153deb-7471-4e54-91f5-107a77620a74"/>
-            <Stereotype name="PSMWebApiApiPackage" metaclass="Package" is-hidden="false" uid="367c8598-3ea7-48fb-b157-40c7800143b7"/>
+            <Stereotype name="PSMApiPackage" metaclass="Package" is-hidden="false" uid="367c8598-3ea7-48fb-b157-40c7800143b7"/>
             <Stereotype name="PSMController" metaclass="Class" is-hidden="false" uid="880fecdc-2582-426b-8878-c942b149e938"/>
             <Stereotype name="PSMDependency" metaclass="Dependency" is-hidden="false" uid="5af78f72-028f-40f6-b9c7-ef14993458bc"/>
             <Stereotype name="PSMModelDependency" metaclass="Dependency" is-hidden="false" uid="3dd9a226-b84d-49a5-b1a9-ab2a6d2145cc"/>
@@ -34,7 +34,7 @@
             <Stereotype name="PSMRepositoryDependency" metaclass="Dependency" is-hidden="false" uid="79c626fe-c2c4-4136-a49a-14e3f367dfee"/>
             <Stereotype name="PSMIServiceDependency" metaclass="Dependency" is-hidden="false" uid="7eccfbdd-a9aa-484f-99c7-2eae86fdf9b1"/>
             <Stereotype name="PSMServiceDependency" metaclass="Dependency" is-hidden="false" uid="88635de0-10ff-462a-8331-7c1679610803"/>
-            <Stereotype name="PSMWebApiDependency" metaclass="Dependency" is-hidden="false" uid="83e852d7-0b61-4c33-86e3-7a30d1bb17b4"/>
+            <Stereotype name="PSMControllerDependency" metaclass="Dependency" is-hidden="false" uid="83e852d7-0b61-4c33-86e3-7a30d1bb17b4"/>
         </Profile>
         <Profile uid="8c469d79-2f1d-45b0-87c6-a6c1e11c9db4" id="DotnetCoreProfile">
             <Stereotype name="CsMicroservice" metaclass="Package" is-hidden="false" label="%stereotype.CsMicroservice.label" uid="f5f980b7-94d5-4396-b2e5-635cbd8a064d">
@@ -74,12 +74,12 @@
                     <TagType name="IncludeNamespace" uid="748f4bac-d7fc-406a-ae92-832965605916" label="%tagtype.IncludeNamespace.label" parameter-card="0" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
-            <Stereotype name="CsController" metaclass="Class" is-hidden="false" label="%stereotype.CsClass.label" uid="d269b6b2-d13e-4f58-8acd-33dc1236324b">
+            <Stereotype name="CsController" metaclass="Classifier" is-hidden="false" label="%stereotype.CsController.label" uid="d269b6b2-d13e-4f58-8acd-33dc1236324b">
                 <Icon path="res/icons/CsClass_16x.png"/>
                 <Image path="res/icons/CsClass_16x.png"/>
                 <TagTypes>
                     <TagType name="Usings" uid="053b76b1-ab22-4f02-a02f-2a2e9375f661" label="%tagtype.Usings.label" parameter-card="*" is-hidden="false" is-signed="false"/>
-                    <TagType name="PrefixRoute" uid="ed58f10e-2b87-43f8-aad1-d11219a75fed" label="%tagtype.PrefixRoute.label" parameter-card="*" is-hidden="false" is-signed="false"/>
+                    <TagType name="RoutePrefix" uid="ed58f10e-2b87-43f8-aad1-d11219a75fed" label="%tagtype.PrefixRoute.label" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="Extends" uid="043559b1-cb4c-4ad7-bfd5-f6c574d78744" label="%tagtype.Extends.label" parameter-card="*" is-hidden="false" is-signed="false"/>
                     <TagType name="Name" uid="03c88783-1a61-4c5a-a4fa-742b05557b21" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
@@ -87,7 +87,7 @@
                     <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="3e014f63-4aac-4e40-972c-9751da141ef5"/>
                 </NoteTypes>
             </Stereotype>
-            <Stereotype name="CsClass" metaclass="Class" is-hidden="false" label="%stereotype.CsClass.label" uid="4859d73b-96b5-4d28-be4d-ab8a64175e18">
+            <Stereotype name="CsClass" metaclass="Classifier" is-hidden="false" label="%stereotype.CsClass.label" uid="4859d73b-96b5-4d28-be4d-ab8a64175e18">
                 <Icon path="res/icons/CsClass_16x.png"/>
                 <Image path="res/icons/CsClass_16x.png"/>
                 <TagTypes>
@@ -132,7 +132,8 @@
                 <Icon path="res/icons/CsExposedOperation_16x.png"/>
                 <Image path="res/icons/CsExposedOperation_16x.png"/>
                 <TagTypes>
-                    <TagType name="Route" uid="d7d30297-37ac-488e-98bd-efd70c3babbc" label="%tagtype.Route.label" parameter-card="*" is-hidden="false" is-signed="false"/>
+                    <TagType name="Method" uid="9a09913e-8811-4ba3-bb8b-2acf2fbacdfc" label="%tagtype.Method.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="Route" uid="d7d30297-37ac-488e-98bd-efd70c3babbc" label="%tagtype.Route.label" parameter-card="1" is-hidden="false" is-signed="false"/>
                     <TagType name="Name" uid="64898de5-e18d-419f-a95f-34dadb0e54a2" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
                 <NoteTypes>

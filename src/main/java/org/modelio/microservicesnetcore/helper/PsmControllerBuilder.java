@@ -2,6 +2,7 @@ package org.modelio.microservicesnetcore.helper;
 
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.IUmlModel;
+import org.modelio.metamodel.mmextensions.infrastructure.ExtensionNotFoundException;
 import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
@@ -15,13 +16,15 @@ import org.modelio.metamodel.uml.statik.Parameter;
 import org.modelio.metamodel.uml.statik.VisibilityMode;
 import org.modelio.microservicesnetcore.api.ModuleConstants;
 import org.modelio.microservicesnetcore.api.ModuleStereotype;
+import org.modelio.microservicesnetcore.api.ModuleTagType;
 
-public class PsmWebApiBuilder {
+
+public class PsmControllerBuilder {
 	
 	public static void CreatePimDependency(IModelingSession session,ModelElement pimElt,ModelElement psmElt)
 	{
 		// Stereotype PimPsmDependency
-		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Dependency.class, ModuleStereotype.STEREO_PSMWebApiDependency);
+		Stereotype pimImpactStereotype = ModuleStereotype.GetStereotype(session, Dependency.class, ModuleStereotype.STEREO_PSMControllerDependency);
 
 		IUmlModel model= session.getModel();
 		model.createDependency(psmElt, pimElt,pimImpactStereotype);
@@ -47,11 +50,19 @@ public class PsmWebApiBuilder {
 		//Create Class
 		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_CONTROLLER);
 		psmElt = model.createClass(ModuleConstants.getControllerName(visited.getName()), psmOwner,psmStereo);
-		
+		Stereotype st = ModuleStereotype.GetStereotype(session, Classifier.class, ModuleStereotype.STEREO_CS_CONTROLLER);
+		psmElt.getExtension().add(st);
+		try {
+			psmElt.putTagValue(ModuleConstants.MODULE_NAME, ModuleTagType.TAG_ATT_ROUTEPREFIX, ModuleConstants.getControllerRoute(visited.getName()));
+		} catch (ExtensionNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		createGetAllOperation(session, psmElt);
 		createGetByIdOperation(session, psmElt);
-		createSaveOrUpdateOperation(session, psmElt);
+		createAddOperation(session, psmElt);
+		createUpdateOperation(session, psmElt);
 		createDeleteOperation(session, psmElt);
 		
 		// Stereotype PimDependency
@@ -75,10 +86,12 @@ public class PsmWebApiBuilder {
 		newOperation.setReturn(outParam);
 		newOperation.getReturn().setMultiplicityMax("*");
 		
+		ApplyEndPointStereotype(session,newOperation);
+		
 		return newOperation;
 		
 	}
-	
+
 	public static Operation createGetByIdOperation(IModelingSession session, Classifier psmOwner) {
 		Operation newOperation=null;
 		
@@ -113,17 +126,18 @@ public class PsmWebApiBuilder {
 			newOperation.getIO().add(indexParam);
 		}
 
-		
+
+		ApplyEndPointStereotype(session,newOperation);
 		return newOperation;
 	}
 	
-	public static Operation createSaveOrUpdateOperation(IModelingSession session, Classifier psmOwner) {
+	public static Operation createAddOperation(IModelingSession session, Classifier psmOwner) {
 		Operation newOperation=null;
 		
 		IUmlModel model = session.getModel();
 		
 		//Create Operation
-		newOperation = model.createOperation("SaveOrUpdate", psmOwner);
+		newOperation = model.createOperation("Add", psmOwner);
 		newOperation.setVisibility(VisibilityMode.PUBLIC);
 
 		//Création du paramètre de retour
@@ -139,6 +153,33 @@ public class PsmWebApiBuilder {
 		dataParam.setMultiplicityMax("1");
 		newOperation.getIO().add(dataParam);
 
+		ApplyEndPointStereotype(session,newOperation);
+		return newOperation;
+	}
+	
+	public static Operation createUpdateOperation(IModelingSession session, Classifier psmOwner) {
+		Operation newOperation=null;
+		
+		IUmlModel model = session.getModel();
+		
+		//Create Operation
+		newOperation = model.createOperation("Update", psmOwner);
+		newOperation.setVisibility(VisibilityMode.PUBLIC);
+
+		//Création du paramètre de retour
+		Parameter outParam = model.createParameter();
+		outParam.setType((GeneralClass)psmOwner);
+		newOperation.setReturn(outParam);
+		newOperation.getReturn().setMultiplicityMax("1");
+		
+		//Création des paramètres d'entrée
+		Parameter dataParam = model.createParameter();
+		dataParam.setName("sObject");
+		dataParam.setType((GeneralClass)psmOwner);
+		dataParam.setMultiplicityMax("1");
+		newOperation.getIO().add(dataParam);
+
+		ApplyEndPointStereotype(session,newOperation);
 		return newOperation;
 	}
 	
@@ -159,7 +200,23 @@ public class PsmWebApiBuilder {
 		dataParam.setMultiplicityMax("1");
 		newOperation.getIO().add(dataParam);
 
+
+		ApplyEndPointStereotype(session,newOperation);
 		return newOperation;
 	}
 	
+	private static void ApplyEndPointStereotype(IModelingSession session,Operation newOperation) 
+	{
+		Stereotype st = ModuleStereotype.GetStereotype(session, Operation.class, ModuleStereotype.STEREO_CS_EXPOSEDMETHOD);
+		newOperation.getExtension().add(st);
+		try {
+			newOperation.putTagValue(ModuleConstants.MODULE_NAME, ModuleTagType.TAG_ATT_ROUTE, StringConverter.CamelCaseToSnakeCase(newOperation.getName()));
+			newOperation.putTagValue(ModuleConstants.MODULE_NAME, ModuleTagType.TAG_ATT_HTTPVERB, newOperation.getName().toLowerCase().contains("get")?"HttpGet":"HttpPost");
+		
+		} catch (ExtensionNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }

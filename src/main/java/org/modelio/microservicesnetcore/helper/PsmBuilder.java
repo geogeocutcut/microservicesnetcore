@@ -118,11 +118,11 @@ public class PsmBuilder {
 		return psmElt;
 	}
 	
-	public static ModelElement CreatePsmMicroserviceWebApi(IModelingSession session, ModelElement psmOwner) {
+	public static ModelElement CreatePsmMicroserviceController(IModelingSession session, ModelElement psmOwner) {
 		// TODO Auto-generated method stub
 		IUmlModel model= session.getModel();
 		
-		Package psmElt = model.createPackage(ModuleConstants.PSM_WebApiPackageName,(NameSpace)psmOwner);
+		Package psmElt = model.createPackage(ModuleConstants.PSM_ControllerPackageName,(NameSpace)psmOwner);
 		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_API);
 		psmElt.getExtension().add(psmStereo);
 		

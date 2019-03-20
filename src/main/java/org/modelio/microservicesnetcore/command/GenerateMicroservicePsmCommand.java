@@ -16,7 +16,7 @@ import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmIS
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmModelOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmRepositoryOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmServiceOrchestrator;
-import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmWebApiOrchestrator;
+import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmControllerOrchestrator;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 public class GenerateMicroservicePsmCommand extends DefaultModuleCommandHandler {
@@ -77,7 +77,7 @@ public class GenerateMicroservicePsmCommand extends DefaultModuleCommandHandler 
 		        GeneratePsmServiceOrchestrator orchestServ = new GeneratePsmServiceOrchestrator(module);
 		        orchestServ.Execute(e);
 		        
-		        GeneratePsmWebApiOrchestrator orchestApi = new GeneratePsmWebApiOrchestrator(module);
+		        GeneratePsmControllerOrchestrator orchestApi = new GeneratePsmControllerOrchestrator(module);
 		        orchestApi.Execute(e);
 	        }
 	        t.commit();

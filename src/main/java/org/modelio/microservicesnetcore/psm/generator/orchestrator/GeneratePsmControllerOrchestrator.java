@@ -11,9 +11,9 @@ import org.modelio.vcore.smkernel.mapi.MObject;
 import org.modelio.microservicesnetcore.helper.ModuleHelper;
 import org.modelio.microservicesnetcore.helper.PimPsmMapper;
 import org.modelio.microservicesnetcore.helper.PsmBuilder;
-import org.modelio.microservicesnetcore.psm.generator.handler.GeneratePsmWebApiHandler;
+import org.modelio.microservicesnetcore.psm.generator.handler.GeneratePsmControllerHandler;
 
-public class GeneratePsmWebApiOrchestrator {
+public class GeneratePsmControllerOrchestrator {
 
 	private ModelElement _umlPimPackage = null;
 	private ModelElement _umlPsmPackage = null;
@@ -21,7 +21,7 @@ public class GeneratePsmWebApiOrchestrator {
 	private IModelingSession _session;
 	private ILogService _logService;
 	
-	public GeneratePsmWebApiOrchestrator(IModule module)
+	public GeneratePsmControllerOrchestrator(IModule module)
 	{
 		_logService = module.getModuleContext().getLogService();
 
@@ -53,7 +53,7 @@ public class GeneratePsmWebApiOrchestrator {
 			}
 			
 			// 3 create Psm Microservice WebApi
-			GeneratePsmWebApiHandler handler =new GeneratePsmWebApiHandler(_module, (Package)psmMicroservice);
+			GeneratePsmControllerHandler handler =new GeneratePsmControllerHandler(_module, (Package)psmMicroservice);
 			OwnedVisitor visitor = new OwnedVisitor(handler);
 			visitor.process((Package)selectedPimMicroservice);
 			

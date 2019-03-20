@@ -10,9 +10,14 @@ import org.modelio.vcore.smkernel.mapi.MMetamodel;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 public class ModuleTagType {
-	
 	private static MicroserviceDotnetCoreModule myModule = MicroserviceDotnetCoreModule.getInstance();
 	
+	public static String TAG_NAME="Name";
+	
+	public static String TAG_ATT_ROUTEPREFIX="RoutePrefix";
+	
+	public static String TAG_ATT_ROUTE="Route";
+	public static String TAG_ATT_HTTPVERB="Method";
 	
 	
 	public static TagType GetTagType(IModelingSession session,Class<? extends MObject> type, String name) {

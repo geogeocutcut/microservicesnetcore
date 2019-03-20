@@ -8,6 +8,7 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.PimPsmMapper;
+import org.modelio.microservicesnetcore.helper.PimStereotypeValidator;
 import org.modelio.microservicesnetcore.helper.PsmBuilder;
 import org.modelio.microservicesnetcore.helper.PsmIServiceBuilder;
 import org.modelio.microservicesnetcore.helper.PsmStereotypeValidator;
@@ -42,12 +43,15 @@ public class GeneratePsmIServiceHandler extends HandlerAdapter {
 	@Override
 	protected void beginVisitingPackage(Package visited) 
 	{
-		ModelElement psmElt = PimPsmMapper.GetPsmIServiceFromPim(visited);
-		if(psmElt==null)
+		if(!PimStereotypeValidator.isMicroservice(visited))
 		{
-			psmElt = PsmIServiceBuilder.CreatePsmGenericPackage(_session,visited,(Package)_ctx.peek());
+			ModelElement psmElt = PimPsmMapper.GetPsmIServiceFromPim(visited);
+			if(psmElt==null)
+			{
+				psmElt = PsmIServiceBuilder.CreatePsmGenericPackage(_session,visited,(Package)_ctx.peek());
+			}
+			_ctx.push(psmElt);
 		}
-		_ctx.push(psmElt);
 	}
 	
 	@Override

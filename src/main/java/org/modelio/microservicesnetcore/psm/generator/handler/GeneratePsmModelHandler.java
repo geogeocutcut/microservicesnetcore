@@ -9,6 +9,7 @@ import org.modelio.metamodel.uml.statik.Attribute;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.PimPsmMapper;
+import org.modelio.microservicesnetcore.helper.PimStereotypeValidator;
 import org.modelio.microservicesnetcore.helper.PsmBuilder;
 import org.modelio.microservicesnetcore.helper.PsmModelBuilder;
 import org.modelio.microservicesnetcore.helper.PsmStereotypeValidator;
@@ -43,12 +44,15 @@ public class GeneratePsmModelHandler extends HandlerAdapter {
 	@Override
 	protected void beginVisitingPackage(Package visited) 
 	{
-		ModelElement psmElt = PimPsmMapper.GetPsmModelFromPim(visited);
-		if(psmElt==null)
+		if(!PimStereotypeValidator.isMicroservice(visited))
 		{
-			psmElt = PsmModelBuilder.CreatePsmGenericPackage(_session,visited,(Package)_ctx.peek());
+			ModelElement psmElt = PimPsmMapper.GetPsmModelFromPim(visited);
+			if(psmElt==null)
+			{
+				psmElt = PsmModelBuilder.CreatePsmGenericPackage(_session,visited,(Package)_ctx.peek());
+			}
+			_ctx.push(psmElt);
 		}
-		_ctx.push(psmElt);
 	}
 	
 	@Override
