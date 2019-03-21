@@ -1,0 +1,4 @@
+		<bag name="@@name" cascade="all-delete-orphan" lazy="true">
+			<key column="@@NAME_@@JENTITY_ID" />
+			<one-to-many class="@@targetJavaModelPack.@@targetJEntity" />
+		</bag>

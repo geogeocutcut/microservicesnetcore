@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Linq.Expressions;
+
+namespace @@application.@@domain.repository
+{
+    
+    public class @@name
+    {
+        private IStore<Guid> _store;
+    	
+    	public @@name(IStore<Guid> store)
+    	{
+    		_store=store
+    	}
+    	

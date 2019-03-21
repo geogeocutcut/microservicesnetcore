@@ -1,0 +1,1 @@
+		@@visibility @@type @@name { get; set; }

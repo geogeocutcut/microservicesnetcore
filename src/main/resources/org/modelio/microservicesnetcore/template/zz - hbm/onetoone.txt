@@ -1,0 +1,2 @@
+		<!-- one to one -->
+		<many-to-one name="@@name" cascade="all-delete-orphan" column="@@NAME_ID" unique="true" class="@@targetJavaModelPack.@@targetJEntity"/>

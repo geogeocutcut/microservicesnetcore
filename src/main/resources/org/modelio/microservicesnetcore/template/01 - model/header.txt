@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+
+namespace @@application.@@domain.model
+{
+	public class @@name
+    {
+        public Guid Id { 
+            get{
+                if(_id==null)
+                {
+                    _id=Guid.NewGuid();
+                }
+                return _id;
+            }
+            set{
+                _id = value;
+            }
+        }
