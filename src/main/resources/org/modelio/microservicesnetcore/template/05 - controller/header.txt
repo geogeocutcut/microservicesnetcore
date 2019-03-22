@@ -12,7 +12,7 @@ namespace @@application.@@domain.irepository
     {
         Task<@@entity> GetByIdAsync(Guid Id);
         Task<@@entity> UpsertAsync(@@entity entity);
-        Task DeleteAsync(Guid Id);
+        Task DeleteAsync(@@entity entity);
         Task<IList<@@entity>> GetAllAsync();
         
         

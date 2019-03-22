@@ -16,10 +16,17 @@
         </Profile>
         <Profile uid="29fd6091-a4e9-4499-922b-206b2055c769" id="MicroserviceDotnetCorePSMProfile">
             <Stereotype name="PSMIdAttribute" metaclass="Attribute" is-hidden="false" uid="f3ddc61b-7bc0-4d5f-bd13-e3c990c38d17"/>
-            <Stereotype name="PSM" metaclass="Package" is-hidden="false" uid="7135f71c-4231-41c7-a694-efbf475a1f6d"/>
+            <Stereotype name="PSM" metaclass="Package" is-hidden="false" uid="7135f71c-4231-41c7-a694-efbf475a1f6d">
+                <TagTypes>
+                    <TagType name="Name" uid="" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
             <Stereotype name="PSMMicroservice" metaclass="Package" is-hidden="false" uid="2761d11a-0fb9-4e7c-892d-a3d290c7949b">
                 <Icon path="res/icons/CsMicroservice_16x.png"/>
                 <Image path="res/icons/CsMicroservice_16x.png"/>
+                <TagTypes>
+                	<TagType name="GenerateDirectory" uid="" label="%tagtype.GenerateDirectory.label" parameter-card="0" is-hidden="false" is-signed="false"/>
+                </TagTypes>
             </Stereotype>
             <Stereotype name="PSMModelPackage" metaclass="Package" is-hidden="false" uid="ba828df0-ea60-4e93-908c-177772ed81af"/>
             <Stereotype name="PSMIRepositoryPackage" metaclass="Package" is-hidden="false" uid="c8324f37-e3de-4edb-add8-3498b4fac9bc"/>

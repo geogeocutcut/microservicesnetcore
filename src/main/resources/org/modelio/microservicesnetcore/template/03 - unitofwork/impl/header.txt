@@ -5,16 +5,14 @@ using System.Threading.Tasks;
 using System.Linq.Expressions;
 using @@application.@@domain.model;
 
-namespace @@application.@@domain.irepository
+namespace @@application.@@domain.iservice
 {
     
     public interface @@name
     {
         Task<@@entity> GetByIdAsync(Guid Id);
         Task<@@entity> UpsertAsync(@@entity entity);
-        Task DeleteAsync(Guid Id);
+        Task DeleteAsync(@@entity entity);
         Task<IList<@@entity>> GetAllAsync();
         
-        
-        Task<IList<@@entity>> FindAsync(Expression<Func<@@entity, bool>> predicate);
     

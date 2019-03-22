@@ -18,6 +18,7 @@ public class ModuleTagType {
 	
 	public static String TAG_ATT_ROUTE="Route";
 	public static String TAG_ATT_HTTPVERB="Method";
+	public static String TAG_GENERATEDIRECTORY="GenerateDirectory";
 	
 	
 	public static TagType GetTagType(IModelingSession session,Class<? extends MObject> type, String name) {
