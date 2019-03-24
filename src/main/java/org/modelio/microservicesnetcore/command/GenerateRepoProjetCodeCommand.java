@@ -17,14 +17,15 @@ import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmIS
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmModelOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmRepositoryOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmServiceOrchestrator;
+import org.modelio.microservicesnetcore.psm.generator.orchestrator.GenerateIRepoProjectCodeOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmControllerOrchestrator;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-public class GenerateIRepoProjetCodeCommand extends DefaultModuleCommandHandler {
+public class GenerateRepoProjetCodeCommand extends DefaultModuleCommandHandler {
     /**
      * Constructor.
      */
-    public GenerateIRepoProjetCodeCommand() {
+    public GenerateRepoProjetCodeCommand() {
         super();
     }
 
@@ -41,7 +42,7 @@ public class GenerateIRepoProjetCodeCommand extends DefaultModuleCommandHandler 
     		{
     			return false;
     		}
-    		if(!PsmStereotypeValidator.IsPsmIRepositoryPackage((Package)elt))
+    		if(!PsmStereotypeValidator.IsPsmRepositoryPackage((Package)elt))
     		{
     			return false;
     		}
@@ -62,8 +63,11 @@ public class GenerateIRepoProjetCodeCommand extends DefaultModuleCommandHandler 
 			
 	        for(MObject e :selectedElements )
 	        {
-	        	GenerateIRepoProjectCodeOrchestrator orchestModel = new GenerateIRepoProjectCodeOrchestrator(module);
-		        orchestModel.Execute(e);
+	        	GenerateIRepoProjectCodeOrchestrator iRepoOrchest = new GenerateIRepoProjectCodeOrchestrator(module);
+	        	iRepoOrchest.Execute(e);
+		        
+		        GenerateRepoProjectCodeOrchestrator repoOrchest = new GenerateRepoProjectCodeOrchestrator(module);
+		        repoOrchest.Execute(e);
 	        }
 		}
 		catch (Exception e) {

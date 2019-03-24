@@ -27,7 +27,7 @@ public class ModelProjectTemplate {
 	private String _csproj = "org/modelio/microservicesnetcore/template/01 - model/csproj.txt";
 	private IUMLTypes _umlType;
 	
-	private String _applicationName;
+	private String _applicationName="";
 	private Package _domain;
 	
 	public ModelProjectTemplate(String applicationName, Package domain) {
@@ -36,6 +36,7 @@ public class ModelProjectTemplate {
 		IUmlModel model = session.getModel();
 		_umlType = model.getUmlTypes();
 		_domain=domain;
+		_applicationName=applicationName;
 	}
 
 	public String getCsProj() {

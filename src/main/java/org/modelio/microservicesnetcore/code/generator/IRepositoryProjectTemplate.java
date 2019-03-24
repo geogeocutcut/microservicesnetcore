@@ -93,43 +93,7 @@ public class IRepositoryProjectTemplate {
 		
 		return tmpl.toString();
 	}
-	public String getAttribute(Attribute attr) {
-		StringBuilder tmpl = new StringBuilder();
-		try {
-			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_attribute);
-			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
-			while (reader.ready()) {
-				tmpl.append(reader.readLine()).append("\n");
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		String result = tmpl.toString();
-		result = result.replaceAll("@@visibility", "public");
-		result = result.replaceAll("@@name", attr.getName());
-		result = result.replaceAll("@@type", getNetTypeFromUmlType(attr.getType()));
-		return result;
-	}
 	
-	public String getOnetomany(AssociationEnd end) {
-		StringBuilder tmpl = new StringBuilder();
-		try {
-			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_onetomany);
-			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
-			while (reader.ready()) {
-				tmpl.append(reader.readLine()).append("\n");
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		String result = tmpl.toString();
-		Class entity = (Class)end.getSource();
-		result = result.replaceAll("@@name", end.getName());
-		result = result.replaceAll("@@type", entity.getName());
-		
-		return result;
-	}
 
 	
 	private String getNetTypeFromUmlType(GeneralClass type) {

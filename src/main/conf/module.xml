@@ -18,135 +18,26 @@
             <Stereotype name="PSMIdAttribute" metaclass="Attribute" is-hidden="false" uid="f3ddc61b-7bc0-4d5f-bd13-e3c990c38d17"/>
             <Stereotype name="PSM" metaclass="Package" is-hidden="false" uid="7135f71c-4231-41c7-a694-efbf475a1f6d">
                 <TagTypes>
-                    <TagType name="Name" uid="" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="Name" uid="fd11a771-69f0-4d44-8950-8a70f4157c6f" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="PSMMicroservice" metaclass="Package" is-hidden="false" uid="2761d11a-0fb9-4e7c-892d-a3d290c7949b">
                 <Icon path="res/icons/CsMicroservice_16x.png"/>
                 <Image path="res/icons/CsMicroservice_16x.png"/>
                 <TagTypes>
-                	<TagType name="GenerateDirectory" uid="" label="%tagtype.GenerateDirectory.label" parameter-card="0" is-hidden="false" is-signed="false"/>
+                    <TagType name="GenerateDirectory" uid="5986143d-e559-4b3f-bd55-d775d63bc8e2" label="%tagtype.GenerateDirectory.label" parameter-card="1" is-hidden="false" is-signed="false"/>
                 </TagTypes>
             </Stereotype>
             <Stereotype name="PSMModelPackage" metaclass="Package" is-hidden="false" uid="ba828df0-ea60-4e93-908c-177772ed81af"/>
-            <Stereotype name="PSMIRepositoryPackage" metaclass="Package" is-hidden="false" uid="c8324f37-e3de-4edb-add8-3498b4fac9bc"/>
             <Stereotype name="PSMRepositoryPackage" metaclass="Package" is-hidden="false" uid="74c15471-883b-4b45-bd93-98b1682f7606"/>
-            <Stereotype name="PSMIServicePackage" metaclass="Package" is-hidden="false" uid="5f732002-77ea-4251-be6c-cf794b31f41f"/>
             <Stereotype name="PSMServicePackage" metaclass="Package" is-hidden="false" uid="a2153deb-7471-4e54-91f5-107a77620a74"/>
             <Stereotype name="PSMApiPackage" metaclass="Package" is-hidden="false" uid="367c8598-3ea7-48fb-b157-40c7800143b7"/>
             <Stereotype name="PSMController" metaclass="Class" is-hidden="false" uid="880fecdc-2582-426b-8878-c942b149e938"/>
             <Stereotype name="PSMDependency" metaclass="Dependency" is-hidden="false" uid="5af78f72-028f-40f6-b9c7-ef14993458bc"/>
             <Stereotype name="PSMModelDependency" metaclass="Dependency" is-hidden="false" uid="3dd9a226-b84d-49a5-b1a9-ab2a6d2145cc"/>
-            <Stereotype name="PSMIRepositoryDependency" metaclass="Dependency" is-hidden="false" uid="47ed6a80-a363-48f9-b4ba-b7877d37d35c"/>
             <Stereotype name="PSMRepositoryDependency" metaclass="Dependency" is-hidden="false" uid="79c626fe-c2c4-4136-a49a-14e3f367dfee"/>
-            <Stereotype name="PSMIServiceDependency" metaclass="Dependency" is-hidden="false" uid="7eccfbdd-a9aa-484f-99c7-2eae86fdf9b1"/>
             <Stereotype name="PSMServiceDependency" metaclass="Dependency" is-hidden="false" uid="88635de0-10ff-462a-8331-7c1679610803"/>
             <Stereotype name="PSMControllerDependency" metaclass="Dependency" is-hidden="false" uid="83e852d7-0b61-4c33-86e3-7a30d1bb17b4"/>
-        </Profile>
-        <Profile uid="8c469d79-2f1d-45b0-87c6-a6c1e11c9db4" id="DotnetCoreProfile">
-            <Stereotype name="CsMicroservice" metaclass="Package" is-hidden="false" label="%stereotype.CsMicroservice.label" uid="f5f980b7-94d5-4396-b2e5-635cbd8a064d">
-                <Icon path="res/icons/CsMicroservice_16x.png"/>
-                <Image path="res/icons/CsMicroservice_16x.png"/>
-                <TagTypes>
-                    <TagType name="Name" uid="cb3dc78e-b6ea-4be6-9575-d6d85c2561c9" label="%tagtype.SoluctionName.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="CsStandardProject" metaclass="Package" is-hidden="false" label="%stereotype.CsStandardProject.label" uid="5b1fb435-ad36-476e-8cab-f528fa05db2c">
-                <Icon path="res/icons/CsStandardProject_16x.png"/>
-                <Image path="res/icons/CsStandardProject_16x.png"/>
-                <TagTypes>
-                    <TagType name="Name" uid="cb4f1370-72ab-465b-8afa-16dd1a6d9f22" label="%tagtype.ProjectName.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="CsWebApiProject" metaclass="Package" is-hidden="false" label="%stereotype.CsWebApiProject.label" uid="73ff1b78-be84-4fa4-80cd-4d8e67b34053">
-                <Icon path="res/icons/CsWebApiProject_16x.png"/>
-                <Image path="res/icons/CsWebApiProject_16x.png"/>
-                <TagTypes>
-                    <TagType name="Name" uid="c53d5e7b-ce57-45fe-a790-32e3223a5db4" label="%tagtype.ProjectName.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="CsPackage" metaclass="Package" is-hidden="false" label="%stereotype.CsPackage.label" uid="159fd4b4-0e17-4811-971d-7a1e2686c516">
-                <Icon path="res/icons/CsPackage_16x.png"/>
-                <Image path="res/icons/CsPackage_16x.png"/>
-                <TagTypes>
-                    <TagType name="GenerateDirectory" uid="acbb5461-a480-4dc3-8c74-08c5dd7a2559" label="%tagtype.GenerateDirectory.label" parameter-card="0" is-hidden="false" is-signed="false"/>
-                    <TagType name="IncludeNamespace" uid="c7fe36a4-c1b6-4b5e-8c9e-f878486fe1a9" label="%tagtype.IncludeNamespace.label" parameter-card="0" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="CsProjectFolder" metaclass="Package" is-hidden="false" label="%stereotype.CsProjectFolder.label" uid="9c6a6a49-d108-46ca-ba5d-04b7f47232a3">
-                <Icon path="res/icons/CsProjectFolder_16x.png"/>
-                <Image path="res/icons/CsProjectFolder_16x.png"/>
-                <TagTypes>
-                    <TagType name="GenerateDirectory" uid="a6053e32-adbe-4839-92c8-2042c1405fa8" label="%tagtype.GenerateDirectory.label" parameter-card="0" is-hidden="false" is-signed="false"/>
-                    <TagType name="IncludeNamespace" uid="748f4bac-d7fc-406a-ae92-832965605916" label="%tagtype.IncludeNamespace.label" parameter-card="0" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-            </Stereotype>
-            <Stereotype name="CsController" metaclass="Classifier" is-hidden="false" label="%stereotype.CsController.label" uid="d269b6b2-d13e-4f58-8acd-33dc1236324b">
-                <Icon path="res/icons/CsClass_16x.png"/>
-                <Image path="res/icons/CsClass_16x.png"/>
-                <TagTypes>
-                    <TagType name="Usings" uid="053b76b1-ab22-4f02-a02f-2a2e9375f661" label="%tagtype.Usings.label" parameter-card="*" is-hidden="false" is-signed="false"/>
-                    <TagType name="RoutePrefix" uid="ed58f10e-2b87-43f8-aad1-d11219a75fed" label="%tagtype.PrefixRoute.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="Extends" uid="043559b1-cb4c-4ad7-bfd5-f6c574d78744" label="%tagtype.Extends.label" parameter-card="*" is-hidden="false" is-signed="false"/>
-                    <TagType name="Name" uid="03c88783-1a61-4c5a-a4fa-742b05557b21" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-                <NoteTypes>
-                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="3e014f63-4aac-4e40-972c-9751da141ef5"/>
-                </NoteTypes>
-            </Stereotype>
-            <Stereotype name="CsClass" metaclass="Classifier" is-hidden="false" label="%stereotype.CsClass.label" uid="4859d73b-96b5-4d28-be4d-ab8a64175e18">
-                <Icon path="res/icons/CsClass_16x.png"/>
-                <Image path="res/icons/CsClass_16x.png"/>
-                <TagTypes>
-                    <TagType name="Usings" uid="06b9ee82-4924-4376-8310-9721ad1fd149" label="%tagtype.Using.label" parameter-card="*" is-hidden="false" is-signed="false"/>
-                    <TagType name="Name" uid="9879b13d-715b-42e1-84e6-dbeab2de9f0a" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-                <NoteTypes>
-                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="87fdcfa4-141f-4811-9902-ef17711226fd"/>
-                </NoteTypes>
-            </Stereotype>
-            <Stereotype name="CsAttribute" metaclass="Attribute" is-hidden="false" label="%stereotype.CsAttribute.label" uid="f873bbfd-7357-4b64-88ad-c506c55b8fe7">
-                <Icon path="res/icons/CsField_16x.png"/>
-                <Image path="res/icons/CsField_16x.png"/>
-                <TagTypes>
-                    <TagType name="Name" uid="2c51d2ba-e1bc-409c-b428-a54c88ed2404" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-                <NoteTypes>
-                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="fbed685a-71b2-4692-a3d2-39eee21a5e8a"/>
-                </NoteTypes>
-            </Stereotype>
-            <Stereotype name="CsProperty" metaclass="Attribute" is-hidden="false" label="%stereotype.CsProperty.label" uid="bae993c5-855a-4352-9b70-02a64baff777">
-                <Icon path="res/icons/CsProperty_16x.png"/>
-                <Image path="res/icons/CsProperty_16x.png"/>
-                <TagTypes>
-                    <TagType name="Name" uid="9ef1ef1b-dfcc-411a-b79f-1a10b45070a4" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-                <NoteTypes>
-                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="4de51c3e-1925-4df0-94b3-818c7658f8ae"/>
-                </NoteTypes>
-            </Stereotype>
-            <Stereotype name="CsMethod" metaclass="Operation" is-hidden="false" label="%stereotype.CsMethode.label" uid="a6ecc8d8-1ab3-495f-bc6d-7076256faa0d">
-                <Icon path="res/icons/CsMethod_16x.png"/>
-                <Image path="res/icons/CsMethod_16x.png"/>
-                <TagTypes>
-                    <TagType name="Name" uid="1d117138-e0b2-44b4-8d06-2da69079cf19" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-                <NoteTypes>
-                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="db2bb78f-8418-4cfc-a558-16a2c2d736a3"/>
-                </NoteTypes>
-            </Stereotype>
-            <Stereotype name="CsExposedOperation" metaclass="Operation" is-hidden="false" label="%stereotype.CsExposedOperation.label" uid="fc6ae241-e133-4d5e-a450-f1b7d3156fc2">
-                <Icon path="res/icons/CsExposedOperation_16x.png"/>
-                <Image path="res/icons/CsExposedOperation_16x.png"/>
-                <TagTypes>
-                    <TagType name="Method" uid="9a09913e-8811-4ba3-bb8b-2acf2fbacdfc" label="%tagtype.Method.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="Route" uid="d7d30297-37ac-488e-98bd-efd70c3babbc" label="%tagtype.Route.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                    <TagType name="Name" uid="64898de5-e18d-419f-a95f-34dadb0e54a2" label="%tagtype.Name.label" parameter-card="1" is-hidden="false" is-signed="false"/>
-                </TagTypes>
-                <NoteTypes>
-                    <NoteType name="Summary" label="%notetype.Summary.label" is-hidden="false" uid="9d6ecb07-c77b-4d4f-a5b4-ece30e4740af"/>
-                </NoteTypes>
-            </Stereotype>
         </Profile>
     </Profiles>
     <Gui>
@@ -154,6 +45,10 @@
             <Command id="GenerateMicroservicePsmCommand" label="%command.PSMGenerateMicroservice.label" tooltip="%command.PSMGenerateMicroservice.tooltip" image="res/icons/HelloWorldCommand_16.png" group="" modify-model="false" group-image="">
                 <Scope metaclass="Package" stereotype="PIMMicroservice"/>
                 <Handler class="org.modelio.microservicesnetcore.command.GenerateMicroservicePsmCommand"/>
+            </Command>
+            <Command id="GenerateModelProjetCodeCommand" label="%command.GenerateModelProjetCode.label" tooltip="%command.GenerateModelProjetCode.tooltip" image="res/icons/HelloWorldCommand_16.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="Package" stereotype="PSMMicroservice"/>
+                <Handler class="org.modelio.microservicesnetcore.command.GenerateModelProjetCodeCommand"/>
             </Command>
         </Commands>
         <Tools>
@@ -168,6 +63,7 @@
         </Tools>
         <ContextualMenu>
             <CommandRef refid="GenerateMicroservicePsmCommand"/>
+            <CommandRef refid="GenerateModelProjetCodeCommand"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="ClassDiagram" stereotype="stereotype2">

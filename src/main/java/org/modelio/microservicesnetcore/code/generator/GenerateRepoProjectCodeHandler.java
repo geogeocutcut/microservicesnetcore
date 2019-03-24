@@ -10,13 +10,13 @@ import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 
 
-public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
+public class GenerateRepoProjectCodeHandler extends HandlerAdapter {
 	private String _path;
-	private IRepositoryProjectTemplate _template;
+	private RepositoryProjectTemplate _template;
 	
-	public GenerateIRepoProjectCodeHandler(String applicationName,Package domain,String path)
+	public GenerateRepoProjectCodeHandler(String applicationName,Package domain,String path)
 	{
-		_path=path+"/irepository";
+		_path=path+"/repository";
 		_template=new IRepositoryProjectTemplate(applicationName, domain);
 		
 		// créer le répertoire project si il n'existe pas
@@ -24,7 +24,7 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 		fileDir.mkdirs();
 		
 		// créer le csproj
-		String name=applicationName+"."+domain.getName()+".irepository.csproj";
+		String name=applicationName+"."+domain.getName()+".repository.csproj";
 		
 		StringBuffer content = new StringBuffer("");
 		content.append(_template.getCsProj());
@@ -49,7 +49,7 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 	@Override
 	protected void beginVisitingClassifier(Classifier visited) 
 	{
-		String name="I"+visited.getName()+".cs";
+		String name=visited.getName()+".cs";
 		
 		StringBuffer content = new StringBuffer("");
 		content.append(_template.getHeader(visited));

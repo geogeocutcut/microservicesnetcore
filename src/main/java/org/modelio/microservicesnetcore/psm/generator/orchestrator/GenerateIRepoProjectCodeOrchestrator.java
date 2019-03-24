@@ -32,15 +32,14 @@ public class GenerateIRepoProjectCodeOrchestrator {
 	public void Execute(MObject selectedModelPsm) 
 	{
 			
-			Package domain = (Package)((Package)selectedModelPsm).getOwner();
-			Package application = (Package)domain.getOwner();
-			String path = domain.getTagValue(ModuleConstants.MODULE_NAME, ModuleTagType.TAG_GENERATEDIRECTORY);
-			String applicationName=application.getTagValue(ModuleConstants.MODULE_NAME, ModuleTagType.TAG_NAME);
-			
-			// 3 create Psm Microservice model
-			GenerateIRepoProjectCodeHandler handler =new GenerateIRepoProjectCodeHandler(applicationName,domain,path);
-			OwnedVisitor visitor = new OwnedVisitor(handler);
-			visitor.process((Package)selectedModelPsm);
-		}
+		Package domain = (Package)((Package)selectedModelPsm).getOwner();
+		Package application = (Package)domain.getOwner();
+		String path = domain.getTagValue(ModuleConstants.MODULE_NAME, ModuleTagType.TAG_GENERATEDIRECTORY);
+		String applicationName=application.getTagValue(ModuleConstants.MODULE_NAME, ModuleTagType.TAG_NAME);
+		
+		// 3 create Psm Microservice model
+		GenerateIRepoProjectCodeHandler handler =new GenerateIRepoProjectCodeHandler(applicationName,domain,path);
+		OwnedVisitor visitor = new OwnedVisitor(handler);
+		visitor.process((Package)selectedModelPsm);
 	}
 }

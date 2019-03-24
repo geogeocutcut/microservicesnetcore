@@ -7,7 +7,7 @@ import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 import org.modelio.microservicesnetcore.api.ModuleConstants;
 import org.modelio.microservicesnetcore.api.ModuleTagType;
-import org.modelio.microservicesnetcore.code.generator.GenerateModelProjectCodeHandler;
+import org.modelio.microservicesnetcore.code.generator.GenerateIRepoProjectCodeHandler;
 import org.modelio.microservicesnetcore.helper.ModuleHelper;
 import org.modelio.microservicesnetcore.psm.generator.handler.GeneratePsmModelDetailHandler;
 import org.modelio.microservicesnetcore.psm.generator.handler.GeneratePsmModelHandler;
@@ -16,13 +16,13 @@ import org.modelio.microservicesnetcore.helper.PimPsmMapper;
 import org.modelio.microservicesnetcore.helper.PsmBuilder;
 import org.modelio.metamodel.uml.statik.Package;
 
-public class GenerateModelProjectCodeOrchestrator {
+public class GenerateRepoProjectCodeOrchestrator {
 
 	private ModelElement _umlPsmPackage = null;
 	private IModule _module;
 	private IModelingSession _session;
 	
-	public GenerateModelProjectCodeOrchestrator(IModule module)
+	public GenerateRepoProjectCodeOrchestrator(IModule module)
 	{
 		this._module = module;
 		this._session  =module.getModuleContext().getModelingSession();
@@ -38,7 +38,7 @@ public class GenerateModelProjectCodeOrchestrator {
 		String applicationName=application.getTagValue(ModuleConstants.MODULE_NAME, ModuleTagType.TAG_NAME);
 		
 		// 3 create Psm Microservice model
-		GenerateModelProjectCodeHandler handler =new GenerateModelProjectCodeHandler(applicationName,domain,path);
+		GenerateIRepoProjectCodeHandler handler =new GenerateIRepoProjectCodeHandler(applicationName,domain,path);
 		OwnedVisitor visitor = new OwnedVisitor(handler);
 		visitor.process((Package)selectedModelPsm);
 	}

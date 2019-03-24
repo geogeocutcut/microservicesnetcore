@@ -7,7 +7,8 @@ import org.modelio.metamodel.uml.statik.Attribute;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
 
-import modeliotools.treevisitor.HandlerAdapter;
+import org.modelio.modeliotools.treevisitor.HandlerAdapter;
+
 
 public class GenerateModelProjectCodeHandler extends HandlerAdapter {
 	private String _path;
@@ -15,11 +16,11 @@ public class GenerateModelProjectCodeHandler extends HandlerAdapter {
 	
 	public GenerateModelProjectCodeHandler(String applicationName,Package domain,String path)
 	{
-		_path=path+"/model";
+		_path=path+"\\model";
 		_template=new ModelProjectTemplate(applicationName, domain);
 		
 		// créer le répertoire project si il n'existe pas
-		File fileDir = new File(path);
+		File fileDir = new File(_path);
 		fileDir.mkdirs();
 		
 		// créer le csproj
@@ -30,7 +31,7 @@ public class GenerateModelProjectCodeHandler extends HandlerAdapter {
 		if(content.length()>0)
 		{
 			try {
-				File csprojFile =new File(_path+"/"+name);
+				File csprojFile =new File(_path+"\\"+name);
 				csprojFile.createNewFile();
 				FileWriter writer = new FileWriter(csprojFile);
 				try {
