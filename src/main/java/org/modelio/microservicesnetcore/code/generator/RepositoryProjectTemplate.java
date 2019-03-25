@@ -21,22 +21,24 @@ import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.metamodel.uml.statik.Parameter;
 import org.modelio.microservicesnetcore.impl.MicroserviceDotnetCoreModule;
 
-public class IRepositoryProjectTemplate {
-	private String _header= "org/modelio/microservicesnetcore/template/02 - repository/interface/header.txt";
+public class RepositoryProjectTemplate {
+	private String _header= "org/modelio/microservicesnetcore/template/02 - repository/impl/header.txt";
 	private String _end = "org/modelio/microservicesnetcore/template/00 - common/end.txt";
 	
-	private String _asyncopeheadervoid = "org/modelio/microservicesnetcore/template/00 - common/asyncioperationheadervoid.txt";
-	private String _asyncopeheaderwithreturn = "org/modelio/microservicesnetcore/template/00 - common/asyncioperationheaderwithreturn.txt";
+	private String _asyncopeheadervoid = "org/modelio/microservicesnetcore/template/00 - common/asyncoperationheadervoid.txt";
+	private String _asyncopeheaderwithreturn = "org/modelio/microservicesnetcore/template/00 - common/asyncoperationheaderwithreturn.txt";
 	private String _opeparameter = "org/modelio/microservicesnetcore/template/00 - common/operationparameter.txt";
-	private String _asyncopeend = "org/modelio/microservicesnetcore/template/00 - common/asyncioperationend.txt";
+
+	private String _asyncopestart = "org/modelio/microservicesnetcore/template/00 - common/asyncoperationstart.txt";
+	private String _asyncopeend = "org/modelio/microservicesnetcore/template/00 - common/asyncoperationend.txt";
 	
-	private String _csproj = "org/modelio/microservicesnetcore/template/02 - repository/interface/csproj.txt";
+	private String _csproj = "org/modelio/microservicesnetcore/template/02 - repository/impl/csproj.txt";
 	private IUMLTypes _umlType;
 	
 	private String _applicationName;
 	private Package _domain;
 	
-	public IRepositoryProjectTemplate(String applicationName, Package domain) {
+	public RepositoryProjectTemplate(String applicationName, Package domain) {
 		IModule module = MicroserviceDotnetCoreModule.getInstance();
 		IModelingSession session = module.getModuleContext().getModelingSession();
 		IUmlModel model = session.getModel();
@@ -47,7 +49,7 @@ public class IRepositoryProjectTemplate {
 	public String getCsProj() {
 		StringBuilder tmpl = new StringBuilder();
 		try {
-			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_csproj);
+			InputStream stream = RepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_csproj);
 			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
 			while (reader.ready()) {
 				tmpl.append(reader.readLine()).append("\n");
@@ -67,7 +69,7 @@ public class IRepositoryProjectTemplate {
 	public String getHeader(Classifier visited) {
 		StringBuilder tmpl = new StringBuilder();
 		try {
-			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_header);
+			InputStream stream = RepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_header);
 			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
 			while (reader.ready()) {
 				tmpl.append(reader.readLine()).append("\n");
@@ -77,7 +79,7 @@ public class IRepositoryProjectTemplate {
 		}
 		
 		String result = tmpl.toString();
-		result = result.replaceAll("@@entity", "I"+visited.getName());
+		result = result.replaceAll("@@entity", visited.getName());
 		result = result.replaceAll("@@domain", _domain.getName());
 		result = result.replaceAll("@@application", _applicationName);
 		
@@ -130,7 +132,19 @@ public class IRepositoryProjectTemplate {
 		}
 
 		result+=paramListStr;
-		
+		// start
+		tmpl = new StringBuilder();
+		try {
+			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_asyncopestart);
+			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
+			while (reader.ready()) {
+				tmpl.append(reader.readLine()).append("\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		result +=tmpl.toString();
+				
 		
 		// end
 		tmpl = new StringBuilder();
@@ -151,7 +165,7 @@ public class IRepositoryProjectTemplate {
 	public String getEnd() {
 		StringBuilder tmpl = new StringBuilder();
 		try {
-			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_end);
+			InputStream stream = RepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_end);
 			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
 			while (reader.ready()) {
 				tmpl.append(reader.readLine()).append("\n");
@@ -180,6 +194,7 @@ public class IRepositoryProjectTemplate {
 			result = "date";
 		else
 			result = type.getName();
+		
 		
 		return result;
 	}

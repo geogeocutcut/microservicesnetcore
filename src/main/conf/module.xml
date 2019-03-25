@@ -50,6 +50,10 @@
                 <Scope metaclass="Package" stereotype="PSMMicroservice"/>
                 <Handler class="org.modelio.microservicesnetcore.command.GenerateModelProjetCodeCommand"/>
             </Command>
+            <Command id="GenerateRepoProjetCodeCommand" label="%command.GenerateRepoProjetCode.label" tooltip="%command.GenerateRepoProjetCode.tooltip" image="res/icons/HelloWorldCommand_16.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="Package" stereotype="PSMMicroservice"/>
+                <Handler class="org.modelio.microservicesnetcore.command.GenerateRepoProjetCodeCommand"/>
+            </Command>
         </Commands>
         <Tools>
             <Tool id="CreateElementDiagramCommandExample" label="%CreateElementDiagramCommandExampleLabel" tooltip="%CreateElementDiagramCommandExampleTooltip" image="res/icons/Stereotype1_16.png">
@@ -64,6 +68,7 @@
         <ContextualMenu>
             <CommandRef refid="GenerateMicroservicePsmCommand"/>
             <CommandRef refid="GenerateModelProjetCodeCommand"/>
+            <CommandRef refid="GenerateRepoProjetCodeCommand"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="ClassDiagram" stereotype="stereotype2">

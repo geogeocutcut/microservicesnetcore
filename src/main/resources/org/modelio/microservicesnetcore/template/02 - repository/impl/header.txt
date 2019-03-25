@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using core.repository;
+using @@application.@@domain.model;
+using @@application.@@domain.irepository;
 
 namespace @@application.@@domain.repository
 {
     
-    public class @@name
+    public class @@name:I@@name
     {
         private IStore<Guid> _store;
     	

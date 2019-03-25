@@ -1,18 +1,55 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using System.Linq.Expressions;
-using @@application.@@domain.model;
+using core.repository;
+using core.common;
 
-namespace @@application.@@domain.iservice
+namespace @@application.@@domain.uow
 {
-    
-    public interface @@name
+    public class UnitOfWorkMongodb : IUnitOfWork
     {
-        Task<@@entity> GetByIdAsync(Guid Id);
-        Task<@@entity> UpsertAsync(@@entity entity);
-        Task DeleteAsync(@@entity entity);
-        Task<IList<@@entity>> GetAllAsync();
+        protected IStore<Guid> _store;
+        protected ITransaction _transaction;
+        protected IFactory _factory;
+        
+        @@properties
+        
+
+        @@construtor
+
+        public async Task CommitAsync()
+        {
+            _transaction = null;
+        }
+
+
+        public async Task<ITransaction> BeginAsync()
+        {
+            if (_transaction != null)
+            {
+                return _transaction;
+            }
+            else
+            {
+                _transaction = new Transaction<Guid>(this);
+                return _transaction;
+            }
+        }
+
+        public async Task RollbackAsync()
+        {
+            _transaction = null;
+        }
+
+
+        public void Dispose()
+        {
+            if (_transaction != null)
+            {
+                RollbackAsync().Wait();
+            }
+        }
+
+        @@methodGetRepository
+    }
+}
         
     

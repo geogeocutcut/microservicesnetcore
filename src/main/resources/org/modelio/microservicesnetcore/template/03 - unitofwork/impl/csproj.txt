@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\core.repository\core.repository.csproj" />
+    <ProjectReference Include="..\core.common\core.common.csproj" />
     <ProjectReference Include="..\model\@@applicationName.@@domain.model.csproj" />
     <ProjectReference Include="..\irepository\@@applicationName.@@domain.irepository.csproj" />
   </ItemGroup>

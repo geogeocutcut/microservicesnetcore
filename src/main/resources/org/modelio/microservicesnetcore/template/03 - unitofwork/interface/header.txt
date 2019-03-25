@@ -1,20 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using System.Linq.Expressions;
-using @@application.@@domain.model;
+using core.repository;
 
-namespace @@application.@@domain.irepository
+namespace @@application.@@domain.uow
 {
     
     public interface @@name
     {
-        Task<@@entity> GetByIdAsync(Guid Id);
-        Task<@@entity> UpsertAsync(@@entity entity);
-        Task DeleteAsync(@@entity entity);
-        Task<IList<@@entity>> GetAllAsync();
+        Task<ITransaction> BeginAsync();
+        Task CommitAsync();
+        Task RollbackAsync();
         
-        
-        Task<IList<@@entity>> FindAsync(Expression<Func<@@entity, bool>> predicate);
+        Task<TRepository> GetRepository<TRepository>() where TRepository : IRepository;
+    }
+}
+      
     

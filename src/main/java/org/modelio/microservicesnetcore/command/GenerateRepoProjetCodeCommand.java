@@ -17,6 +17,8 @@ import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmIS
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmModelOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmRepositoryOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmServiceOrchestrator;
+import org.modelio.microservicesnetcore.psm.generator.orchestrator.GenerateRepoProjectCodeOrchestrator;
+import org.modelio.microservicesnetcore.psm.generator.orchestrator.GenerateUOWProjectCodeOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GenerateIRepoProjectCodeOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmControllerOrchestrator;
 import org.modelio.vcore.smkernel.mapi.MObject;
@@ -63,11 +65,9 @@ public class GenerateRepoProjetCodeCommand extends DefaultModuleCommandHandler {
 			
 	        for(MObject e :selectedElements )
 	        {
-	        	GenerateIRepoProjectCodeOrchestrator iRepoOrchest = new GenerateIRepoProjectCodeOrchestrator(module);
-	        	iRepoOrchest.Execute(e);
-		        
 		        GenerateRepoProjectCodeOrchestrator repoOrchest = new GenerateRepoProjectCodeOrchestrator(module);
 		        repoOrchest.Execute(e);
+		        
 	        }
 		}
 		catch (Exception e) {
