@@ -41,6 +41,7 @@ public class IRepositoryProjectTemplate {
 		IModelingSession session = module.getModuleContext().getModelingSession();
 		IUmlModel model = session.getModel();
 		_umlType = model.getUmlTypes();
+		_applicationName=applicationName;
 		_domain=domain;
 	}
 
@@ -77,7 +78,7 @@ public class IRepositoryProjectTemplate {
 		}
 		
 		String result = tmpl.toString();
-		result = result.replaceAll("@@entity", "I"+visited.getName());
+		result = result.replaceAll("@@name", "I"+visited.getName());
 		result = result.replaceAll("@@domain", _domain.getName());
 		result = result.replaceAll("@@application", _applicationName);
 		
@@ -175,9 +176,9 @@ public class IRepositoryProjectTemplate {
 		else if (type.getUuid().equals(_umlType.getINTEGER().getUuid()))
 			result = "int";
 		else if (type.getUuid().equals(_umlType.getBOOLEAN().getUuid()))
-			result = "boolean";
+			result = "bool";
 		else if (type.getUuid().equals(_umlType.getDATE().getUuid()))
-			result = "date";
+			result = "DateTime";
 		else
 			result = type.getName();
 		

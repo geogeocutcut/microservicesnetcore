@@ -54,8 +54,6 @@ public class PsmServiceBuilder {
 		createSaveOrUpdateOperation(session, psmElt);
 		createDeleteOperation(session, psmElt);
 		
-		Interface psmIRepo = (Interface)PimPsmMapper.GetPsmIServiceFromPim(visited);
-		model.createInterfaceRealization(psmElt, psmIRepo);
 		// Stereotype PimDependency
 		CreatePimDependency(session ,visited,psmElt);
 		

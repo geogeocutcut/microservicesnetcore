@@ -47,11 +47,11 @@ public class PsmIRepositoryBuilder {
 		
 		//Create Class
 		psmElt = model.createInterface(ModuleConstants.getIRepositoryName(visited.getName()), psmOwner);
-		
-		createGetAllOperation(session, psmElt);
-		createGetByIdOperation(session, psmElt);
-		createSaveOrUpdateOperation(session, psmElt);
-		createDeleteOperation(session, psmElt);
+		Classifier entity = (Classifier)PimPsmMapper.GetPsmModelFromPim(visited);
+		createGetAllOperation(session, psmElt,entity);
+		createGetByIdOperation(session, psmElt,entity);
+		createSaveOrUpdateOperation(session, psmElt,entity);
+		createDeleteOperation(session, psmElt,entity);
 		
 		// Stereotype PimDependency
 		CreatePimDependency(session ,visited,psmElt);
@@ -59,7 +59,7 @@ public class PsmIRepositoryBuilder {
 		return psmElt;
 	}
 
-	public static Operation createGetAllOperation(IModelingSession session,  Classifier psmOwner) {
+	public static Operation createGetAllOperation(IModelingSession session,  Classifier psmOwner, Classifier entity) {
 		Operation newOperation=null;
 		
 		IUmlModel model = session.getModel();
@@ -70,7 +70,7 @@ public class PsmIRepositoryBuilder {
 
 		//Création du paramètre de retour
 		Parameter outParam = model.createParameter();
-		outParam.setType((GeneralClass)psmOwner);
+		outParam.setType((GeneralClass)entity);
 		newOperation.setReturn(outParam);
 		newOperation.getReturn().setMultiplicityMax("*");
 		
@@ -78,7 +78,7 @@ public class PsmIRepositoryBuilder {
 		
 	}
 	
-	public static Operation createGetByIdOperation(IModelingSession session, Classifier psmOwner) {
+	public static Operation createGetByIdOperation(IModelingSession session, Classifier psmOwner,Classifier entity) {
 		Operation newOperation=null;
 		
 		IUmlModel model = session.getModel();
@@ -89,7 +89,7 @@ public class PsmIRepositoryBuilder {
 
 		//Création du paramètre de retour
 		Parameter outParam = model.createParameter();
-		outParam.setType((GeneralClass)psmOwner);
+		outParam.setType((GeneralClass)entity);
 		newOperation.setReturn(outParam);
 		newOperation.getReturn().setMultiplicityMax("1");
 		
@@ -116,7 +116,7 @@ public class PsmIRepositoryBuilder {
 		return newOperation;
 	}
 	
-	public static Operation createSaveOrUpdateOperation(IModelingSession session, Classifier psmOwner) {
+	public static Operation createSaveOrUpdateOperation(IModelingSession session, Classifier psmOwner, Classifier entity) {
 		Operation newOperation=null;
 		
 		IUmlModel model = session.getModel();
@@ -127,7 +127,7 @@ public class PsmIRepositoryBuilder {
 
 		//Création du paramètre de retour
 		Parameter outParam = model.createParameter();
-		outParam.setType((GeneralClass)psmOwner);
+		outParam.setType((GeneralClass)entity);
 		newOperation.setReturn(outParam);
 		newOperation.getReturn().setMultiplicityMax("1");
 		
@@ -141,7 +141,7 @@ public class PsmIRepositoryBuilder {
 		return newOperation;
 	}
 	
-	public static Operation createDeleteOperation(IModelingSession session, Classifier psmOwner) {
+	public static Operation createDeleteOperation(IModelingSession session, Classifier psmOwner,Classifier entity) {
 		Operation newOperation=null;
 		
 		IUmlModel model = session.getModel();
@@ -154,7 +154,7 @@ public class PsmIRepositoryBuilder {
 		//Création des paramètres d'entrée
 		Parameter dataParam = model.createParameter();
 		dataParam.setName("sObject");
-		dataParam.setType((GeneralClass)psmOwner);
+		dataParam.setType((GeneralClass)entity);
 		dataParam.setMultiplicityMax("1");
 		newOperation.getIO().add(dataParam);
 

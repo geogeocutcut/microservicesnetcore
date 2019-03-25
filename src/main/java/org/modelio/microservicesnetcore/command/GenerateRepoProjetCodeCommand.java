@@ -3,24 +3,12 @@ package org.modelio.microservicesnetcore.command;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.modelio.api.modelio.model.IModelingSession;
-import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.api.module.context.log.ILogService;
 import org.modelio.metamodel.uml.statik.Package;
-import org.modelio.microservicesnetcore.helper.PimStereotypeValidator;
-import org.modelio.microservicesnetcore.helper.PsmBuilder;
 import org.modelio.microservicesnetcore.helper.PsmStereotypeValidator;
-import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmIRepositoryOrchestrator;
-import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmIServiceOrchestrator;
-import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmModelOrchestrator;
-import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmRepositoryOrchestrator;
-import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmServiceOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GenerateRepoProjectCodeOrchestrator;
-import org.modelio.microservicesnetcore.psm.generator.orchestrator.GenerateUOWProjectCodeOrchestrator;
-import org.modelio.microservicesnetcore.psm.generator.orchestrator.GenerateIRepoProjectCodeOrchestrator;
-import org.modelio.microservicesnetcore.psm.generator.orchestrator.GeneratePsmControllerOrchestrator;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
 public class GenerateRepoProjetCodeCommand extends DefaultModuleCommandHandler {
@@ -60,7 +48,6 @@ public class GenerateRepoProjetCodeCommand extends DefaultModuleCommandHandler {
     public void actionPerformed(List<MObject> selectedElements, IModule module) {
         ILogService logService = module.getModuleContext().getLogService();
         logService.info("Generate PSM Packages - actionPerformed(...)");
-        IModelingSession _session = module.getModuleContext().getModelingSession();
         try{
 			
 	        for(MObject e :selectedElements )

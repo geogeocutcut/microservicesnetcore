@@ -44,6 +44,7 @@ public class RepositoryProjectTemplate {
 		IUmlModel model = session.getModel();
 		_umlType = model.getUmlTypes();
 		_domain=domain;
+		_applicationName=applicationName;
 	}
 
 	public String getCsProj() {
@@ -189,9 +190,9 @@ public class RepositoryProjectTemplate {
 		else if (type.getUuid().equals(_umlType.getINTEGER().getUuid()))
 			result = "int";
 		else if (type.getUuid().equals(_umlType.getBOOLEAN().getUuid()))
-			result = "boolean";
+			result = "bool";
 		else if (type.getUuid().equals(_umlType.getDATE().getUuid()))
-			result = "date";
+			result = "DateTime";
 		else
 			result = type.getName();
 		

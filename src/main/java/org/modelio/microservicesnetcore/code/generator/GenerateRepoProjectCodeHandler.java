@@ -14,14 +14,14 @@ import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 
 public class GenerateRepoProjectCodeHandler extends HandlerAdapter {
 	private String _path;
-	private IRepositoryProjectTemplate _template;
+	private RepositoryProjectTemplate _template;
 	
 	public GenerateRepoProjectCodeHandler(String applicationName,Package domain,String path)
 	{
-		_path=path+"/repository";
-		_template=new IRepositoryProjectTemplate(applicationName, domain);
+		_path=path+"\\repository";
+		_template=new RepositoryProjectTemplate(applicationName, domain);
 		// créer le répertoire project si il n'existe pas
-		File fileDir = new File(path);
+		File fileDir = new File(_path);
 		fileDir.mkdirs();
 		
 		// créer le csproj
@@ -32,7 +32,7 @@ public class GenerateRepoProjectCodeHandler extends HandlerAdapter {
 		if(content.length()>0)
 		{
 			try {
-				File csprojFile =new File(_path+"/"+name);
+				File csprojFile =new File(_path+"\\"+name);
 				csprojFile.createNewFile();
 				FileWriter writer = new FileWriter(csprojFile);
 				try {
@@ -64,7 +64,7 @@ public class GenerateRepoProjectCodeHandler extends HandlerAdapter {
 		if(content.length()>0)
 		{
 			try {
-				File csFile =new File(_path+"/"+name);
+				File csFile =new File(_path+"\\"+name);
 				csFile.createNewFile();
 				FileWriter writer = new FileWriter(csFile);
 				try 

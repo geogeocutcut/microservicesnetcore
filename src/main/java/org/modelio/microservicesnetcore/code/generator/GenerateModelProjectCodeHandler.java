@@ -61,7 +61,7 @@ public class GenerateModelProjectCodeHandler extends HandlerAdapter {
 		if(content.length()>0)
 		{
 			try {
-				File csFile =new File(_path+"/"+name);
+				File csFile =new File(_path+"\\"+name);
 				csFile.createNewFile();
 				FileWriter writer = new FileWriter(csFile);
 				try 

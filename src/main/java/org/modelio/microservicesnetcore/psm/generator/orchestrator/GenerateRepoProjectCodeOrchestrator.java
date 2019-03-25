@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.modelio.api.modelio.model.IModelingSession;
-import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.IModule;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
-import com.smag.applicativearchitecture.audit.AuditRule;
 
 import org.modelio.microservicesnetcore.api.ModuleConstants;
 import org.modelio.microservicesnetcore.api.ModuleTagType;
@@ -46,13 +44,13 @@ public class GenerateRepoProjectCodeOrchestrator {
 		List<String> iRepositories = new ArrayList<String>();
 		
 		// create IRepo Code
-		GenerateIRepoProjectCodeHandler handler =new GenerateIRepoProjectCodeHandler(applicationName,domain,path,iRepositories);
-		OwnedVisitor visitor = new OwnedVisitor(handler);
+		GenerateIRepoProjectCodeHandler irepohandler =new GenerateIRepoProjectCodeHandler(applicationName,domain,path,iRepositories);
+		OwnedVisitor visitor = new OwnedVisitor(irepohandler);
 		visitor.process((Package)selectedModelPsm);
 		
 		// create Repo Code
-		GenerateRepoProjectCodeHandler handler =new GenerateRepoProjectCodeHandler(applicationName,domain,path);
-		visitor = new OwnedVisitor(handler);
+		GenerateRepoProjectCodeHandler repohandler =new GenerateRepoProjectCodeHandler(applicationName,domain,path);
+		visitor = new OwnedVisitor(repohandler);
 		visitor.process((Package)selectedModelPsm);
 		
 		// Creation IUoW

@@ -138,9 +138,9 @@ public class ModelProjectTemplate {
 		else if (type.getUuid().equals(_umlType.getINTEGER().getUuid()))
 			result = "int";
 		else if (type.getUuid().equals(_umlType.getBOOLEAN().getUuid()))
-			result = "boolean";
+			result = "bool";
 		else if (type.getUuid().equals(_umlType.getDATE().getUuid()))
-			result = "date";
+			result = "DateTime";
 		else
 			result = "string";
 		

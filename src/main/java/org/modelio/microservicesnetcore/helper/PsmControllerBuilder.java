@@ -50,14 +50,6 @@ public class PsmControllerBuilder {
 		//Create Class
 		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_CONTROLLER);
 		psmElt = model.createClass(ModuleConstants.getControllerName(visited.getName()), psmOwner,psmStereo);
-		Stereotype st = ModuleStereotype.GetStereotype(session, Classifier.class, ModuleStereotype.STEREO_CS_CONTROLLER);
-		psmElt.getExtension().add(st);
-		try {
-			psmElt.putTagValue(ModuleConstants.MODULE_NAME, ModuleTagType.TAG_ATT_ROUTEPREFIX, ModuleConstants.getControllerRoute(visited.getName()));
-		} catch (ExtensionNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		createGetAllOperation(session, psmElt);
 		createGetByIdOperation(session, psmElt);
@@ -86,7 +78,6 @@ public class PsmControllerBuilder {
 		newOperation.setReturn(outParam);
 		newOperation.getReturn().setMultiplicityMax("*");
 		
-		ApplyEndPointStereotype(session,newOperation);
 		
 		return newOperation;
 		
@@ -127,7 +118,6 @@ public class PsmControllerBuilder {
 		}
 
 
-		ApplyEndPointStereotype(session,newOperation);
 		return newOperation;
 	}
 	
@@ -153,7 +143,6 @@ public class PsmControllerBuilder {
 		dataParam.setMultiplicityMax("1");
 		newOperation.getIO().add(dataParam);
 
-		ApplyEndPointStereotype(session,newOperation);
 		return newOperation;
 	}
 	
@@ -179,7 +168,6 @@ public class PsmControllerBuilder {
 		dataParam.setMultiplicityMax("1");
 		newOperation.getIO().add(dataParam);
 
-		ApplyEndPointStereotype(session,newOperation);
 		return newOperation;
 	}
 	
@@ -201,7 +189,6 @@ public class PsmControllerBuilder {
 		newOperation.getIO().add(dataParam);
 
 
-		ApplyEndPointStereotype(session,newOperation);
 		return newOperation;
 	}
 	

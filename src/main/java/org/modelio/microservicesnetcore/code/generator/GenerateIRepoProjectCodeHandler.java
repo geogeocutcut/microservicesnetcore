@@ -19,11 +19,11 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 	
 	public GenerateIRepoProjectCodeHandler(String applicationName,Package domain,String path, List<String> iRepositories)
 	{
-		_path=path+"/irepository";
+		_path=path+"\\irepository";
 		_template=new IRepositoryProjectTemplate(applicationName, domain);
 		_iRepositories=iRepositories;
 		// créer le répertoire project si il n'existe pas
-		File fileDir = new File(path);
+		File fileDir = new File(_path);
 		fileDir.mkdirs();
 		
 		// créer le csproj
@@ -34,7 +34,7 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 		if(content.length()>0)
 		{
 			try {
-				File csprojFile =new File(_path+"/"+name);
+				File csprojFile =new File(_path+"\\"+name);
 				csprojFile.createNewFile();
 				FileWriter writer = new FileWriter(csprojFile);
 				try {
@@ -67,7 +67,7 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 		{
 			_iRepositories.add("I"+visited.getName());
 			try {
-				File csFile =new File(_path+"/"+name);
+				File csFile =new File(_path+"\\"+name);
 				csFile.createNewFile();
 				FileWriter writer = new FileWriter(csFile);
 				try 
