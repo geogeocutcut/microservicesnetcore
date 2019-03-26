@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Common\Core.Common.csproj" />
-    <ProjectReference Include="..\Model\@@application.@@domain.Model.csproj" />
+    <ProjectReference Include="..\Model\Libragri.party.Model.csproj" />
   </ItemGroup>
 
 </Project>

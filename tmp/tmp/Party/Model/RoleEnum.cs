@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Core.Common.Model;
 
-namespace @@application.@@domainDomain.Model
+namespace Libragri.partyDomain.Model
 {
-	public class @@entity:Entity<Guid>
+	public class RoleEnum
     {
     	private Guid _id;
     	
@@ -20,8 +19,5 @@ namespace @@application.@@domainDomain.Model
                 _id = value;
             }
         }
-        
-        public override Guid GetId()
-        {
-            return Id;
-        }
+    }
+}

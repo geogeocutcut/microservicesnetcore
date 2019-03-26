@@ -25,7 +25,7 @@ public class GenerateIServiceProjectCodeHandler extends HandlerAdapter {
 		fileDir.mkdirs();
 		
 		// créer le csproj
-		String name=applicationName+"."+domain.getName()+".IService.csproj";
+		String name=applicationName+"."+domain.getName()+".IServices.csproj";
 		
 		StringBuffer content = new StringBuffer("");
 		content.append(_template.getCsProj());

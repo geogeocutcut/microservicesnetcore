@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Libragri.Party.Webapi
+namespace @@application.@@domain.Webapi
 {
     public class Program
     {

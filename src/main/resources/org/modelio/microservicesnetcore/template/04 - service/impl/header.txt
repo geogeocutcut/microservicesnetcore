@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using System.Linq.Expressions;
 using core.repository;
 using @@application.@@domainDomain.Model;
-using @@application.@@domainDomain.IRepository;
-using @@application.@@domainDomain.IService;
+using @@application.@@domainDomain.IRepositories;
+using @@application.@@domainDomain.IServices;
 
-namespace @@application.@@domainDomain.Service
+namespace @@application.@@domainDomain.Services
 {
     
     public class @@name:I@@name
@@ -17,7 +17,7 @@ namespace @@application.@@domainDomain.Service
     	
     	public @@name(IUnitOfWork uow)
     	{
-    		_uow=uow
+    		_uow=uow;
     	}
     	
     	public async Task DeleteAsync(@@entity entity)

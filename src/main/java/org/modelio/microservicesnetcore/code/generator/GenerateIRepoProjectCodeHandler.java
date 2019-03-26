@@ -19,7 +19,7 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 	
 	public GenerateIRepoProjectCodeHandler(String applicationName,Package domain,String path, List<String> iRepositories)
 	{
-		_path=path+"\\IRepository";
+		_path=path+"\\IRepositories";
 		_template=new IRepositoryProjectTemplate(applicationName, domain);
 		_iRepositories=iRepositories;
 		// créer le répertoire project si il n'existe pas
@@ -27,7 +27,7 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 		fileDir.mkdirs();
 		
 		// créer le csproj
-		String name=applicationName+"."+domain.getName()+".IRepository.csproj";
+		String name=applicationName+"."+domain.getName()+".IRepositories.csproj";
 		
 		StringBuffer content = new StringBuffer("");
 		content.append(_template.getCsProj());

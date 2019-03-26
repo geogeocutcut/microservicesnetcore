@@ -18,14 +18,14 @@ public class GenerateRepoProjectCodeHandler extends HandlerAdapter {
 	
 	public GenerateRepoProjectCodeHandler(String applicationName,Package domain,String path)
 	{
-		_path=path+"\\Repository";
+		_path=path+"\\Repositories";
 		_template=new RepositoryProjectTemplate(applicationName, domain);
 		// créer le répertoire project si il n'existe pas
 		File fileDir = new File(_path);
 		fileDir.mkdirs();
 		
 		// créer le csproj
-		String name=applicationName+"."+domain.getName()+".Repository.csproj";
+		String name=applicationName+"."+domain.getName()+".Repositories.csproj";
 		
 		StringBuffer content = new StringBuffer("");
 		content.append(_template.getCsProj());

@@ -1,5 +1,0 @@
-        public override async Task<TRepository> GetRepository<TRepository>()
-        {
-        	
-        }
-    

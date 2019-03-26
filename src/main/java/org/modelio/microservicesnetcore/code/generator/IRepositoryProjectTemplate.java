@@ -33,6 +33,7 @@ public class IRepositoryProjectTemplate {
 	private String _asyncopeend = "org/modelio/microservicesnetcore/template/00 - common/asyncioperationend.txt";
 	
 	private String _csproj = "org/modelio/microservicesnetcore/template/02 - repository/interface/csproj.txt";
+	private String _iunitofwork = "org/modelio/microservicesnetcore/template/02 - repository/interface/iunitofwork.txt";
 	private IUMLTypes _umlType;
 	
 	private String _applicationName;
@@ -169,4 +170,24 @@ public class IRepositoryProjectTemplate {
 		return tmpl.toString();
 	}
 	
+	public String getIUnitOfWork()
+	{
+		StringBuilder tmpl = new StringBuilder();
+		try {
+			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_iunitofwork);
+			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
+			while (reader.ready()) {
+				tmpl.append(reader.readLine()).append("\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		String result = tmpl.toString();
+		result = result.replaceAll("@@domain", _domain.getName());
+		result = result.replaceAll("@@application", _applicationName);
+		
+		return result;
+	}
 }

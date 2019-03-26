@@ -4,11 +4,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using @@application.@@domainDomain.Model;
+using Core.Common.Repository;
 
-namespace @@application.@@domainDomain.IRepository
+namespace @@application.@@domainDomain.IRepositories
 {
     
-    public interface @@name
+    public interface @@name:IRepository
     {
         Task<@@entity> GetByIdAsync(Guid Id);
         Task<@@entity> UpsertAsync(@@entity entity);

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Linq.Expressions;
 using @@application.@@domainDomain.Model;
 
-namespace @@application.@@domainDomain.IService
+namespace @@application.@@domainDomain.IServices
 {
     
     public interface @@name

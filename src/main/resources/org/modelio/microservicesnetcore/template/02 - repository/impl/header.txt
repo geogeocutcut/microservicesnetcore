@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using Core.Repository;
+using Core.Common.Store;
 using @@application.@@domainDomain.Model;
-using @@application.@@domainDomain.IRepository;
+using @@application.@@domainDomain.IRepositories;
 
-namespace @@application.@@domainDomain.Repository
+namespace @@application.@@domainDomain.Repositories
 {
     
     public class @@name:I@@name

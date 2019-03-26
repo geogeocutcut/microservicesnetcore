@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
-
+import java.util.List;
 
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.IUMLTypes;
@@ -34,6 +34,8 @@ public class RepositoryProjectTemplate {
 	private String _asyncopeend = "org/modelio/microservicesnetcore/template/00 - common/asyncoperationend.txt";
 	
 	private String _csproj = "org/modelio/microservicesnetcore/template/02 - repository/impl/csproj.txt";
+	private String _unitofwork = "org/modelio/microservicesnetcore/template/02 - repository/impl/unitofwork.txt";
+	private String _iocregister = "org/modelio/microservicesnetcore/template/02 - repository/impl/iocregister.txt";
 	private IUMLTypes _umlType;
 	
 	private String _applicationName;
@@ -177,7 +179,46 @@ public class RepositoryProjectTemplate {
 		return tmpl.toString();
 	}
 	
-
+	public String getUnitOfWork(List<String> iRepositories)
+	{
+		
+		StringBuilder tmpl = new StringBuilder();
+		try {
+			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_iocregister);
+			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
+			while (reader.ready()) {
+				tmpl.append(reader.readLine()).append("\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String iocRegister="";
+		for(String repo : iRepositories)
+		{
+			iocRegister+=tmpl.toString()
+					.replaceAll("@@IRepository", "I"+repo)
+					.replaceAll("@@Repository", repo);
+		}
+		
+		tmpl = new StringBuilder();
+		try {
+			InputStream stream = RepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_unitofwork);
+			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
+			while (reader.ready()) {
+				tmpl.append(reader.readLine()).append("\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		String result = tmpl.toString();
+		result = result.replaceAll("@@domain", _domain.getName())
+				.replaceAll("@@application", _applicationName)
+				.replaceAll("@@IoCRegister", iocRegister);
+		
+		return result;
+	}
 	
 	
 }

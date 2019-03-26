@@ -18,14 +18,14 @@ public class GenerateServiceProjectCodeHandler extends HandlerAdapter {
 	
 	public GenerateServiceProjectCodeHandler(String applicationName,Package domain,String path)
 	{
-		_path=path+"\\Service";
+		_path=path+"\\Services";
 		_template=new ServiceProjectTemplate(applicationName, domain);
 		// créer le répertoire project si il n'existe pas
 		File fileDir = new File(_path);
 		fileDir.mkdirs();
 		
 		// créer le csproj
-		String name=applicationName+"."+domain.getName()+".Service.csproj";
+		String name=applicationName+"."+domain.getName()+".Services.csproj";
 		
 		StringBuffer content = new StringBuffer("");
 		content.append(_template.getCsProj());

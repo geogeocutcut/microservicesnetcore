@@ -1,5 +1,7 @@
 package org.modelio.microservicesnetcore.psm.generator.orchestrator;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,8 @@ import org.modelio.microservicesnetcore.api.ModuleConstants;
 import org.modelio.microservicesnetcore.api.ModuleTagType;
 import org.modelio.microservicesnetcore.code.generator.GenerateIRepoProjectCodeHandler;
 import org.modelio.microservicesnetcore.code.generator.GenerateRepoProjectCodeHandler;
+import org.modelio.microservicesnetcore.code.generator.IRepositoryProjectTemplate;
+import org.modelio.microservicesnetcore.code.generator.RepositoryProjectTemplate;
 import org.modelio.microservicesnetcore.helper.ModuleHelper;
 import org.modelio.microservicesnetcore.psm.generator.handler.GeneratePsmModelDetailHandler;
 import org.modelio.microservicesnetcore.psm.generator.handler.GeneratePsmModelHandler;
@@ -54,11 +58,43 @@ public class GenerateRepoProjectCodeOrchestrator {
 		visitor.process((Package)selectedModelPsm);
 		
 		// Creation IUoW
-		String iuowPath=path+"/irepository";
-				
-		
+		String iuowPath=path+"\\IRepositories";
+		String name="IUnitOfWork.cs";
+		IRepositoryProjectTemplate _irepotemplate=new IRepositoryProjectTemplate(applicationName, domain);
+		try {
+			File csprojFile =new File(iuowPath+"\\"+name);
+			csprojFile.createNewFile();
+			FileWriter writer = new FileWriter(csprojFile);
+			try {
+	            writer.write(_irepotemplate.getIUnitOfWork());
+	        } 
+			finally {
+	            // quoiqu'il arrive, on ferme le fichier
+	            writer.close();
+	        }
+        } 
+		catch (Exception e) {
+            System.out.println("Impossible de creer le fichier : "+iuowPath+"/"+name);
+        }
 		
 		// Creation UoW
-		String uowPath=path+"/repository";	
+		String uowPath=path+"\\Repositories";
+		name="UnitOfWork.cs";
+		RepositoryProjectTemplate _repoTemplate=new RepositoryProjectTemplate(applicationName, domain);
+		try {
+			File csprojFile =new File(uowPath+"\\"+name);
+			csprojFile.createNewFile();
+			FileWriter writer = new FileWriter(csprojFile);
+			try {
+	            writer.write(_repoTemplate.getUnitOfWork(iRepositories));
+	        } 
+			finally {
+	            // quoiqu'il arrive, on ferme le fichier
+	            writer.close();
+	        }
+        } 
+		catch (Exception e) {
+            System.out.println("Impossible de creer le fichier : "+uowPath+"/"+name);
+        }	
 	}
 }
