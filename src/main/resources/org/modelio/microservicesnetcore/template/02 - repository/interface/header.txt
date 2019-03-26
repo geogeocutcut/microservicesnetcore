@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using @@application.@@domain.model;
-using core.repository;
+using @@application.@@domainDomain.Model;
 
-namespace @@application.@@domain.irepository
+namespace @@application.@@domainDomain.IRepository
 {
     
-    public interface @@name:IRepository
+    public interface @@name
     {
         Task<@@entity> GetByIdAsync(Guid Id);
         Task<@@entity> UpsertAsync(@@entity entity);
-        Task DeleteAsync(Guid Id);
+        Task DeleteAsync(@@entity entity);
         Task<IList<@@entity>> GetAllAsync();
         
         

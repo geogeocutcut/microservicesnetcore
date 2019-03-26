@@ -47,10 +47,10 @@ public class PsmIServiceBuilder {
 		//Create Class
 		psmElt = model.createInterface(ModuleConstants.getIServiceName(visited.getName()), psmOwner);
 		
-		createGetAllOperation(session, psmElt);
-		createGetByIdOperation(session, psmElt);
-		createSaveOrUpdateOperation(session, psmElt);
-		createDeleteOperation(session, psmElt);
+//		createGetAllOperation(session, psmElt);
+//		createGetByIdOperation(session, psmElt);
+//		createSaveOrUpdateOperation(session, psmElt);
+//		createDeleteOperation(session, psmElt);
 		
 		// Stereotype PimDependency
 		CreatePimDependency(session ,visited,psmElt);

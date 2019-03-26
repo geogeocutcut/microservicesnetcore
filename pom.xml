@@ -46,12 +46,6 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.1</version>
 		</dependency><!-- Library inclusion example -->
-		<dependency>
-			<groupId>org.modelio</groupId>
-			<artifactId>modeliotools</artifactId>
-			<version>0.0.2</version>
-			<scope>compile</scope>
-		</dependency>
 	</dependencies>
 
 
@@ -73,7 +67,7 @@
 			<plugin>
 				<groupId>org.modelio</groupId>
 				<artifactId>modelio-maven-plugin</artifactId>
-				<version>3.7.1.00</version>
+				<version>3.7.0.01</version>
 				<executions>
 					<execution>
 						<id>ModuleValidation</id>
@@ -156,7 +150,7 @@
 							<target>
 								<move
 									file="${project.basedir}/target/${project.name}_${project.version}.zip"
-									tofile="C:\Users\geffb\modelio\Modelio Open Source 3.8\modules\${project.name}_${project.version}.jmdac" />
+									tofile="C:\Program Files\Modelio 3.7\modules\${project.name}_${project.version}.jmdac" />
 							</target>
 						</configuration>
 						<goals>

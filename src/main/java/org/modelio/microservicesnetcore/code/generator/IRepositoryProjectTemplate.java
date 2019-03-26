@@ -19,6 +19,8 @@ import org.modelio.metamodel.uml.statik.GeneralClass;
 import org.modelio.metamodel.uml.statik.Operation;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.metamodel.uml.statik.Parameter;
+import org.modelio.microservicesnetcore.helper.ModuleHelper;
+import org.modelio.microservicesnetcore.helper.PimPsmMapper;
 import org.modelio.microservicesnetcore.impl.MicroserviceDotnetCoreModule;
 
 public class IRepositoryProjectTemplate {
@@ -65,7 +67,7 @@ public class IRepositoryProjectTemplate {
 		return result;
 	}
 	
-	public String getHeader(Classifier visited) {
+	public String getHeader(Classifier visited,Classifier entity) {
 		StringBuilder tmpl = new StringBuilder();
 		try {
 			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_header);
@@ -77,8 +79,10 @@ public class IRepositoryProjectTemplate {
 			e.printStackTrace();
 		}
 		
+		
 		String result = tmpl.toString();
 		result = result.replaceAll("@@name", "I"+visited.getName());
+		result = result.replaceAll("@@entity", entity.getName());
 		result = result.replaceAll("@@domain", _domain.getName());
 		result = result.replaceAll("@@application", _applicationName);
 		
@@ -90,7 +94,7 @@ public class IRepositoryProjectTemplate {
 		StringBuilder tmpl = new StringBuilder();
 		
 		String opeHeader=visited.getReturn()!=null?_asyncopeheaderwithreturn:_asyncopeheadervoid;
-		String returnType=visited.getReturn()!=null?getNetTypeFromUmlType(visited.getReturn().getType()):"";
+		String returnType=visited.getReturn()!=null?ModuleHelper.getNetTypeFromUmlType(visited.getReturn().getType()):"";
 		if(!returnType.isEmpty() && visited.getReturn().getMultiplicityMax()=="*")
 		{
 			returnType="IList<"+returnType+">";
@@ -99,7 +103,7 @@ public class IRepositoryProjectTemplate {
 			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(opeHeader);
 			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
 			while (reader.ready()) {
-				tmpl.append(reader.readLine()).append("\n");
+				tmpl.append(reader.readLine());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -125,8 +129,8 @@ public class IRepositoryProjectTemplate {
 		{
 			if(!paramListStr.isEmpty())paramListStr+=",";
 			String paramStr= tmpl.toString();
-			paramStr.replaceAll("@@name", p.getName());
-			paramStr.replaceAll("@@type", getNetTypeFromUmlType(p.getType()));
+			paramStr=paramStr.replaceAll("@@name", p.getName());
+			paramStr=paramStr.replaceAll("@@type", ModuleHelper.getNetTypeFromUmlType(p.getType()));
 			paramListStr+=paramStr;
 		}
 
@@ -165,23 +169,4 @@ public class IRepositoryProjectTemplate {
 		return tmpl.toString();
 	}
 	
-
-	
-	private String getNetTypeFromUmlType(GeneralClass type) {
-		String result = null;
-		if (type.getUuid().equals(_umlType.getSTRING().getUuid()))
-			result = "string";
-		else if (type.getUuid().equals(_umlType.getDOUBLE().getUuid()))
-			result = "double";
-		else if (type.getUuid().equals(_umlType.getINTEGER().getUuid()))
-			result = "int";
-		else if (type.getUuid().equals(_umlType.getBOOLEAN().getUuid()))
-			result = "bool";
-		else if (type.getUuid().equals(_umlType.getDATE().getUuid()))
-			result = "DateTime";
-		else
-			result = type.getName();
-		
-		return result;
-	}
 }

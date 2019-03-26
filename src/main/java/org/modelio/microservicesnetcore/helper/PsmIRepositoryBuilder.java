@@ -134,7 +134,7 @@ public class PsmIRepositoryBuilder {
 		//Création des paramètres d'entrée
 		Parameter dataParam = model.createParameter();
 		dataParam.setName("sObject");
-		dataParam.setType((GeneralClass)psmOwner);
+		dataParam.setType((GeneralClass)entity);
 		dataParam.setMultiplicityMax("1");
 		newOperation.getIO().add(dataParam);
 

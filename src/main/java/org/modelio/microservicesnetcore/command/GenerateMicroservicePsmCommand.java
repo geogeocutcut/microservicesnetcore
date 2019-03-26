@@ -31,18 +31,15 @@ public class GenerateMicroservicePsmCommand extends DefaultModuleCommandHandler 
     @Override
     public boolean accept(List<MObject> selectedElements, IModule module) {
         // Check that there is only one selected element
-    	for(MObject elt :  selectedElements)
+    	if(selectedElements.size()==1)
     	{
-    		if(!(elt instanceof Package))
+    		MObject elt=selectedElements.get(0);
+    		if((elt instanceof Package) && PimStereotypeValidator.isMicroservice((Package)elt))
     		{
-    			return false;
-    		}
-    		if(!PimStereotypeValidator.isMicroservice((Package)elt))
-    		{
-    			return false;
+    			return true;
     		}
     	}
-        return true;
+        return false;
     }
 
     /**

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Module id="${project.name}" class="org.modelio.microservicesnetcore.impl.MicroserviceDotnetCoreModule" binaryversion="3.8.00" version="${project.version}" schema-level="2" uid="7c295a62-1a74-4c10-a0ca-6e66f158052b">
+<Module id="${project.name}" class="org.modelio.microservicesnetcore.impl.MicroserviceDotnetCoreModule" binaryversion="3.7.00" version="${project.version}" schema-level="2" uid="7c295a62-1a74-4c10-a0ca-6e66f158052b">
     <ClassPath>
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
-        <PathEntry path="lib/commons-lang3-3.1.jar"/>
         <PathEntry path="lib/modeliotools-0.0.2.jar"/>
+        <PathEntry path="lib/commons-lang3-3.1.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="e8beb02f-eb12-4f70-9307-c7980ae15a6b" id="MicroserviceDotnetCorePIMProfile">
@@ -54,6 +54,10 @@
                 <Scope metaclass="Package" stereotype="PSMMicroservice"/>
                 <Handler class="org.modelio.microservicesnetcore.command.GenerateRepoProjetCodeCommand"/>
             </Command>
+            <Command id="GenerateServiceProjetCodeCommand" label="%command.GenerateServiceProjetCode.label" tooltip="%command.GenerateServiceProjetCode.tooltip" image="res/icons/HelloWorldCommand_16.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="Package" stereotype="PSMMicroservice"/>
+                <Handler class="org.modelio.microservicesnetcore.command.GenerateServiceProjetCodeCommand"/>
+            </Command>
         </Commands>
         <Tools>
             <Tool id="CreateElementDiagramCommandExample" label="%CreateElementDiagramCommandExampleLabel" tooltip="%CreateElementDiagramCommandExampleTooltip" image="res/icons/Stereotype1_16.png">
@@ -69,15 +73,9 @@
             <CommandRef refid="GenerateMicroservicePsmCommand"/>
             <CommandRef refid="GenerateModelProjetCodeCommand"/>
             <CommandRef refid="GenerateRepoProjetCodeCommand"/>
+            <CommandRef refid="GenerateServiceProjetCodeCommand"/>
         </ContextualMenu>
-        <Diagrams>
-            <DiagramType base-diagram="ClassDiagram" stereotype="stereotype2">
-                <Palette keepBasePalette="false">
-                    <ToolRef refid="CreateElementDiagramCommandExample" group="Customization"/>
-                </Palette>
-                <Handler class="StandardCustomizer"/>
-            </DiagramType>
-        </Diagrams>
+        <Diagrams/>
         <Views/>
     </Gui>
     <Dependencies/>

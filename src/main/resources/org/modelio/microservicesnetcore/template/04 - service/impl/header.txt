@@ -3,18 +3,43 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using @@application.@@domain.model;
+using core.repository;
+using @@application.@@domainDomain.Model;
+using @@application.@@domainDomain.IRepository;
+using @@application.@@domainDomain.IService;
 
-namespace @@application.@@domain.irepository
+namespace @@application.@@domainDomain.Service
 {
     
-    public interface @@name
+    public class @@name:I@@name
     {
-        Task<@@entity> GetByIdAsync(Guid Id);
-        Task<@@entity> UpsertAsync(@@entity entity);
-        Task DeleteAsync(@@entity entity);
-        Task<IList<@@entity>> GetAllAsync();
+        private IUnitOfWork _uow;
+    	
+    	public @@name(IUnitOfWork uow)
+    	{
+    		_uow=uow
+    	}
+    	
+    	public async Task DeleteAsync(@@entity entity)
+        {
+            var repository = await _uow.GetRepository<I@@entityRepository>();
+            await repository.DeleteAsync(entity);
+        }
+
+        public async Task<IList<@@entity>> GetAllAsync()
+        {
+            var repository = await _uow.GetRepository<I@@entityRepository>();
+            return await repository.GetAllAsync();
+        }
+
+        public async Task<@@entity> GetByIdAsync(Guid id)
+        {
+            var repository = await _uow.GetRepository<I@@entityRepository>();
+            return await repository.GetByIdAsync(id);
+        }
         
-        
-        Task<IList<@@entity>> FindAsync(Expression<Func<@@entity, bool>> predicate);
-    
+        public async Task<@@entity> UpsertAsync(@@entity entity)
+        {
+        	var repository = await _uow.GetRepository<I@@entityRepository>();
+            return await repository.UpsertAsync(entity);
+        }

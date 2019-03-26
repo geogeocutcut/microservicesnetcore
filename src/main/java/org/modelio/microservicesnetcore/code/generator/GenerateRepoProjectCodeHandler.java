@@ -8,7 +8,7 @@ import org.modelio.metamodel.uml.statik.Attribute;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Operation;
 import org.modelio.metamodel.uml.statik.Package;
-
+import org.modelio.microservicesnetcore.helper.PimPsmMapper;
 import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 
 
@@ -18,14 +18,14 @@ public class GenerateRepoProjectCodeHandler extends HandlerAdapter {
 	
 	public GenerateRepoProjectCodeHandler(String applicationName,Package domain,String path)
 	{
-		_path=path+"\\repository";
+		_path=path+"\\Repository";
 		_template=new RepositoryProjectTemplate(applicationName, domain);
 		// créer le répertoire project si il n'existe pas
 		File fileDir = new File(_path);
 		fileDir.mkdirs();
 		
 		// créer le csproj
-		String name=applicationName+"."+domain.getName()+".repository.csproj";
+		String name=applicationName+"."+domain.getName()+".Repository.csproj";
 		
 		StringBuffer content = new StringBuffer("");
 		content.append(_template.getCsProj());
@@ -51,35 +51,42 @@ public class GenerateRepoProjectCodeHandler extends HandlerAdapter {
 	protected void beginVisitingClassifier(Classifier visited) 
 	{
 		String name=visited.getName()+".cs";
-		
-		StringBuffer content = new StringBuffer("");
-		content.append(_template.getHeader(visited));
-		
-		for(Operation ope : visited.getOwnedOperation())
+		Classifier pimEnt = (Classifier)PimPsmMapper.GetPimFromPsmRepository(visited);
+		if(pimEnt!=null)
 		{
-			content.append(_template.getOperation(ope));
-		}
-		content.append(_template.getEnd());
+			Classifier entity = (Classifier)PimPsmMapper.GetPsmModelFromPim(pimEnt);
+			if(entity!=null)
+			{
+				StringBuffer content = new StringBuffer("");
+				content.append(_template.getHeader(visited,entity));
 		
-		if(content.length()>0)
-		{
-			try {
-				File csFile =new File(_path+"\\"+name);
-				csFile.createNewFile();
-				FileWriter writer = new FileWriter(csFile);
-				try 
+				for(Operation ope : visited.getOwnedOperation())
 				{
-	                writer.write(content.toString());
-	            } 
-				finally 
+					content.append(_template.getOperation(ope));
+				}
+				content.append(_template.getEnd());
+				
+				if(content.length()>0)
 				{
-	                // quoiqu'il arrive, on ferme le fichier
-	                writer.close();
-	            }
-	        }
-			catch (Exception e) {
-	            System.out.println("Impossible de creer le fichier : "+_path+"/"+name);
-	        }
+					try {
+						File csFile =new File(_path+"\\"+name);
+						csFile.createNewFile();
+						FileWriter writer = new FileWriter(csFile);
+						try 
+						{
+			                writer.write(content.toString());
+			            } 
+						finally 
+						{
+			                // quoiqu'il arrive, on ferme le fichier
+			                writer.close();
+			            }
+			        }
+					catch (Exception e) {
+			            System.out.println("Impossible de creer le fichier : "+_path+"/"+name);
+			        }
+				}
+			}
 		}
 	}
 }

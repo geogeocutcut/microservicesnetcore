@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using core.repository;
-using @@application.@@domain.model;
-using @@application.@@domain.irepository;
+using Core.Repository;
+using @@application.@@domainDomain.Model;
+using @@application.@@domainDomain.IRepository;
 
-namespace @@application.@@domain.repository
+namespace @@application.@@domainDomain.Repository
 {
     
     public class @@name:I@@name
@@ -16,12 +16,12 @@ namespace @@application.@@domain.repository
     	
     	public @@name(IStore<Guid> store)
     	{
-    		_store=store
+    		_store=store;
     	}
     	
-    	public async Task DeleteAsync(Guid id)
+    	public async Task DeleteAsync(@@entity entity)
         {
-            await _store.RemoveAsync(id);
+            await _store.RemoveAsync<@@entity>(entity);
         }
 
         public async Task<IList<@@entity>> GetAllAsync()
@@ -33,7 +33,6 @@ namespace @@application.@@domain.repository
         {
             return await _store.GetByIdAsync<@@entity>(id);
         }
-
         
         public async Task<IList<@@entity>> FindAsync(Expression<Func<@@entity, bool>> predicate)
         {

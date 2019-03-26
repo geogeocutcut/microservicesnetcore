@@ -8,7 +8,7 @@ import org.modelio.metamodel.uml.statik.Attribute;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Operation;
 import org.modelio.metamodel.uml.statik.Package;
-
+import org.modelio.microservicesnetcore.helper.PimPsmMapper;
 import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 
 
@@ -19,7 +19,7 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 	
 	public GenerateIRepoProjectCodeHandler(String applicationName,Package domain,String path, List<String> iRepositories)
 	{
-		_path=path+"\\irepository";
+		_path=path+"\\IRepository";
 		_template=new IRepositoryProjectTemplate(applicationName, domain);
 		_iRepositories=iRepositories;
 		// créer le répertoire project si il n'existe pas
@@ -27,7 +27,7 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 		fileDir.mkdirs();
 		
 		// créer le csproj
-		String name=applicationName+"."+domain.getName()+".irepository.csproj";
+		String name=applicationName+"."+domain.getName()+".IRepository.csproj";
 		
 		StringBuffer content = new StringBuffer("");
 		content.append(_template.getCsProj());
@@ -54,35 +54,43 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 	{
 		String name="I"+visited.getName()+".cs";
 		
-		StringBuffer content = new StringBuffer("");
-		content.append(_template.getHeader(visited));
-		
-		for(Operation ope : visited.getOwnedOperation())
+		Classifier pimEnt = (Classifier)PimPsmMapper.GetPimFromPsmRepository(visited);
+		if(pimEnt!=null)
 		{
-			content.append(_template.getOperation(ope));
-		}
-		content.append(_template.getEnd());
-		
-		if(content.length()>0)
-		{
-			_iRepositories.add("I"+visited.getName());
-			try {
-				File csFile =new File(_path+"\\"+name);
-				csFile.createNewFile();
-				FileWriter writer = new FileWriter(csFile);
-				try 
+			Classifier entity = (Classifier)PimPsmMapper.GetPsmModelFromPim(pimEnt);
+			if(entity!=null)
+			{
+				StringBuffer content = new StringBuffer("");
+				content.append(_template.getHeader(visited,entity));
+				
+				for(Operation ope : visited.getOwnedOperation())
 				{
-	                writer.write(content.toString());
-	            } 
-				finally 
+					content.append(_template.getOperation(ope));
+				}
+				content.append(_template.getEnd());
+				
+				if(content.length()>0)
 				{
-	                // quoiqu'il arrive, on ferme le fichier
-	                writer.close();
-	            }
-	        }
-			catch (Exception e) {
-	            System.out.println("Impossible de creer le fichier : "+_path+"/"+name);
-	        }
+					_iRepositories.add("I"+visited.getName());
+					try {
+						File csFile =new File(_path+"\\"+name);
+						csFile.createNewFile();
+						FileWriter writer = new FileWriter(csFile);
+						try 
+						{
+			                writer.write(content.toString());
+			            } 
+						finally 
+						{
+			                // quoiqu'il arrive, on ferme le fichier
+			                writer.close();
+			            }
+			        }
+					catch (Exception e) {
+			            System.out.println("Impossible de creer le fichier : "+_path+"/"+name);
+			        }
+				}
+			}
 		}
 	}
 }

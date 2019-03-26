@@ -19,6 +19,7 @@ import org.modelio.metamodel.uml.statik.GeneralClass;
 import org.modelio.metamodel.uml.statik.Operation;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.metamodel.uml.statik.Parameter;
+import org.modelio.microservicesnetcore.helper.ModuleHelper;
 import org.modelio.microservicesnetcore.impl.MicroserviceDotnetCoreModule;
 
 public class RepositoryProjectTemplate {
@@ -39,10 +40,6 @@ public class RepositoryProjectTemplate {
 	private Package _domain;
 	
 	public RepositoryProjectTemplate(String applicationName, Package domain) {
-		IModule module = MicroserviceDotnetCoreModule.getInstance();
-		IModelingSession session = module.getModuleContext().getModelingSession();
-		IUmlModel model = session.getModel();
-		_umlType = model.getUmlTypes();
 		_domain=domain;
 		_applicationName=applicationName;
 	}
@@ -67,7 +64,7 @@ public class RepositoryProjectTemplate {
 		return result;
 	}
 	
-	public String getHeader(Classifier visited) {
+	public String getHeader(Classifier visited,Classifier entity) {
 		StringBuilder tmpl = new StringBuilder();
 		try {
 			InputStream stream = RepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_header);
@@ -80,7 +77,8 @@ public class RepositoryProjectTemplate {
 		}
 		
 		String result = tmpl.toString();
-		result = result.replaceAll("@@entity", visited.getName());
+		result = result.replaceAll("@@name", visited.getName());
+		result = result.replaceAll("@@entity", entity.getName());
 		result = result.replaceAll("@@domain", _domain.getName());
 		result = result.replaceAll("@@application", _applicationName);
 		
@@ -92,13 +90,13 @@ public class RepositoryProjectTemplate {
 		StringBuilder tmpl = new StringBuilder();
 		
 		String opeHeader=visited.getReturn()!=null?_asyncopeheaderwithreturn:_asyncopeheadervoid;
-		String returnType=visited.getReturn()!=null?getNetTypeFromUmlType(visited.getReturn().getType()):"";
+		String returnType=visited.getReturn()!=null?ModuleHelper.getNetTypeFromUmlType(visited.getReturn().getType()):"";
 		if(!returnType.isEmpty() && visited.getReturn().getMultiplicityMax()=="*")
 		{
 			returnType="IList<"+returnType+">";
 		}
 		try {
-			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(opeHeader);
+			InputStream stream = RepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(opeHeader);
 			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
 			while (reader.ready()) {
 				tmpl.append(reader.readLine()).append("\n");
@@ -114,7 +112,7 @@ public class RepositoryProjectTemplate {
 		// parameter
 		tmpl = new StringBuilder();
 		try {
-			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_opeparameter);
+			InputStream stream = RepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_opeparameter);
 			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
 			while (reader.ready()) {
 				tmpl.append(reader.readLine());
@@ -127,8 +125,8 @@ public class RepositoryProjectTemplate {
 		{
 			if(!paramListStr.isEmpty())paramListStr+=",";
 			String paramStr= tmpl.toString();
-			paramStr.replaceAll("@@name", p.getName());
-			paramStr.replaceAll("@@type", getNetTypeFromUmlType(p.getType()));
+			paramStr=paramStr.replaceAll("@@name", p.getName());
+			paramStr=paramStr.replaceAll("@@type", ModuleHelper.getNetTypeFromUmlType(p.getType()));
 			paramListStr+=paramStr;
 		}
 
@@ -136,7 +134,7 @@ public class RepositoryProjectTemplate {
 		// start
 		tmpl = new StringBuilder();
 		try {
-			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_asyncopestart);
+			InputStream stream = RepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_asyncopestart);
 			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
 			while (reader.ready()) {
 				tmpl.append(reader.readLine()).append("\n");
@@ -150,7 +148,7 @@ public class RepositoryProjectTemplate {
 		// end
 		tmpl = new StringBuilder();
 		try {
-			InputStream stream = IRepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_asyncopeend);
+			InputStream stream = RepositoryProjectTemplate.class.getClassLoader().getResourceAsStream(_asyncopeend);
 			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
 			while (reader.ready()) {
 				tmpl.append(reader.readLine()).append("\n");
@@ -181,22 +179,5 @@ public class RepositoryProjectTemplate {
 	
 
 	
-	private String getNetTypeFromUmlType(GeneralClass type) {
-		String result = null;
-		if (type.getUuid().equals(_umlType.getSTRING().getUuid()))
-			result = "string";
-		else if (type.getUuid().equals(_umlType.getDOUBLE().getUuid()))
-			result = "double";
-		else if (type.getUuid().equals(_umlType.getINTEGER().getUuid()))
-			result = "int";
-		else if (type.getUuid().equals(_umlType.getBOOLEAN().getUuid()))
-			result = "bool";
-		else if (type.getUuid().equals(_umlType.getDATE().getUuid()))
-			result = "DateTime";
-		else
-			result = type.getName();
-		
-		
-		return result;
-	}
+	
 }

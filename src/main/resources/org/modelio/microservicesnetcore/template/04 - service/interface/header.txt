@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using @@application.@@domain.model;
+using @@application.@@domainDomain.Model;
 
-namespace @@application.@@domain.irepository
+namespace @@application.@@domainDomain.IService
 {
     
     public interface @@name
@@ -15,6 +15,4 @@ namespace @@application.@@domain.irepository
         Task DeleteAsync(@@entity entity);
         Task<IList<@@entity>> GetAllAsync();
         
-        
-        Task<IList<@@entity>> FindAsync(Expression<Func<@@entity, bool>> predicate);
     

@@ -79,11 +79,11 @@ public class PsmRepositoryBuilder {
 		//Create Class
 		psmElt = model.createClass(ModuleConstants.getRepositoryName(visited.getName()), psmOwner);
 		
-		Classifier entity = (Classifier)PimPsmMapper.GetPsmModelFromPim(visited);
-		createGetAllOperation(session, psmElt,entity);
-		createGetByIdOperation(session, psmElt,entity);
-		createSaveOrUpdateOperation(session, psmElt,entity);
-		createDeleteOperation(session, psmElt,entity);
+		//Classifier entity = (Classifier)PimPsmMapper.GetPsmModelFromPim(visited);
+		//createGetAllOperation(session, psmElt,entity);
+		//createGetByIdOperation(session, psmElt,entity);
+		//createSaveOrUpdateOperation(session, psmElt,entity);
+		//createDeleteOperation(session, psmElt,entity);
 		
 		
 		// Stereotype PimDependency
@@ -155,7 +155,7 @@ public class PsmRepositoryBuilder {
 		IUmlModel model = session.getModel();
 		
 		//Create Operation
-		newOperation = model.createOperation("SaveOrUpdate", psmOwner);
+		newOperation = model.createOperation("Upsert", psmOwner);
 		newOperation.setVisibility(VisibilityMode.PUBLIC);
 
 		//Création du paramètre de retour
@@ -167,7 +167,7 @@ public class PsmRepositoryBuilder {
 		//Création des paramètres d'entrée
 		Parameter dataParam = model.createParameter();
 		dataParam.setName("sObject");
-		dataParam.setType((GeneralClass)psmOwner);
+		dataParam.setType((GeneralClass)entity);
 		dataParam.setMultiplicityMax("1");
 		newOperation.getIO().add(dataParam);
 

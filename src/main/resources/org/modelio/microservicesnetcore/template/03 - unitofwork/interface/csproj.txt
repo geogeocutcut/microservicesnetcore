@@ -1,14 +1,10 @@
-
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\core.repository\core.repository.csproj" />
     <ProjectReference Include="..\model\@@applicationName.@@domain.model.csproj" />
     <ProjectReference Include="..\irepository\@@applicationName.@@domain.irepository.csproj" />
   </ItemGroup>
-
 </Project>

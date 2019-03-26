@@ -16,7 +16,7 @@ public class GenerateModelProjectCodeHandler extends HandlerAdapter {
 	
 	public GenerateModelProjectCodeHandler(String applicationName,Package domain,String path)
 	{
-		_path=path+"\\model";
+		_path=path+"\\Model";
 		_template=new ModelProjectTemplate(applicationName, domain);
 		
 		// créer le répertoire project si il n'existe pas
@@ -24,7 +24,7 @@ public class GenerateModelProjectCodeHandler extends HandlerAdapter {
 		fileDir.mkdirs();
 		
 		// créer le csproj
-		String name=applicationName+"."+domain.getName()+".model.csproj";
+		String name=applicationName+"."+domain.getName()+".Model.csproj";
 		
 		StringBuffer content = new StringBuffer("");
 		content.append(_template.getCsProj());

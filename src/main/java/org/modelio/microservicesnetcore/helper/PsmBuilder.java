@@ -23,7 +23,7 @@ public class PsmBuilder {
 
 	public static ModelElement CreatePsmPackage(IModelingSession session, ModelElement umlPimPackage) {
 		IUmlModel model= session.getModel();
-		Project root = (Project)model.getModelRoots().get(0);
+		Project root = (Project)umlPimPackage.getCompositionOwner();
 		
 		String name = ModuleConstants.getPSMName(umlPimPackage.getName());
 		// Stereotype PSM
