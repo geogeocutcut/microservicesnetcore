@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core.Repository\Core.Repository.csproj" />
     <ProjectReference Include="..\Model\Libragri.party.Model.csproj" />
     <ProjectReference Include="..\IRepositories\Libragri.party.IRepositories.csproj" />
+    <ProjectReference Include="..\IServices\Libragri.party.IServices.csproj" />
   </ItemGroup>
 
 </Project>

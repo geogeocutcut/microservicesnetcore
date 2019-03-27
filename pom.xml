@@ -6,7 +6,7 @@
 	<!-- definition -->
 	<groupId>org.modelio</groupId>
 	<artifactId>microservicesnetcore</artifactId>
-	<version>0.0.35</version>
+	<version>0.0.38</version>
 
 	<name>MicroserviceDotnetCore</name>
 

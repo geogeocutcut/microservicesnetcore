@@ -71,7 +71,7 @@ public class GenerateIRepoProjectCodeHandler extends HandlerAdapter {
 				
 				if(content.length()>0)
 				{
-					_iRepositories.add("I"+visited.getName());
+					_iRepositories.add(visited.getName());
 					try {
 						File csFile =new File(_path+"\\"+name);
 						csFile.createNewFile();

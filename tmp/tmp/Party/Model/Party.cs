@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Core.Common.Model;
 
 namespace Libragri.partyDomain.Model
 {
-	public class Party
+	public class Party:Entity<Guid>
     {
     	private Guid _id;
     	
@@ -18,6 +19,11 @@ namespace Libragri.partyDomain.Model
             set{
                 _id = value;
             }
+        }
+        
+        public override Guid GetId()
+        {
+            return Id;
         }
 		public string Email { get; set; }
 		public bool IsActive { get; set; }
