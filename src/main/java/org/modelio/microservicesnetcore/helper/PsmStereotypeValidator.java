@@ -11,6 +11,12 @@ public class PsmStereotypeValidator {
 	{
 		return e.isStereotyped(ModuleConstants.MODULE_NAME, ModuleStereotype.STEREO_PSM);
 	}
+	
+
+	public static boolean IsPsmMicroservicePackage(ModelElement e) 
+	{
+		return e.isStereotyped(ModuleConstants.MODULE_NAME, ModuleStereotype.STEREO_PSM_MICROSERVICE);
+	}
 
 	public static boolean IsPsmModelPackage(ModelElement e) 
 	{

@@ -6,7 +6,6 @@ namespace @@application.@@domainDomain.Model
 {
 	public class @@entity:Entity<Guid>
     {
-    	private Guid _id;
     	
         public Guid Id { 
             get{

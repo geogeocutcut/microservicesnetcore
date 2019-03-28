@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
     <ProjectReference Include="..\Model\@@application.@@domain.Model.csproj" />
     <ProjectReference Include="..\IRepositories\@@application.@@domain.IRepositories.csproj" />
     <ProjectReference Include="..\IServices\@@application.@@domain.IServices.csproj" />

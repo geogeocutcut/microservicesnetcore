@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Core.Common.Repository;
+using Core.Repository;
 
 namespace @@application.@@domainDomain.IRepositories
 {

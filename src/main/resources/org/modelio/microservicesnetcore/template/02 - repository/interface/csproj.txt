@@ -7,7 +7,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Common\Core.Common.csproj" />
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
     <ProjectReference Include="..\Model\@@application.@@domain.Model.csproj" />
   </ItemGroup>
 

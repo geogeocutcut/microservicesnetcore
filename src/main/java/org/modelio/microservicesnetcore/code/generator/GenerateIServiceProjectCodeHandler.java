@@ -15,9 +15,11 @@ import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 public class GenerateIServiceProjectCodeHandler extends HandlerAdapter {
 	private String _path;
 	private IServiceProjectTemplate _template;
+	List<String> _services;
 	
-	public GenerateIServiceProjectCodeHandler(String applicationName,Package domain,String path)
+	public GenerateIServiceProjectCodeHandler(String applicationName,Package domain,String path,List<String> services)
 	{
+		_services=services;
 		_path=path+"\\IServices";
 		_template=new IServiceProjectTemplate(applicationName, domain);
 		// créer le répertoire project si il n'existe pas
@@ -50,8 +52,8 @@ public class GenerateIServiceProjectCodeHandler extends HandlerAdapter {
 	@Override
 	protected void beginVisitingClassifier(Classifier visited) 
 	{
+		_services.add(visited.getName());
 		String name="I"+visited.getName()+".cs";
-		
 		Classifier pimEnt = (Classifier)PimPsmMapper.GetPimFromPsmService(visited);
 		if(pimEnt!=null)
 		{

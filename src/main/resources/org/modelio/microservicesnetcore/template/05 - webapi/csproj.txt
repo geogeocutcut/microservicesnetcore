@@ -1,12 +1,24 @@
-
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\model\@@applicationName.@@domain.model.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Common\Core.Common.csproj" />
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
+    <ProjectReference Include="..\..\Core\Webapi\Core.Webapi.csproj" />
+    <ProjectReference Include="..\Model\@@application.@@domain.Model.csproj" />
+    <ProjectReference Include="..\IRepositories\@@application.@@domain.IRepositories.csproj" />
+    <ProjectReference Include="..\Repositories\@@application.@@domain.Repositories.csproj" />
+    <ProjectReference Include="..\IServices\@@application.@@domain.IServices.csproj" />
+    <ProjectReference Include="..\Services\@@application.@@domain.Services.csproj" />
+  </ItemGroup>
+  
 </Project>

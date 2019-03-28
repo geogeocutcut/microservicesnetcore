@@ -46,17 +46,9 @@
                 <Scope metaclass="Package" stereotype="PIMMicroservice"/>
                 <Handler class="org.modelio.microservicesnetcore.command.GenerateMicroservicePsmCommand"/>
             </Command>
-            <Command id="GenerateModelProjetCodeCommand" label="%command.GenerateModelProjetCode.label" tooltip="%command.GenerateModelProjetCode.tooltip" image="res/icons/HelloWorldCommand_16.png" group="" modify-model="false" group-image="">
+            <Command id="GenerateProjetsCodeCommand" label="%command.GenerateProjetsCode.label" tooltip="%command.GenerateProjetsCode.tooltip" image="res/icons/HelloWorldCommand_16.png" group="" modify-model="false" group-image="">
                 <Scope metaclass="Package" stereotype="PSMMicroservice"/>
-                <Handler class="org.modelio.microservicesnetcore.command.GenerateModelProjetCodeCommand"/>
-            </Command>
-            <Command id="GenerateRepoProjetCodeCommand" label="%command.GenerateRepoProjetCode.label" tooltip="%command.GenerateRepoProjetCode.tooltip" image="res/icons/HelloWorldCommand_16.png" group="" modify-model="false" group-image="">
-                <Scope metaclass="Package" stereotype="PSMMicroservice"/>
-                <Handler class="org.modelio.microservicesnetcore.command.GenerateRepoProjetCodeCommand"/>
-            </Command>
-            <Command id="GenerateServiceProjetCodeCommand" label="%command.GenerateServiceProjetCode.label" tooltip="%command.GenerateServiceProjetCode.tooltip" image="res/icons/HelloWorldCommand_16.png" group="" modify-model="false" group-image="">
-                <Scope metaclass="Package" stereotype="PSMMicroservice"/>
-                <Handler class="org.modelio.microservicesnetcore.command.GenerateServiceProjetCodeCommand"/>
+                <Handler class="org.modelio.microservicesnetcore.command.GenerateProjetsCodeCommand"/>
             </Command>
         </Commands>
         <Tools>
@@ -71,9 +63,7 @@
         </Tools>
         <ContextualMenu>
             <CommandRef refid="GenerateMicroservicePsmCommand"/>
-            <CommandRef refid="GenerateModelProjetCodeCommand"/>
-            <CommandRef refid="GenerateRepoProjetCodeCommand"/>
-            <CommandRef refid="GenerateServiceProjetCodeCommand"/>
+            <CommandRef refid="GenerateProjetsCodeCommand"/>
         </ContextualMenu>
         <Diagrams/>
         <Views/>

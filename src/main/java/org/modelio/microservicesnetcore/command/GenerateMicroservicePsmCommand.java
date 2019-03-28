@@ -59,14 +59,8 @@ public class GenerateMicroservicePsmCommand extends DefaultModuleCommandHandler 
 		        GeneratePsmModelOrchestrator orchestModel = new GeneratePsmModelOrchestrator(module);
 		        orchestModel.Execute(e);
 		        
-		        //GeneratePsmIRepositoryOrchestrator orchestIRepo = new GeneratePsmIRepositoryOrchestrator(module);
-		        //orchestIRepo.Execute(e);
-		        
 		        GeneratePsmRepositoryOrchestrator orchestRepo = new GeneratePsmRepositoryOrchestrator(module);
 		        orchestRepo.Execute(e);
-		        
-		        //GeneratePsmIServiceOrchestrator orchestIServ = new GeneratePsmIServiceOrchestrator(module);
-		        //orchestIServ.Execute(e);
 		        
 		        GeneratePsmServiceOrchestrator orchestServ = new GeneratePsmServiceOrchestrator(module);
 		        orchestServ.Execute(e);
