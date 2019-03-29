@@ -9,7 +9,7 @@ namespace @@application.@@domainDomain.Model
     	
         public Guid Id { 
             get{
-                if(_id==null)
+                if(_id==null || _id == Guid.Empty)
                 {
                     _id=Guid.NewGuid();
                 }

@@ -51,11 +51,11 @@ public class PsmControllerBuilder {
 		Stereotype psmStereo = ModuleStereotype.GetStereotype(session, Package.class, ModuleStereotype.STEREO_PSM_CONTROLLER);
 		psmElt = model.createClass(ModuleConstants.getControllerName(visited.getName()), psmOwner,psmStereo);
 		
-		createGetAllOperation(session, psmElt);
-		createGetByIdOperation(session, psmElt);
-		createAddOperation(session, psmElt);
-		createUpdateOperation(session, psmElt);
-		createDeleteOperation(session, psmElt);
+//		createGetAllOperation(session, psmElt);
+//		createGetByIdOperation(session, psmElt);
+//		createAddOperation(session, psmElt);
+//		createUpdateOperation(session, psmElt);
+//		createDeleteOperation(session, psmElt);
 		
 		// Stereotype PimDependency
 		CreatePimDependency(session ,visited,psmElt);

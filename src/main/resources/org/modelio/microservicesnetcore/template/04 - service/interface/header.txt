@@ -12,7 +12,7 @@ namespace @@application.@@domainDomain.IServices
     {
         Task<@@entity> GetByIdAsync(Guid Id);
         Task<@@entity> UpsertAsync(@@entity entity);
-        Task DeleteAsync(@@entity entity);
+        Task DeleteAsync(Guid Id);
         Task<IList<@@entity>> GetAllAsync();
         
     

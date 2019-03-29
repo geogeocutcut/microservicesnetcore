@@ -19,10 +19,10 @@ namespace @@application.@@domainDomain.Services
     		_uow=uow;
     	}
     	
-    	public async Task DeleteAsync(@@entity entity)
+    	public async Task DeleteAsync(Guid id)
         {
             var repository = await _uow.GetRepository<I@@entityRepository>();
-            await repository.DeleteAsync(entity);
+            await repository.DeleteAsync(id);
         }
 
         public async Task<IList<@@entity>> GetAllAsync()

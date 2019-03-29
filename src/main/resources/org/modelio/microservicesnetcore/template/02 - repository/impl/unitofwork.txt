@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Core.Common.Factory;
+using Core.Common;
 using Core.Repository;
 using @@application.@@domainDomain.IRepositories;
 
@@ -19,7 +19,7 @@ namespace @@application.@@domainDomain.Repositories
         }
         public async Task<TRepository> GetRepository<TRepository>() where TRepository : IRepository
         {
-            return _factory.Resolve<TRepository>(_store);
+            return _factory.Resolve<TRepository>();
         }
     }
 }

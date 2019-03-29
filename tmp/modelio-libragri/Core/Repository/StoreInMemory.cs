@@ -19,7 +19,7 @@ namespace Core.Repository
                 {
                     return null;
                 }
-                return ((ICollection<TEntity>)dataEntity.Values).ToList();
+                return dataEntity.Values.Cast<TEntity>().ToList();
             });
         }
 
@@ -44,11 +44,11 @@ namespace Core.Repository
             });
         }
 
-        public async Task RemoveAsync<TEntity>(TEntity entity) where TEntity:Entity<TId>
+        public async Task RemoveAsync<TEntity>(TId id) where TEntity:Entity<TId>
         {
             await Task.Run(()=>{
                 data.TryGetValue(typeof(TEntity),out var dataEntity);
-                dataEntity?.Remove(entity.GetId());
+                dataEntity?.Remove(id);
             });
         }
 

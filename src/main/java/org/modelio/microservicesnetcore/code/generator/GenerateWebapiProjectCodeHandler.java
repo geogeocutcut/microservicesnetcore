@@ -37,8 +37,12 @@ public class GenerateWebapiProjectCodeHandler extends HandlerAdapter {
 		_pathToProperties=_path+"\\Properties";
 		_pathFromappsettings="org/modelio/microservicesnetcore/template/05 - webapi/config";
 		_template=new WebapiProjectTemplate(applicationName, domain);
+		
 		// créer le répertoire project si il n'existe pas
 		File fileDir = new File(_path);
+		fileDir.mkdirs();
+		
+		fileDir = new File(_path+"\\Controllers");
 		fileDir.mkdirs();
 		
 		fileDir = new File(_pathToProperties);
@@ -158,7 +162,7 @@ public class GenerateWebapiProjectCodeHandler extends HandlerAdapter {
 	protected void beginVisitingClassifier(Classifier visited) 
 	{
 		String name=visited.getName()+".cs";
-		Classifier pimEnt = (Classifier)PimPsmMapper.GetPimFromPsmService(visited);
+		Classifier pimEnt = (Classifier)PimPsmMapper.GetPimFromPsmControllerApi(visited);
 		if(pimEnt!=null)
 		{
 			Classifier entity = (Classifier)PimPsmMapper.GetPsmModelFromPim(pimEnt);
@@ -166,17 +170,19 @@ public class GenerateWebapiProjectCodeHandler extends HandlerAdapter {
 			{
 				StringBuffer content = new StringBuffer("");
 				content.append(_template.getHeader(visited,entity));
-		
-				for(Operation ope : visited.getOwnedOperation())
-				{
-					content.append(_template.getOperation(ope));
-				}
+
+// 		Non géré
+//				for(Operation ope : visited.getOwnedOperation())
+//				{
+//					content.append(_template.getOperation(ope));
+//				}
+				
 				content.append(_template.getEnd());
 				
 				if(content.length()>0)
 				{
 					try {
-						File csFile =new File(_path+"\\"+name);
+						File csFile =new File(_path+"\\Controllers\\"+name);
 						csFile.createNewFile();
 						FileWriter writer = new FileWriter(csFile);
 						try 
