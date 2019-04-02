@@ -1,0 +1,27 @@
+using System;
+using System.Threading.Tasks;
+using Core.Common;
+using Core.Repository;
+using @@application.@@domainDomain.IRepositories;
+using NHibernate;
+
+namespace @@application.@@domainDomain.RepositoriesNH
+{
+   public class UnitOfWorkNH : IUnitOfWork
+    {
+        private ISession _session;
+        private IFactory _factory;
+        public UnitOfWorkNH(ISession session,IFactory factory)
+        {
+            _session =session;
+            _factory=factory;
+            
+@@IoCRegister
+
+        }
+        public async Task<TRepository> GetRepository<TRepository>() where TRepository : IRepository
+        {
+            return _factory.Resolve<TRepository>();
+        }
+    }
+}

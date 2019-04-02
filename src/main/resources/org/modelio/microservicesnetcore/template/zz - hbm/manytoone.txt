@@ -1,1 +1,0 @@
-		<many-to-one name="@@name" cascade="none" column="@@NAME_ID" class="@@targetJavaModelPack.@@targetJEntity"/>

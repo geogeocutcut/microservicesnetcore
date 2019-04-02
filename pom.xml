@@ -6,7 +6,7 @@
 	<!-- definition -->
 	<groupId>org.modelio</groupId>
 	<artifactId>microservicesnetcore</artifactId>
-	<version>0.0.46</version>
+	<version>0.0.49</version>
 
 	<name>MicroserviceDotnetCore</name>
 
@@ -150,7 +150,7 @@
 							<target>
 								<move
 									file="${project.basedir}/target/${project.name}_${project.version}.zip"
-									tofile="C:\Program Files\Modelio 3.7\modules\${project.name}_${project.version}.jmdac" />
+									tofile="C:\Users\glefevre\modelio\Modelio Open Source 3.7\modules\${project.name}_${project.version}.jmdac" />
 							</target>
 						</configuration>
 						<goals>

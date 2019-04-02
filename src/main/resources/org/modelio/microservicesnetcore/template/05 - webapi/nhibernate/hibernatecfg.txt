@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-configuration xmlns='urn:nhibernate-configuration-2.2'>
+  <session-factory>
+    <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
+    <property name="connection.connection_string">
+        Server=AMADABLAM\SQL2014EXPRESS;initial catalog=@@domainDomain;Integrated Security=True
+    </property>
+    <property name="hbm2ddl.auto">update</property>
+@@mappingfiles
+  </session-factory>
+</hibernate-configuration>

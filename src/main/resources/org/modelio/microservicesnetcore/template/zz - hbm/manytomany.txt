@@ -1,5 +1,0 @@
-		<!-- many to many -->
-		<bag name="@@name" lazy="true">
-			<key column="@@NAME_@@JENTITY_ID" />
-			<many-to-many class="@@targetJavaModelPack.@@targetJEntity" />
-		</bag>

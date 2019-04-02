@@ -11,7 +11,8 @@ namespace @@application.@@domainDomain.IServices
     public interface @@name
     {
         Task<@@entity> GetByIdAsync(Guid Id);
-        Task<@@entity> UpsertAsync(@@entity entity);
+        Task<@@entity> AddAsync(@@entity entity);
+        Task<@@entity> UpdateAsync(@@entity entity);
         Task DeleteAsync(Guid Id);
         Task<IList<@@entity>> GetAllAsync();
         

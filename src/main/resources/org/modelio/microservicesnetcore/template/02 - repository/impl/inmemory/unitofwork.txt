@@ -1,0 +1,25 @@
+using System;
+using System.Threading.Tasks;
+using Core.Common;
+using Core.Repository;
+using @@application.@@domainDomain.IRepositories;
+
+namespace @@application.@@domainDomain.RepositoriesInMemory
+{
+    public class UnitOfWorkInMemory : IUnitOfWork
+    {
+        private IStore<Guid> _store;
+        private IFactory _factory;
+        public UnitOfWorkInMemory(IStore<Guid> store,IFactory factory)
+        {
+            _store =store;
+            _factory=factory;
+            
+@@IoCRegister
+        }
+        public async Task<TRepository> GetRepository<TRepository>() where TRepository : IRepository
+        {
+            return _factory.Resolve<TRepository>();
+        }
+    }
+}

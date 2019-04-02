@@ -1,0 +1,1 @@
+		@@visibility IList<@@type> @@name { get; set; }

@@ -1,0 +1,4 @@
+        	var store = new StoreInMemory<Guid>();
+        	services.AddSingleton<IStore<Guid>>(store);
+        	services.AddSingleton<IFactory>(new Factory(services));
+        	services.AddScoped<IUnitOfWork, UnitOfWorkInMemory>();

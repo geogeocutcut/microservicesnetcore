@@ -40,7 +40,7 @@ namespace @@application.@@domainDomain.Webapi.Controllers
         [HttpPost]
         public ActionResult<@@entity> Post([FromBody] @@entity entity)
         {
-                var result = _service.UpsertAsync(entity).Result;
+                var result = _service.AddAsync(entity).Result;
                 return Ok(result);
         }
 
@@ -48,7 +48,7 @@ namespace @@application.@@domainDomain.Webapi.Controllers
         [HttpPut("{id}")]
         public ActionResult<@@entity> Put([FromBody] @@entity entity)
         {
-                var result = _service.UpsertAsync(entity).Result;
+                var result = _service.UpdateAsync(entity).Result;
                 return Ok(result);
         }
 

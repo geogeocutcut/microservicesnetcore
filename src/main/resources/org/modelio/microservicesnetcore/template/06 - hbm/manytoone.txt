@@ -1,0 +1,1 @@
+		<many-to-one name="@@name" cascade="none" column="@@name_Id" class="@@application.@@domainDomain.Model.@@targetentity,@@application.@@domainDomain.Model"/>

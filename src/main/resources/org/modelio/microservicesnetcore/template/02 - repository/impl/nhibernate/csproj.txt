@@ -1,0 +1,22 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+  <ProjectReference Include="..\..\Core\Common\Core.Common.csproj" />
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
+    <ProjectReference Include="..\Model\@@application..@@domainDomain.Model.csproj" />
+    <ProjectReference Include="..\IRepositories\@@application.@@domainDomain.IRepositories.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+@@embeddedresource
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NHibernate" Version="5.2.5"/>
+    <PackageReference Include="NHibernate.Linq" Version="1.0.0"/>
+  </ItemGroup>
+
+</Project>

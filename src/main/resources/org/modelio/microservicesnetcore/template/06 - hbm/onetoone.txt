@@ -1,0 +1,2 @@
+		<!-- one to one -->
+		<many-to-one name="@@name" cascade="all-delete-orphan" column="@@name_Id" class="@@application.@@domainDomain.Model.@@targetentity,@@application.@@domainDomain.Model"/>

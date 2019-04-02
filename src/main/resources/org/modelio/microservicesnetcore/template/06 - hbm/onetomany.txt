@@ -1,0 +1,4 @@
+		<bag name="@@name" cascade="all-delete-orphan" lazy="true">
+			<key column="@@entity_@@name_Id" />
+			<one-to-many class="@@application.@@domainDomain.Model.@@targetentity,@@application.@@domainDomain.Model" />
+		</bag>

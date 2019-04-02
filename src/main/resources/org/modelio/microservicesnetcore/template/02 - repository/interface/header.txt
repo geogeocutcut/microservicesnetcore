@@ -12,7 +12,8 @@ namespace @@application.@@domainDomain.IRepositories
     public interface @@name:IRepository
     {
         Task<@@entity> GetByIdAsync(Guid Id);
-        Task<@@entity> UpsertAsync(@@entity entity);
+        Task<@@entity> InsertAsync(@@entity entity);
+        Task<@@entity> UpdateAsync(@@entity entity);
         Task DeleteAsync(Guid id);
         Task<IList<@@entity>> GetAllAsync();
         

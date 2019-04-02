@@ -37,8 +37,14 @@ namespace @@application.@@domainDomain.Services
             return await repository.GetByIdAsync(id);
         }
         
-        public async Task<@@entity> UpsertAsync(@@entity entity)
+        public async Task<@@entity> AddAsync(@@entity entity)
         {
         	var repository = await _uow.GetRepository<I@@entityRepository>();
-            return await repository.UpsertAsync(entity);
+            return await repository.InsertAsync(entity);
+        }
+        
+        public async Task<@@entity> UpdateAsync(@@entity entity)
+        {
+        	var repository = await _uow.GetRepository<I@@entityRepository>();
+            return await repository.UpdateAsync(entity);
         }

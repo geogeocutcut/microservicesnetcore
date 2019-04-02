@@ -1,0 +1,1 @@
+    <mapping resource="@@application.@@domainDomain.RepositoriesNH.Config.@@mappingfile" assembly="@@application.@@domainDomain.RepositoriesNH" />
