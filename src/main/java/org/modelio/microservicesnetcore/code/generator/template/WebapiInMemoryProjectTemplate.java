@@ -28,7 +28,7 @@ public class WebapiInMemoryProjectTemplate {
 	private String _iocregister = "org/modelio/microservicesnetcore/template/05 - webapi/iocregister.txt";
 	private String _dalregister = "org/modelio/microservicesnetcore/template/05 - webapi/inmemory/dalregister.txt";
 	private String _startup = "org/modelio/microservicesnetcore/template/05 - webapi/inmemory/Startup.txt";
-	private String _program = "org/modelio/microservicesnetcore/template/05 - webapi/Program.txt";
+	private String _program = "org/modelio/microservicesnetcore/template/05 - webapi/program.txt";
 	
 	
 	private String _applicationName;

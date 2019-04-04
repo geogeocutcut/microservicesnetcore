@@ -53,8 +53,6 @@ public class GenerateWebapiInMemoryProjectCodeHandler extends HandlerAdapter {
 		// create appsettings.json
 		CreateAppSettingsFile();
 		
-		// create Properties\\launchSettings.json
-		CreatePropertiesFolder();
 	}
 
 	private void CreateStartupFile(String applicationName, Package domain,List<String> services) {
@@ -110,17 +108,6 @@ public class GenerateWebapiInMemoryProjectCodeHandler extends HandlerAdapter {
 		    Files.copy(is, Paths.get(_path+"\\appsettings.json"),StandardCopyOption.REPLACE_EXISTING);
 		    is = getClass().getClassLoader().getResourceAsStream(_pathFromappsettings+"/appsettings.Development.json");
 		    Files.copy(is, Paths.get(_path+"\\appsettings.Development.json"),StandardCopyOption.REPLACE_EXISTING);
-		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	private void CreatePropertiesFolder() {
-		try{
-			InputStream is = getClass().getClassLoader().getResourceAsStream(_pathFromProperties+"/launchSettings.json");
-		    Files.copy(is, Paths.get(_pathToProperties+"\\launchSettings.json"),StandardCopyOption.REPLACE_EXISTING);
 		}
 		catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -30,7 +30,7 @@ public class WebapiNHProjectTemplate {
 	private String _hibernatecfg = "org/modelio/microservicesnetcore/template/05 - webapi/nhibernate/hibernatecfg.txt";
 	private String _mappingfile = "org/modelio/microservicesnetcore/template/05 - webapi/nhibernate/mappingfile.txt";
 	private String _startup = "org/modelio/microservicesnetcore/template/05 - webapi/nhibernate/Startup.txt";
-	private String _program = "org/modelio/microservicesnetcore/template/05 - webapi/Program.txt";
+	private String _program = "org/modelio/microservicesnetcore/template/05 - webapi/program.txt";
 	private String _NhProxyJsonConverter= "org/modelio/microservicesnetcore/template/05 - webapi/nhibernate/NhProxyJsonConverter.txt";
 	
 	private String _applicationName;

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App"/>
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All"/>
+    <PackageReference Include="Unity" Version="5.10.2"/>
+    <PackageReference Include="Unity.Microsoft.DependencyInjection" Version="5.10.1"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Common\Core.Common.csproj"/>
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj"/>
+    <ProjectReference Include="..\..\Core\Webapi\Core.Webapi.csproj"/>
+    <ProjectReference Include="..\Model\Libragri.partyDomain.Model.csproj"/>
+    <ProjectReference Include="..\IRepositories\Libragri.partyDomain.IRepositories.csproj"/>
+    <ProjectReference Include="..\RepositoriesInMemory\Libragri.partyDomain.RepositoriesInMemory.csproj"/>
+    <ProjectReference Include="..\IServices\Libragri.partyDomain.IServices.csproj"/>
+    <ProjectReference Include="..\Services\Libragri.partyDomain.Services.csproj"/>
+  </ItemGroup>
+</Project>

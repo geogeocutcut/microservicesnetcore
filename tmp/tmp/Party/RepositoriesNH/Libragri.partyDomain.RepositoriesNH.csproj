@@ -1,0 +1,28 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+  <ProjectReference Include="..\..\Core\Common\Core.Common.csproj" />
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
+    <ProjectReference Include="..\Model\Libragri..partyDomain.Model.csproj" />
+    <ProjectReference Include="..\IRepositories\Libragri.partyDomain.IRepositories.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Config\Party.hbm.xml" />
+    <EmbeddedResource Include="Config\User.hbm.xml" />
+    <EmbeddedResource Include="Config\PartyRole.hbm.xml" />
+    <EmbeddedResource Include="Config\Relationship.hbm.xml" />
+    <EmbeddedResource Include="Config\Role.hbm.xml" />
+    <EmbeddedResource Include="Config\RoleEnum.hbm.xml" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NHibernate" Version="5.2.5"/>
+    <PackageReference Include="NHibernate.Linq" Version="1.0.0"/>
+  </ItemGroup>
+
+</Project>

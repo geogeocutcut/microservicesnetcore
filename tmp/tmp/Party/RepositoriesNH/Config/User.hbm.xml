@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true">
+	<class name="Libragri.partyDomain.Model.User,Libragri.partyDomain.Model" table="User" >
+		<id name="Id" column="Id" type="Guid" unsaved-value="00000000-0000-0000-0000-000000000000">
+			<generator class="guid.comb" />
+		</id>
+		<property name="Login" type="string" column="LOGIN"/>
+		<property name="PasswordSha1" type="string" column="PASSWORDSHA1"/>
+		<property name="IsActive" type="boolean" column="ISACTIVE"/>
+		<many-to-one name="party" cascade="none" column="party_Id" class="Libragri.partyDomain.Model.Party,Libragri.partyDomain.Model"/>
+	</class>
+</hibernate-mapping>

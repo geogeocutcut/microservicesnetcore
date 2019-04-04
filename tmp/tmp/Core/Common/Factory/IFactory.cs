@@ -1,8 +1,8 @@
-namespace Core.Common.Factory
+namespace Core.Common
 {
     public interface IFactory
     {
-        TIObject Resolve<TIObject>(params object[] obj);
+        TIObject Resolve<TIObject>();
 
         void Register<TIObject,TObject>();
         void Register<TIObject>(TIObject obj);

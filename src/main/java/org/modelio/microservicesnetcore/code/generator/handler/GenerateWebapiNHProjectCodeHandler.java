@@ -21,7 +21,6 @@ public class GenerateWebapiNHProjectCodeHandler extends HandlerAdapter {
 	private String _pathFromProperties;
 	private String _pathToProperties;
 	private String _pathFromappsettings;
-	private String _pathFromNhibernate;
 	private String _pathToInfrastructure;
 	private WebapiNHProjectTemplate _template;
 	
@@ -31,7 +30,6 @@ public class GenerateWebapiNHProjectCodeHandler extends HandlerAdapter {
 		_pathFromProperties="org/modelio/microservicesnetcore/template/05 - webapi/Properties";
 		_pathToProperties=_path+"\\Properties";
 		_pathFromappsettings="org/modelio/microservicesnetcore/template/05 - webapi/config";
-		_pathFromNhibernate="org/modelio/microservicesnetcore/template/05 - webapi/nhibernate";
 		_pathToInfrastructure=_path+"\\Infrastructure";
 		_template=new WebapiNHProjectTemplate(applicationName, domain,mappingfiles);
 		

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true">
+	<class name="Libragri.partyDomain.Model.Role,Libragri.partyDomain.Model" table="Role" >
+		<id name="Id" column="Id" type="Guid" unsaved-value="00000000-0000-0000-0000-000000000000">
+			<generator class="guid.comb" />
+		</id>
+		<property name="Code" type="string" column="CODE"/>
+		<property name="Label" type="string" column="LABEL"/>
+		<many-to-one name="role_enum" cascade="none" column="role_enum_Id" class="Libragri.partyDomain.Model.RoleEnum,Libragri.partyDomain.Model"/>
+	</class>
+</hibernate-mapping>

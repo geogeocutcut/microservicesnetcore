@@ -191,7 +191,7 @@ public class ModelStandardProjectTemplate implements InterfaceModelProjectTempla
 		Class entity = (Class)end.getTarget();
 		result = result.replaceAll("@@visibility", "public");
 		result = result.replaceAll("@@name", end.getName());
-		result = result.replaceAll("@@type", "IList<"+entity+">");
+		result = result.replaceAll("@@type", entity.getName());
 		
 		return result;
 	}

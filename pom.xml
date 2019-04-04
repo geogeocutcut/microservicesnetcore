@@ -150,7 +150,7 @@
 							<target>
 								<move
 									file="${project.basedir}/target/${project.name}_${project.version}.zip"
-									tofile="C:\Users\glefevre\modelio\Modelio Open Source 3.7\modules\${project.name}_${project.version}.jmdac" />
+									tofile="C:\Users\geffb\modelio\Modelio Open Source 3.8\modules\${project.name}_${project.version}.jmdac" />
 							</target>
 						</configuration>
 						<goals>
