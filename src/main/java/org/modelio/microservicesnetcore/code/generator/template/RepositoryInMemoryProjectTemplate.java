@@ -96,7 +96,7 @@ public class RepositoryInMemoryProjectTemplate implements InterfaceRepoProjectTe
 		
 		String opeHeader=visited.getReturn()!=null?_asyncopeheaderwithreturn:_asyncopeheadervoid;
 		String returnType=visited.getReturn()!=null?ModuleHelper.getNetTypeFromUmlType(visited.getReturn().getType()):"";
-		if(!returnType.isEmpty() && visited.getReturn().getMultiplicityMax()=="*")
+		if(!returnType.isEmpty() && visited.getReturn().getMultiplicityMax().equals("*"))
 		{
 			returnType="IList<"+returnType+">";
 		}
@@ -104,7 +104,7 @@ public class RepositoryInMemoryProjectTemplate implements InterfaceRepoProjectTe
 			InputStream stream = getClass().getClassLoader().getResourceAsStream(opeHeader);
 			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
 			while (reader.ready()) {
-				tmpl.append(reader.readLine()).append("\n");
+				tmpl.append(reader.readLine());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

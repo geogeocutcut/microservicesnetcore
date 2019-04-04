@@ -80,7 +80,7 @@ public class IRepositoryProjectTemplate {
 		
 		String opeHeader=visited.getReturn()!=null?_asyncopeheaderwithreturn:_asyncopeheadervoid;
 		String returnType=visited.getReturn()!=null?ModuleHelper.getNetTypeFromUmlType(visited.getReturn().getType()):"";
-		if(!returnType.isEmpty() && visited.getReturn().getMultiplicityMax()=="*")
+		if(!returnType.isEmpty() && visited.getReturn().getMultiplicityMax().equals("*"))
 		{
 			returnType="IList<"+returnType+">";
 		}

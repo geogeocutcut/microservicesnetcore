@@ -10,7 +10,6 @@ import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.PimPsmMapper;
 import org.modelio.microservicesnetcore.helper.PimStereotypeValidator;
 import org.modelio.microservicesnetcore.helper.PsmBuilder;
-import org.modelio.microservicesnetcore.helper.PsmServiceBuilder;
 import org.modelio.microservicesnetcore.helper.PsmStereotypeValidator;
 import org.modelio.microservicesnetcore.helper.PsmControllerBuilder;
 import org.modelio.modeliotools.treevisitor.HandlerAdapter;

@@ -1,9 +1,7 @@
 package org.modelio.microservicesnetcore.psm.generator.orchestrator;
 
 import org.modelio.api.modelio.model.IModelingSession;
-import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.IModule;
-import org.modelio.api.module.context.log.ILogService;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.modeliotools.treevisitor.OwnedVisitor;
@@ -19,11 +17,9 @@ public class GeneratePsmServiceOrchestrator {
 	private ModelElement _umlPsmPackage = null;
 	private IModule _module;
 	private IModelingSession _session;
-	private ILogService _logService;
 	
 	public GeneratePsmServiceOrchestrator(IModule module)
 	{
-		_logService = module.getModuleContext().getLogService();
 
 		this._module = module;
 		this._session  =module.getModuleContext().getModelingSession();

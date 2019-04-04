@@ -21,6 +21,8 @@ public class GenerateWebapiNHProjectCodeHandler extends HandlerAdapter {
 	private String _pathFromProperties;
 	private String _pathToProperties;
 	private String _pathFromappsettings;
+	private String _pathFromNhibernate;
+	private String _pathToInfrastructure;
 	private WebapiNHProjectTemplate _template;
 	
 	public GenerateWebapiNHProjectCodeHandler(String applicationName,Package domain,String path,List<String> services,List<String> mappingfiles)
@@ -29,6 +31,8 @@ public class GenerateWebapiNHProjectCodeHandler extends HandlerAdapter {
 		_pathFromProperties="org/modelio/microservicesnetcore/template/05 - webapi/Properties";
 		_pathToProperties=_path+"\\Properties";
 		_pathFromappsettings="org/modelio/microservicesnetcore/template/05 - webapi/config";
+		_pathFromNhibernate="org/modelio/microservicesnetcore/template/05 - webapi/nhibernate";
+		_pathToInfrastructure=_path+"\\Infrastructure";
 		_template=new WebapiNHProjectTemplate(applicationName, domain,mappingfiles);
 		
 		// créer le répertoire project si il n'existe pas
@@ -54,10 +58,36 @@ public class GenerateWebapiNHProjectCodeHandler extends HandlerAdapter {
 		CreateAppSettingsFile();
 		
 		// create appsettings.json
+		CreateInfrastructureFile();
+				
+		// create appsettings.json
 		CreateNHibernateCfg();
 		
 		// create Properties\\launchSettings.json
 		CreatePropertiesFolder();
+	}
+
+	private void CreateInfrastructureFile() {
+		// TODO Auto-generated method stub
+		String name="NhProxyJsonConverter.cs";
+		StringBuffer content = new StringBuffer("");
+		content.append(_template.getNhProxyJsonConverter());
+		if(content.length()>0)
+		{
+			try {
+				File file =new File(_pathToInfrastructure+"\\"+name);
+				file.createNewFile();
+				FileWriter writer = new FileWriter(file);
+				try {
+	                writer.write(content.toString());
+	            } finally {
+	                // quoiqu'il arrive, on ferme le fichier
+	                writer.close();
+	            }
+	        } catch (Exception e) {
+	            System.out.println("Impossible de creer le fichier : "+_path+"/"+name);
+	        }
+		}
 	}
 
 	private void CreateNHibernateCfg() {

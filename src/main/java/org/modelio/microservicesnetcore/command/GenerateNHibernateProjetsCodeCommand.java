@@ -8,7 +8,6 @@ import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.api.module.context.log.ILogService;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.PsmStereotypeValidator;
-import org.modelio.microservicesnetcore.psm.generator.orchestrator.GenerateInMemoryProjectsCodeOrchestrator;
 import org.modelio.microservicesnetcore.psm.generator.orchestrator.GenerateNHibernateProjectsCodeOrchestrator;
 import org.modelio.vcore.smkernel.mapi.MObject;
 

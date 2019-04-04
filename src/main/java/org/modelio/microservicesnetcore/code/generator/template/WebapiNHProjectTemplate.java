@@ -31,7 +31,7 @@ public class WebapiNHProjectTemplate {
 	private String _mappingfile = "org/modelio/microservicesnetcore/template/05 - webapi/nhibernate/mappingfile.txt";
 	private String _startup = "org/modelio/microservicesnetcore/template/05 - webapi/nhibernate/Startup.txt";
 	private String _program = "org/modelio/microservicesnetcore/template/05 - webapi/Program.txt";
-	
+	private String _NhProxyJsonConverter= "org/modelio/microservicesnetcore/template/05 - webapi/nhibernate/NhProxyJsonConverter.txt";
 	
 	private String _applicationName;
 	private Package _domain;
@@ -282,6 +282,24 @@ public class WebapiNHProjectTemplate {
 				.replaceAll("@@domain", _domain.getName())
 				.replaceAll("@@application", _applicationName);
 		
+		return result;
+	}
+
+	public String getNhProxyJsonConverter() {
+		// TODO Auto-generated method stub
+		StringBuilder tmpl = new StringBuilder();
+		try {
+			InputStream stream = getClass().getClassLoader().getResourceAsStream(_NhProxyJsonConverter);
+			BufferedReader  reader = new BufferedReader (new InputStreamReader(stream, Charset.forName("UTF-8")));
+			while (reader.ready()) {
+				tmpl.append(reader.readLine()).append("\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String result = tmpl.toString()
+				.replaceAll("@@domain", _domain.getName())
+				.replaceAll("@@application", _applicationName);
 		return result;
 	}
 	

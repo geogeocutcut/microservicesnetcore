@@ -1,7 +1,6 @@
 package org.modelio.microservicesnetcore.psm.generator.orchestrator;
 
 import org.modelio.api.modelio.model.IModelingSession;
-import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.IModule;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
