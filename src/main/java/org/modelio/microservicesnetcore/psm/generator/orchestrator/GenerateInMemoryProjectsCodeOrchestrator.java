@@ -70,7 +70,7 @@ public class GenerateInMemoryProjectsCodeOrchestrator {
 			
 			// Creation IUoW
 			String iuowPath=path+"\\IRepositories";
-			String name="IUnitOfWork.cs";
+			String name="I"+domain+"UnitOfWork.cs";
 			IRepositoryProjectTemplate _irepotemplate=new IRepositoryProjectTemplate(applicationName, domain);
 			try {
 				File csprojFile =new File(iuowPath+"\\"+name);
@@ -90,7 +90,7 @@ public class GenerateInMemoryProjectsCodeOrchestrator {
 			
 			// Creation UoW
 			String uowPath=path+"\\RepositoriesInMemory";
-			name="UnitOfWorkInMemory.cs";
+			name=domain+"UnitOfWorkInMemory.cs";
 			InterfaceRepoProjectTemplate _repoTemplate=new RepositoryInMemoryProjectTemplate(applicationName, domain);
 			try {
 				File csprojFile =new File(uowPath+"\\"+name);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using Core.Repository;
+using Smag.Core.Repository;
 using @@application.@@domainDomain.Model;
 using @@application.@@domainDomain.IRepositories;
 using NHibernate;
@@ -25,8 +25,8 @@ namespace @@application.@@domainDomain.RepositoriesNH
     	public async Task DeleteAsync(Guid id)
         {
             using (var tx = _nhsession.BeginTransaction()) {
-                var entity = _nhsession.GetAsync<@@entity>(id);
-                _nhsession.Delete(entity);
+                var entity = await _nhsession.GetAsync<@@entity>(id);
+                await _nhsession.DeleteAsync(entity);
                 await tx.CommitAsync();
             } 
         }

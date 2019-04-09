@@ -205,7 +205,8 @@ public class WebapiNHProjectTemplate {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		String dalRegister=tmpl.toString();
+		String dalRegister=tmpl.toString()
+				.replaceAll("@@domain", _domain.getName());
 		
 		tmpl = new StringBuilder();
 		try {

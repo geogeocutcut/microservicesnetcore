@@ -78,7 +78,7 @@ public class GenerateNHibernateProjectsCodeOrchestrator {
 			
 			// Creation IUoW
 			String iuowPath=path+"\\IRepositories";
-			String name="IUnitOfWork.cs";
+			String name="I"+domain.getName()+"UnitOfWork.cs";
 			IRepositoryProjectTemplate _irepotemplate=new IRepositoryProjectTemplate(applicationName, domain);
 			try {
 				File csprojFile =new File(iuowPath+"\\"+name);
@@ -98,7 +98,7 @@ public class GenerateNHibernateProjectsCodeOrchestrator {
 			
 			// Creation UoW
 			String uowPath=path+"\\RepositoriesNH";
-			name="UnitOfWorkNH.cs";
+			name=domain.getName()+"UnitOfWorkNH.cs";
 			RepositoryNHProjectTemplate _repoTemplate=new RepositoryNHProjectTemplate(applicationName, domain);
 			try {
 				File csprojFile =new File(uowPath+"\\"+name);

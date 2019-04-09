@@ -7,7 +7,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
+    <ProjectReference Include="..\..\Smag.Core\Repository\Smag.Core.Repository.csproj" />
     <ProjectReference Include="..\Model\@@application.@@domainDomain.Model.csproj" />
   </ItemGroup>
 

@@ -39,8 +39,11 @@ public class GenerateWebapiNHProjectCodeHandler extends HandlerAdapter {
 		
 		fileDir = new File(_path+"\\Controllers");
 		fileDir.mkdirs();
+
+		fileDir = new File(_path+"\\Controllers");
+		fileDir.mkdirs();
 		
-		fileDir = new File(_pathToProperties);
+		fileDir = new File(_pathToInfrastructure);
 		fileDir.mkdirs();
 		
 		// créer le csproj

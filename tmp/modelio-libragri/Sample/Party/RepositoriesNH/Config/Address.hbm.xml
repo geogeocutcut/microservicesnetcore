@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true">
+	<class name="Smag.PartyDomain.Model.Address,Smag.PartyDomain.Model" table="Address" >
+		<id name="Id" type="guid" column="Id" generator="guid.comb" />
+		<property name="Ligne1" type="string" column="LIGNE1"/>
+		<many-to-one name="country" lazy="false" cascade="none" column="country_Id" class="Smag.PartyDomain.Model.Country,Smag.PartyDomain.Model"/>
+		<!-- many to many -->
+		<set name="purposes" lazy="true" >
+			<key column="purposes_Address_Id" />
+			<many-to-many class="Smag.PartyDomain.Model.Purpose,Smag.PartyDomain.Model"/>
+		</set>
+	</class>
+</hibernate-mapping>

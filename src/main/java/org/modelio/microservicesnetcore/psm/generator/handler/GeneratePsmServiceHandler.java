@@ -5,6 +5,7 @@ import java.util.Stack;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.module.IModule;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
+import org.modelio.metamodel.uml.statik.Class;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.PimPsmMapper;
@@ -58,11 +59,14 @@ public class GeneratePsmServiceHandler extends HandlerAdapter {
 	@Override
 	protected void beginVisitingClassifier(Classifier visited) 
 	{
-		Classifier psmElt = (Classifier)PimPsmMapper.GetPsmServiceFromPim(visited);
-		if (psmElt==null) {
-			psmElt = PsmServiceBuilder.createService( _session,visited, (Package)_ctx.peek());
+		if(visited instanceof Class)
+		{
+			Classifier psmElt = (Classifier)PimPsmMapper.GetPsmServiceFromPim(visited);
+			if (psmElt==null) {
+				psmElt = PsmServiceBuilder.createService( _session,visited, (Package)_ctx.peek());
+			}
+			_ctx.push(psmElt);
 		}
-		_ctx.push(psmElt);
 	}
 	
 	// =============================================

@@ -67,7 +67,6 @@
         </Tools>
         <ContextualMenu>
             <CommandRef refid="GenerateMicroservicePsmCommand"/>
-            <CommandRef refid="GenerateInMemoryProjetsCodeCommand"/>
             <CommandRef refid="GenerateNHibernateProjetsCodeCommand"/>
         </ContextualMenu>
         <Diagrams/>

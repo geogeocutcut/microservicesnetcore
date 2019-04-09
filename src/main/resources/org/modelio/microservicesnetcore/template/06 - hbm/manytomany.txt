@@ -1,5 +1,5 @@
 		<!-- many to many -->
-		<bag name="@@name" lazy="true">
+		<set name="@@name" lazy="true">
 			<key column="@@name_@@entity_Id" />
 			<many-to-many class="@@application.@@domainDomain.Model.@@targetentity,@@application.@@domainDomain.Model" />
-		</bag>
+		</set>

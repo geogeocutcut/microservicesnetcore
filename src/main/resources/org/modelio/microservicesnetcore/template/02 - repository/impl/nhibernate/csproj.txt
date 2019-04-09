@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-  <ProjectReference Include="..\..\Core\Common\Core.Common.csproj" />
-    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
+    <ProjectReference Include="..\..\Smag.Core\Common\Smag.Core.Common.csproj"/>
+    <ProjectReference Include="..\..\Smag.Core\Repository\Smag.Core.Repository.csproj"/>
     <ProjectReference Include="..\Model\@@application..@@domainDomain.Model.csproj" />
     <ProjectReference Include="..\IRepositories\@@application.@@domainDomain.IRepositories.csproj" />
   </ItemGroup>
@@ -17,6 +17,8 @@
   <ItemGroup>
     <PackageReference Include="NHibernate" Version="5.2.5"/>
     <PackageReference Include="NHibernate.Linq" Version="1.0.0"/>
+    <PackageReference Include="Unity" Version="5.10.3"/>
+    <PackageReference Include="Unity.RegistrationByConvention" Version="5.10.0"/>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,14 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Smag.Core\Repository\Smag.Core.Repository.csproj" />
+    <ProjectReference Include="..\Model\Smag.PartyDomain.Model.csproj" />
+  </ItemGroup>
+
+</Project>

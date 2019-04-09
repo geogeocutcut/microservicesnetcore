@@ -1,1 +1,1 @@
-		@@visibility virtual IList<@@type> @@name { get; set; }
+		@@visibility virtual ISet<@@type> @@name { get; set; }

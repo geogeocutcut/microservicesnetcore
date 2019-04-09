@@ -56,5 +56,5 @@ namespace @@application.@@domainDomain.Webapi.Controllers
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {
-                _service.DeleteAsync(id);
+                _service.DeleteAsync(id).Wait();
         }

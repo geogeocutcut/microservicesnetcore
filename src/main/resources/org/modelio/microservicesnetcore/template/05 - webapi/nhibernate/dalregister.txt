@@ -1,18 +1,1 @@
-        	services.AddSingleton<NHibernate.Cfg.Configuration>((provider)=>{ 
-            var cfg = new NHibernate.Cfg.Configuration();
-                cfg.Configure("hibernate.cfg.xml");
-                return cfg;
-            });
-
-            services.AddSingleton<ISessionFactory>((provider)=>{ 
-                var cfg = provider.GetService<NHibernate.Cfg.Configuration>();
-                return cfg.BuildSessionFactory();
-            });
-
-            services.AddScoped<ISession>((provider)=>{
-                var factory = provider.GetService<ISessionFactory>();
-                return factory.OpenSession();
-            });
-            
-        	services.AddSingleton<IFactory>(new Factory(services));
-        	services.AddScoped<IUnitOfWork, UnitOfWorkNH>();
+        	services.AddScoped<I@@domainUnitOfWork, @@domainUnitOfWorkNH>();

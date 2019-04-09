@@ -1,1 +1,1 @@
-            _factory.Register<@@IRepository,@@RepositoryNH>();
+            _container.RegisterType<@@IRepository,@@RepositoryNH>();

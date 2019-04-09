@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using Core.Common.Model;
+using Smag.Core.Common.Model;
 
 namespace @@application.@@domainDomain.Model
 {
-	public class @@entity:Entity<Guid>
+	public class @@entity:BaseEntity<Guid>
 	{
 		
-		public Guid Id { 
+		public override Guid Id { 
 			get{
 				if(_id==null || _id == Guid.Empty)
 				{

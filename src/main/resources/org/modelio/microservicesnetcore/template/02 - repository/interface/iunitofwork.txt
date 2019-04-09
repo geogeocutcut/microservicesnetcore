@@ -1,10 +1,9 @@
 using System.Threading.Tasks;
-using Core.Repository;
+using Smag.Core.Repository;
 
 namespace @@application.@@domainDomain.IRepositories
 {
-    public interface IUnitOfWork
+    public interface I@@domainUnitOfWork:IUnitOfWork
     {
-         Task<TRepository> GetRepository<TRepository>() where TRepository:IRepository;
     }
 }

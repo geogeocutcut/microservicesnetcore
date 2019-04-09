@@ -5,6 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Common\Core.Common.csproj" />
+    <ProjectReference Include="..\..\Smag.Core\Common\Smag.Core.Common.csproj" />
   </ItemGroup>
 </Project>

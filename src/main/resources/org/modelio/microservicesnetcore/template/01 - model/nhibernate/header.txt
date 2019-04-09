@@ -1,22 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Core.Common.Model;
+using Smag.Core.Common.Model;
 
 namespace @@application.@@domainDomain.Model
 {
-	public class @@entity:Entity<Guid>
+	public class @@entity:BaseEntity<Guid>
 	{
 		
-		public virtual Guid Id { 
-			get{
-				return _id;
-			}
-			set{
-				_id = value;
-			}
-		}
-	    
-		public override Guid GetId()
-		{
-			return Id;
-		}
