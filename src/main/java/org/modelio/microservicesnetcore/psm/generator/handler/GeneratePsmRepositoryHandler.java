@@ -5,6 +5,8 @@ import java.util.Stack;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.module.IModule;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
+import org.modelio.metamodel.uml.statik.AggregationKind;
+import org.modelio.metamodel.uml.statik.AssociationEnd;
 import org.modelio.metamodel.uml.statik.Class;
 import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.metamodel.uml.statik.Package;
@@ -19,7 +21,7 @@ import org.modelio.modeliotools.treevisitor.HandlerAdapter;
 public class GeneratePsmRepositoryHandler extends HandlerAdapter {
 	private Stack<Object> _ctx=new Stack<Object>();
 	private IModelingSession _session;
-	
+	private boolean isComposition = false;
 	public GeneratePsmRepositoryHandler(IModule module,Package psmMicroservice)
 	{
 		_session = module.getModuleContext().getModelingSession();
@@ -59,7 +61,15 @@ public class GeneratePsmRepositoryHandler extends HandlerAdapter {
 	@Override
 	protected void beginVisitingClassifier(Classifier visited) 
 	{
-		if(visited instanceof Class)
+		
+		for(AssociationEnd target : visited.getTargetingEnd())
+		{
+			if(target.getAggregation()== AggregationKind.KINDISCOMPOSITION)
+			{
+				isComposition = true;
+			}
+		}
+		if(visited instanceof Class && !isComposition)
 		{
 			Classifier psmElt = (Classifier)PimPsmMapper.GetPsmRepositoryFromPim(visited);
 			if (psmElt==null) {
@@ -75,13 +85,18 @@ public class GeneratePsmRepositoryHandler extends HandlerAdapter {
 	@Override
 	protected void endVisitingPackage(Package visited) 
 	{
+		
 		_ctx.pop();
 	}
 	
 	@Override
 	protected void endVisitingClassifier(Classifier visited) {
 		// TODO Auto-generated method stub
-		_ctx.pop();
+		if(visited instanceof Class && !isComposition)
+		{
+			_ctx.pop();
+		}
+		isComposition=false;
 	}
 	
 }

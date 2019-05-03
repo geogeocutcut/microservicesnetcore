@@ -6,7 +6,9 @@ import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.module.IModule;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.statik.Attribute;
+import org.modelio.metamodel.uml.statik.Class;
 import org.modelio.metamodel.uml.statik.Classifier;
+import org.modelio.metamodel.uml.statik.Enumeration;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.microservicesnetcore.helper.PimPsmMapper;
 import org.modelio.microservicesnetcore.helper.PimStereotypeValidator;
@@ -59,8 +61,17 @@ public class GeneratePsmModelHandler extends HandlerAdapter {
 	protected void beginVisitingClassifier(Classifier visited) 
 	{
 		Classifier psmElt = (Classifier)PimPsmMapper.GetPsmModelFromPim(visited);
-		if (psmElt==null) {
-			psmElt = PsmModelBuilder.createClassModel( _session,visited, (Package)_ctx.peek());
+		if(visited instanceof Enumeration)
+		{
+			if (psmElt==null) {
+				psmElt = PsmModelBuilder.createEnumModel( _session,(Enumeration)visited, (Package)_ctx.peek());
+			}
+		}
+		else
+		{
+			if (psmElt==null) {
+				psmElt = PsmModelBuilder.createClassModel( _session,visited, (Package)_ctx.peek());
+			}
 		}
 		_ctx.push(psmElt);
 	}

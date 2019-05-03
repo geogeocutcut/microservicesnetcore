@@ -4,11 +4,14 @@ import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.IUmlModel;
 import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
+import org.modelio.metamodel.uml.infrastructure.ModelTree;
 import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.Association;
 import org.modelio.metamodel.uml.statik.AssociationEnd;
 import org.modelio.metamodel.uml.statik.Attribute;
 import org.modelio.metamodel.uml.statik.Classifier;
+import org.modelio.metamodel.uml.statik.Enumeration;
+import org.modelio.metamodel.uml.statik.EnumerationLiteral;
 import org.modelio.metamodel.uml.statik.NameSpace;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.metamodel.uml.statik.VisibilityMode;
@@ -55,11 +58,17 @@ public class PsmModelBuilder {
 
 	public static Attribute createAttribute(IModelingSession session,Attribute visited, Classifier owner) {
 		// TODO Auto-generated method stub
-		Attribute psmElt;
+		Attribute psmElt=null;
 		IUmlModel model = session.getModel();
 		
 		//Create Attribute
-		psmElt = model.createAttribute(StringConverter.SnakeCaseToCamelCase(visited.getName()), visited.getType(), owner);
+		try {
+			psmElt = model.createAttribute(StringConverter.SnakeCaseToCamelCase(visited.getName()), visited.getType(), owner);
+		}
+		catch(Exception ex)
+		{
+			int i = 0;
+		}
 
 		//Ajout des modifier
 		psmElt.setVisibility(VisibilityMode.PUBLIC);
@@ -91,6 +100,29 @@ public class PsmModelBuilder {
 
 		// Stereotype PimDependency
 		CreatePimDependency(_session ,visited,psmElt);
+		
+		return psmElt;
+	}
+
+
+
+	public static Classifier createEnumModel(IModelingSession session, Enumeration visited, Package psmOwner) {
+		// TODO Auto-generated method stub
+		Enumeration psmElt;
+		IUmlModel model = session.getModel();
+
+		//Create Class
+		psmElt = model.createEnumeration(StringConverter.SnakeCaseToCamelCase(visited.getName()), psmOwner);
+		for(EnumerationLiteral enumValVisited : visited.getValue()) {
+			if(enumValVisited instanceof EnumerationLiteral)
+			{
+				EnumerationLiteral enumValPsm = model.createEnumerationLiteral(((EnumerationLiteral)enumValVisited).getName(), psmElt);
+				// Stereotype PimDependency
+				CreatePimDependency(session ,enumValVisited,enumValPsm);
+			}
+		}
+		// Stereotype PimDependency
+		CreatePimDependency(session ,visited,psmElt);
 		
 		return psmElt;
 	}
