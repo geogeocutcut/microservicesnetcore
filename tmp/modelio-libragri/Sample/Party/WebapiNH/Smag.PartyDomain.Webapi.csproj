@@ -11,14 +11,14 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\Smag.Core\Common\Smag.Core.Common.csproj" />
-    <ProjectReference Include="..\..\Smag.Core\Repository\Smag.Core.Repository.csproj" />
-    <ProjectReference Include="..\..\Smag.Core\Webapi\Smag.Core.Webapi.csproj" />
-    <ProjectReference Include="..\Model\Smag.PartyDomain.Model.csproj" />
-    <ProjectReference Include="..\IRepositories\Smag.PartyDomain.IRepositories.csproj" />
-    <ProjectReference Include="..\RepositoriesNH\Smag.PartyDomain.RepositoriesNH.csproj" />
-    <ProjectReference Include="..\IServices\Smag.PartyDomain.IServices.csproj" />
-    <ProjectReference Include="..\Services\Smag.PartyDomain.Services.csproj" />
+    <ProjectReference Include="..\..\Core\Common\Core.Common.csproj" />
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
+    <ProjectReference Include="..\..\Core\Webapi\Core.Webapi.csproj" />
+    <ProjectReference Include="..\Model\PartyDomain.Model.csproj" />
+    <ProjectReference Include="..\IRepositories\PartyDomain.IRepositories.csproj" />
+    <ProjectReference Include="..\RepositoriesNH\PartyDomain.RepositoriesNH.csproj" />
+    <ProjectReference Include="..\IServices\PartyDomain.IServices.csproj" />
+    <ProjectReference Include="..\Services\PartyDomain.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Include="hibernate.cfg.xml" CopyToOutputDirectory="Always" />

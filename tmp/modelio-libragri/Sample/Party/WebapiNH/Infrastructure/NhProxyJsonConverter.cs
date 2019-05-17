@@ -2,7 +2,7 @@ using System;
 using Newtonsoft.Json;
 using NHibernate.Proxy;
 
-namespace Smag.PartyDomain.Webapi
+namespace PartyDomain.Webapi
 {
     public class NhProxyJsonConverter : JsonConverter
     {

@@ -7,10 +7,10 @@
     </property>
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Party.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Address.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Country.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Purpose.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
+    <mapping resource="PartyDomain.RepositoriesNH.Config.Party.hbm.xml" assembly="PartyDomain.RepositoriesNH" />
+    <mapping resource="PartyDomain.RepositoriesNH.Config.Address.hbm.xml" assembly="PartyDomain.RepositoriesNH" />
+    <mapping resource="PartyDomain.RepositoriesNH.Config.Country.hbm.xml" assembly="PartyDomain.RepositoriesNH" />
+    <mapping resource="PartyDomain.RepositoriesNH.Config.Purpose.hbm.xml" assembly="PartyDomain.RepositoriesNH" />
 
   </session-factory>
 </hibernate-configuration>

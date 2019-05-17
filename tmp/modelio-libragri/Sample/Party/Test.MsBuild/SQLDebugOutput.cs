@@ -1,6 +1,6 @@
 using NHibernate;
 
-namespace Smag.PartyDomain.Test.Mock
+namespace PartyDomain.Test.Mock
 {
     public class SQLDebugOutput : EmptyInterceptor, IInterceptor
     {

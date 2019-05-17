@@ -4,8 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Smag.Core\Specification\Smag.Core.Specification.csproj" />
-    <ProjectReference Include="..\Model\Smag.PartyDomain.Model.csproj"/>
-    <ProjectReference Include="..\..\Smag.Core\Common\Smag.Core.Common.csproj"/>
+    <ProjectReference Include="..\..\Core\Specification\Core.Specification.csproj" />
+    <ProjectReference Include="..\Model\PartyDomain.Model.csproj"/>
+    <ProjectReference Include="..\..\Core\Common\Core.Common.csproj"/>
   </ItemGroup>
 </Project>

@@ -5,10 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-using Smag.PartyDomain.IServices;
-using Smag.PartyDomain.Model;
+using PartyDomain.IServices;
+using PartyDomain.Model;
 
-namespace Smag.PartyDomain.Webapi.Controllers
+namespace PartyDomain.Webapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

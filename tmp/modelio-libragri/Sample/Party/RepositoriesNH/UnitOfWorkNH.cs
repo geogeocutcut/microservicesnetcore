@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using Smag.Core.Common;
-using Smag.Core.Repository;
-using Smag.PartyDomain.IRepositories;
+using Core.Common;
+using Core.Repository;
+using PartyDomain.IRepositories;
 using NHibernate;
 using Microsoft.Extensions.DependencyInjection;
 using Unity;
@@ -10,7 +10,7 @@ using System.Reflection;
 using Unity.RegistrationByConvention;
 using Unity.Resolution;
 
-namespace Smag.PartyDomain.RepositoriesNH
+namespace PartyDomain.RepositoriesNH
 {
     public class UnitOfWorkNH : IUnitOfWork
     {

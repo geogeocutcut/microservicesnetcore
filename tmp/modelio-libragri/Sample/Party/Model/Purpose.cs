@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Smag.Core.Common.Model;
+using Core.Common.Model;
 
-namespace Smag.PartyDomain.Model
+namespace PartyDomain.Model
 {
 	public class Purpose:BaseEntity<Guid>
 	{

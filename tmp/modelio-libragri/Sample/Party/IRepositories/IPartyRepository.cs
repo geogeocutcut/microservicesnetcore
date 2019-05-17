@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using Smag.PartyDomain.Model;
-using Smag.Core.Repository;
+using PartyDomain.Model;
+using Core.Repository;
 
-namespace Smag.PartyDomain.IRepositories
+namespace PartyDomain.IRepositories
 {
     
     public interface IPartyRepository:IRepository

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Smag.Core.Common;
-using Smag.Core.Repository;
-using Smag.PartyDomain.IRepositories;
-using Smag.PartyDomain.Model;
-using Smag.PartyDomain.Services;
-using Smag.PartyDomain.Test.Mock;
+using Core.Common;
+using Core.Repository;
+using PartyDomain.IRepositories;
+using PartyDomain.Model;
+using PartyDomain.Services;
+using PartyDomain.Test.Mock;
 
 namespace party
 {

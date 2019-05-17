@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using Smag.PartyDomain.Model;
-using Smag.PartyDomain.IRepositories;
-using Smag.PartyDomain.IServices;
-using Smag.Core.Repository;
+using PartyDomain.Model;
+using PartyDomain.IRepositories;
+using PartyDomain.IServices;
+using Core.Repository;
 
-namespace Smag.PartyDomain.Services
+namespace PartyDomain.Services
 {
     
     public class AddressService:IAddressService

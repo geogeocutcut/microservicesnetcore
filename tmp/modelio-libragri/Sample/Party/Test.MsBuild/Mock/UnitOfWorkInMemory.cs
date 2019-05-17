@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using Smag.Core.Common;
-using Smag.Core.Repository;
-using Smag.PartyDomain.IRepositories;
+using Core.Common;
+using Core.Repository;
+using PartyDomain.IRepositories;
 using NHibernate;
 using Microsoft.Extensions.DependencyInjection;
 using Unity;
@@ -15,10 +15,10 @@ using NHibernate.Driver;
 using NHibernate.Mapping;
 using System.Data.SQLite;
 using NHibernate.Tool.hbm2ddl;
-using Smag.PartyDomain.RepositoriesNH;
-using Smag.PartyDomain.Model;
+using PartyDomain.RepositoriesNH;
+using PartyDomain.Model;
 
-namespace Smag.PartyDomain.Test.Mock
+namespace PartyDomain.Test.Mock
 {
     public class UnitOfWorkInMemory : IUnitOfWork
     {

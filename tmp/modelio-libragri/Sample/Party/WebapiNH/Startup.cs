@@ -11,20 +11,20 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-using Smag.Core.Common;
-using Smag.Core.Repository;
-using Smag.Core.Webapi;
+using Core.Common;
+using Core.Repository;
+using Core.Webapi;
 
-using Smag.PartyDomain.Model;
-using Smag.PartyDomain.IServices;
-using Smag.PartyDomain.Services;
-using Smag.PartyDomain.IRepositories;
-using Smag.PartyDomain.RepositoriesNH;
+using PartyDomain.Model;
+using PartyDomain.IServices;
+using PartyDomain.Services;
+using PartyDomain.IRepositories;
+using PartyDomain.RepositoriesNH;
 using NHibernate;
-using Smag.Core.Webapi.Middleware;
+using Core.Webapi.Middleware;
 using System.Text;
 
-namespace Smag.PartyDomain.Webapi
+namespace PartyDomain.Webapi
 {
     public class Startup
     {

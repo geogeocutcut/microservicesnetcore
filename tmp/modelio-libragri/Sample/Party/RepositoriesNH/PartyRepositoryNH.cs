@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using Smag.Core.Repository;
-using Smag.PartyDomain.Model;
-using Smag.PartyDomain.IRepositories;
+using Core.Repository;
+using PartyDomain.Model;
+using PartyDomain.IRepositories;
 using NHibernate;
 using NHibernate.Linq;
 using System.Linq;
 using NHibernate.Transform;
 
-namespace Smag.PartyDomain.RepositoriesNH
+namespace PartyDomain.RepositoriesNH
 {
     
     public class PartyRepositoryNH:IPartyRepository

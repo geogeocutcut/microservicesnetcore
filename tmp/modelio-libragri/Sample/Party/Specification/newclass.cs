@@ -1,4 +1,4 @@
-namespace Smag.PartyDomain.Specification
+namespace PartyDomain.Specification
 {
     public class ValidationErrorMessage
     {

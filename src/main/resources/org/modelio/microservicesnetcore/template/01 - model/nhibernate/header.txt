@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Smag.Core.Common.Model;
+using Core.Common.Model;
 
 namespace @@application.@@domainDomain.Model
 {

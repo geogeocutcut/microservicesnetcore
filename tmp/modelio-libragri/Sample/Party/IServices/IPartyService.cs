@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using Smag.PartyDomain.Model;
+using PartyDomain.Model;
 
-namespace Smag.PartyDomain.IServices
+namespace PartyDomain.IServices
 {
     
     public interface IPartyService

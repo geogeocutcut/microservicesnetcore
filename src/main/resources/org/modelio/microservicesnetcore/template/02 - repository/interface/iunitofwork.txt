@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Smag.Core.Repository;
+using Core.Repository;
 
 namespace @@application.@@domainDomain.IRepositories
 {

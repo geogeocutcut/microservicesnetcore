@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Smag.Core.Common;
-using Smag.Core.Repository;
+using Core.Common;
+using Core.Repository;
 using @@application.@@domainDomain.IRepositories;
 using NHibernate;
 using Unity;

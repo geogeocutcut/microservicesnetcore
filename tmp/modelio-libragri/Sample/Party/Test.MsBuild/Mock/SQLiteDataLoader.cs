@@ -5,7 +5,7 @@ using System.Data.SQLite;
 using System.IO;
 using KBCsv;
 
-namespace Smag.PartyDomain.Test.Mock
+namespace PartyDomain.Test.Mock
 {
     public class SQLiteDataLoader
     {

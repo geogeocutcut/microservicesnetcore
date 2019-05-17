@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Smag.Core.Specification;
-using Smag.PartyDomain.Model;
+using Core.Specification;
+using PartyDomain.Model;
 
-namespace Smag.PartyDomain.Specification
+namespace PartyDomain.Specification
 {
     public class PartySpecification
     {

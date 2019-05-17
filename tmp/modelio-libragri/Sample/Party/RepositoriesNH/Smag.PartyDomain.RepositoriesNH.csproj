@@ -3,10 +3,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Smag.Core\Common\Smag.Core.Common.csproj"/>
-    <ProjectReference Include="..\..\Smag.Core\Repository\Smag.Core.Repository.csproj"/>
-    <ProjectReference Include="..\Model\Smag.PartyDomain.Model.csproj"/>
-    <ProjectReference Include="..\IRepositories\Smag.PartyDomain.IRepositories.csproj"/>
+    <ProjectReference Include="..\..\Core\Common\Core.Common.csproj"/>
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj"/>
+    <ProjectReference Include="..\Model\PartyDomain.Model.csproj"/>
+    <ProjectReference Include="..\IRepositories\PartyDomain.IRepositories.csproj"/>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Config\Party.hbm.xml"/>

@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/WebapiNH/bin/Debug/netcoreapp2.2/Smag.PartyDomain.Webapi.dll",
+            "program": "${workspaceFolder}/WebapiNH/bin/Debug/netcoreapp2.2/PartyDomain.Webapi.dll",
             "args": [],
             "cwd": "${workspaceFolder}/WebapiNH",
             "stopAtEntry": false,

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using Smag.PartyDomain.Model;
-using Smag.PartyDomain.IRepositories;
-using Smag.PartyDomain.IServices;
+using PartyDomain.Model;
+using PartyDomain.IRepositories;
+using PartyDomain.IServices;
 using System.Diagnostics;
-using Smag.Core.Repository;
-using Smag.PartyDomain.Specification;
-using Smag.Core.Common;
+using Core.Repository;
+using PartyDomain.Specification;
+using Core.Common;
 
-namespace Smag.PartyDomain.Services
+namespace PartyDomain.Services
 {
     
     public class PartyService:IPartyService

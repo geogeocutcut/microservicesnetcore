@@ -6,12 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Smag.Core\Repository\Smag.Core.Repository.csproj" />
-    <ProjectReference Include="..\..\Smag.Core\Specification\Smag.Core.Specification.csproj" />
-    <ProjectReference Include="..\Model\Smag.PartyDomain.Model.csproj" />
-    <ProjectReference Include="..\IRepositories\Smag.PartyDomain.IRepositories.csproj" />
-    <ProjectReference Include="..\IServices\Smag.PartyDomain.IServices.csproj" />
-    <ProjectReference Include="..\Specification\Smag.PartyDomain.Specification.csproj" />
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
+    <ProjectReference Include="..\..\Core\Specification\Core.Specification.csproj" />
+    <ProjectReference Include="..\Model\PartyDomain.Model.csproj" />
+    <ProjectReference Include="..\IRepositories\PartyDomain.IRepositories.csproj" />
+    <ProjectReference Include="..\IServices\PartyDomain.IServices.csproj" />
+    <ProjectReference Include="..\Specification\PartyDomain.Specification.csproj" />
   </ItemGroup>
 
 </Project>
