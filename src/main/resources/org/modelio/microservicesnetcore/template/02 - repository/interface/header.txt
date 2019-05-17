@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using @@application.@@domainDomain.Model;
-using Smag.Core.Repository;
+using Core.Repository;
 
 namespace @@application.@@domainDomain.IRepositories
 {
