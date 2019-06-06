@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true">
-	<class name="PartyDomain.Model.Purpose,PartyDomain.Model" table="Purpose" >
-		<id name="Id" type="guid" column="Id" generator="guid.comb" unsaved-value="00000000-0000-0000-0000-000000000000"/>
-		<property name="Name" type="string" column="NAME"/>
-	</class>
-</hibernate-mapping>
