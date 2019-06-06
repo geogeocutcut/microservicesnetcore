@@ -1,0 +1,32 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Common\Core.Common.csproj"/>
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj"/>
+    <ProjectReference Include="..\Model\Smag..PartyDomain.Model.csproj" />
+    <ProjectReference Include="..\IRepositories\Smag.PartyDomain.IRepositories.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Config\Party.hbm.xml" />
+    <EmbeddedResource Include="Config\Address.hbm.xml" />
+    <EmbeddedResource Include="Config\Country.hbm.xml" />
+    <EmbeddedResource Include="Config\Purpose.hbm.xml" />
+    <EmbeddedResource Include="Config\RoleEnum.hbm.xml" />
+    <EmbeddedResource Include="Config\PartyRole.hbm.xml" />
+    <EmbeddedResource Include="Config\PurposeEnum.hbm.xml" />
+    <EmbeddedResource Include="Config\AdressPurpose.hbm.xml" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NHibernate" Version="5.2.5"/>
+    <PackageReference Include="NHibernate.Linq" Version="1.0.0"/>
+    <PackageReference Include="Unity" Version="5.10.3"/>
+    <PackageReference Include="Unity.RegistrationByConvention" Version="5.10.0"/>
+  </ItemGroup>
+
+</Project>

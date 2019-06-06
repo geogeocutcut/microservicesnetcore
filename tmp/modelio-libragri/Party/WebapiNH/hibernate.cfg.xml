@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-configuration xmlns='urn:nhibernate-configuration-2.2'>
+  <session-factory>
+    <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
+    <property name="connection.connection_string">
+        Server=AMADABLAM\SQL2014EXPRESS;initial catalog=PartyDomain;Integrated Security=True
+    </property>
+    <property name="hbm2ddl.auto">update</property>
+    <property name="show_sql">true</property>
+    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Party.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
+    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Address.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
+    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Country.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
+    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Purpose.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
+    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.RoleEnum.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
+    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.PartyRole.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
+    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.PurposeEnum.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
+    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.AdressPurpose.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
+
+  </session-factory>
+</hibernate-configuration>

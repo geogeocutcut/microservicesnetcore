@@ -1,0 +1,29 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Common\Core.Common.csproj"/>
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj"/>
+    <ProjectReference Include="..\Model\Libragri..AuthenticationDomain.Model.csproj" />
+    <ProjectReference Include="..\IRepositories\Libragri.AuthenticationDomain.IRepositories.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Config\User.hbm.xml" />
+    <EmbeddedResource Include="Config\UserActivationRequest.hbm.xml" />
+    <EmbeddedResource Include="Config\UserRefreshToken.hbm.xml" />
+    <EmbeddedResource Include="Config\ResetPwdRequest.hbm.xml" />
+    <EmbeddedResource Include="Config\UserEvent.hbm.xml" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NHibernate" Version="5.2.5"/>
+    <PackageReference Include="NHibernate.Linq" Version="1.0.0"/>
+    <PackageReference Include="Unity" Version="5.10.3"/>
+    <PackageReference Include="Unity.RegistrationByConvention" Version="5.10.0"/>
+  </ItemGroup>
+
+</Project>

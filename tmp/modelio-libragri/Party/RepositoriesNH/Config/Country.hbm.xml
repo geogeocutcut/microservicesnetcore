@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true">
+	<class name="Smag.PartyDomain.Model.Country,Smag.PartyDomain.Model" table="Country" >
+		<id name="Id" column="Id" type="Guid" unsaved-value="00000000-0000-0000-0000-000000000000">
+			<generator class="guid.comb" />
+		</id>
+		<property name="Name" type="string" column="NAME"/>
+	</class>
+</hibernate-mapping>
