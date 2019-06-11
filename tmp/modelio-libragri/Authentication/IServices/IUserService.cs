@@ -15,6 +15,8 @@ namespace Libragri.AuthenticationDomain.IServices
         Task<User> UpdateAsync(User entity);
         Task DeleteAsync(Guid Id);
         Task<IList<User>> GetAllAsync();
+
+        Task<User> GetByLoginPassword(string login,string pwd);
         
     
     }

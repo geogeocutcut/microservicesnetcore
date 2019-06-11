@@ -16,6 +16,6 @@ namespace Libragri.AuthenticationDomain.IServices
         Task DeleteAsync(Guid Id);
         Task<IList<UserRefreshToken>> GetAllAsync();
         
-    
+        Task<UserRefreshToken> GetByRefreshToken(string refreshToken);
     }
 }

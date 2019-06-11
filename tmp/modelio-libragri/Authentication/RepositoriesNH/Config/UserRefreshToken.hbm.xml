@@ -6,6 +6,6 @@
 		</id>
 		<property name="RefreshToken" type="string" column="REFRESHTOKEN"/>
 		<property name="FromDate" type="date" column="FROMDATE"/>
-		<many-to-one name="user" cascade="none" column="user_Id" class="Libragri.AuthenticationDomain.Model.User,Libragri.AuthenticationDomain.Model"/>
+		<many-to-one name="User" cascade="none" column="user_Id" class="Libragri.AuthenticationDomain.Model.User,Libragri.AuthenticationDomain.Model"/>
 	</class>
 </hibernate-mapping>

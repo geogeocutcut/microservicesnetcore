@@ -11,5 +11,7 @@ namespace Libragri.AuthenticationDomain.Model
 		public virtual string PwdSHA256 { get; set; }
 		public virtual string Email { get; set; }
 		public virtual bool Active { get; set; }
+
+		public virtual ISet<Profile> Profiles { get; set; }
     }
 }

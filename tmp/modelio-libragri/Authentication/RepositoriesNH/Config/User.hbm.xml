@@ -8,5 +8,9 @@
 		<property name="PwdSHA256" type="string" column="PWDSHA256"/>
 		<property name="Email" type="string" column="EMAIL"/>
 		<property name="Active" type="boolean" column="ACTIVE"/>
+		<set name="Profiles" lazy="true">
+			<key column="Profile_User_Id" />
+			<many-to-many class="Libragri.AuthenticationDomain.Model.Profile,Libragri.AuthenticationDomain.Model" />
+		</set>
 	</class>
 </hibernate-mapping>

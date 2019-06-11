@@ -6,6 +6,8 @@ using System.Linq.Expressions;
 using Libragri.AuthenticationDomain.Model;
 using Libragri.AuthenticationDomain.IRepositories;
 using Libragri.AuthenticationDomain.IServices;
+using System.Linq;
+using Core.Common;
 
 namespace Libragri.AuthenticationDomain.Services
 {
@@ -47,6 +49,17 @@ namespace Libragri.AuthenticationDomain.Services
         {
         	var repository =  _uow.GetRepository<IUserRefreshTokenRepository>();
             return await repository.UpdateAsync(entity);
+        }
+
+        public async Task<UserRefreshToken> GetByRefreshToken(string refreshToken)
+        {
+            var repository =  _uow.GetRepository<IUserRefreshTokenRepository>();
+            var token = (await repository.FindAsync(t =>t.RefreshToken==refreshToken)).FirstOrDefault();
+            if(token==null)
+            {
+                throw new BusinessException("bad authentification","bad  token!");
+            }
+            return token;
         }
     }
 }
