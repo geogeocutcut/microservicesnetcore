@@ -11,16 +11,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-using Core.Common;
-using Core.Repository;
 using Core.Webapi.Middleware;
 
-using Libragri.AuthenticationDomain.Model;
 using Libragri.AuthenticationDomain.IServices;
 using Libragri.AuthenticationDomain.Services;
 using Libragri.AuthenticationDomain.IRepositories;
 using Libragri.AuthenticationDomain.RepositoriesNH;
-using NHibernate;
+using Libragri.AuthenticationDomain.Webapi.Model;
+
+//using MongoDB.Driver;
 
 namespace Libragri.AuthenticationDomain.Webapi
 {
@@ -37,9 +36,17 @@ namespace Libragri.AuthenticationDomain.Webapi
         public void ConfigureServices(IServiceCollection services)
         {
         	
-
+            
         	services.AddScoped<IAuthenticationUnitOfWork, AuthenticationUnitOfWorkNH>();
+
+            // var conectionStr = Configuration.GetSection("StoreSettings").GetValue("ConnectionStr","");
+            // var dbName=Configuration.GetSection("StoreSettings").GetValue("DatabaseName","");
+            // IMongoClient cli  =  new MongoClient(conectionStr);
+
+            // services.AddSingleton<IMongoDatabase>(cli.GetDatabase(dbName));
+            // services.AddScoped<IAuthenticationUnitOfWork, AuthenticationUnitOfWorkMongodb>();
         	
+        	services.AddScoped<IProfileService, ProfileService>();
         	services.AddScoped<IUserService, UserService>();
         	services.AddScoped<IUserActivationRequestService, UserActivationRequestService>();
         	services.AddScoped<IUserRefreshTokenService, UserRefreshTokenService>();
@@ -50,6 +57,9 @@ namespace Libragri.AuthenticationDomain.Webapi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(options => { options.SerializerSettings.Converters.Add(new NhProxyJsonConverter()); })
                 .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            
+            services.AddOptions();
+            services.Configure<IdentityProviderSettings>(Configuration.GetSection("IdentityProviderSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

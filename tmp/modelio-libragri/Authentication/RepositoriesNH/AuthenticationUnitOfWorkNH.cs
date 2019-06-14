@@ -115,6 +115,7 @@ namespace Libragri.AuthenticationDomain.RepositoriesNH
             _container = new UnityContainer();
             
             _container.RegisterType<IUserRepository,UserRepositoryNH>();
+            _container.RegisterType<IProfileRepository,ProfileRepositoryNH>();
             _container.RegisterType<IUserActivationRequestRepository,UserActivationRequestRepositoryNH>();
             _container.RegisterType<IUserRefreshTokenRepository,UserRefreshTokenRepositoryNH>();
             _container.RegisterType<IResetPwdRequestRepository,ResetPwdRequestRepositoryNH>();

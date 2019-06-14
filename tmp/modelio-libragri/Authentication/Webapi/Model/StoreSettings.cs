@@ -1,7 +1,8 @@
 namespace Libragri.AuthenticationDomain.Webapi.Model
 {
-    public class DatabaseSettings
+    public class StoreSettings
     {
+        public string ConnectionStr{get;set;}
         public string DatabaseName { get; set; }
     }
 }

@@ -4,8 +4,9 @@
 		<id name="Id" column="Id" type="Guid" unsaved-value="00000000-0000-0000-0000-000000000000">
 			<generator class="guid.comb" />
 		</id>
-		<property name="RefreshToken" type="string" column="REFRESHTOKEN"/>
-		<property name="FromDate" type="date" column="FROMDATE"/>
+		<property name="ClientId" type="string" column="ClientId" unique-key="index_rsh"/>
+		<property name="RefreshToken" type="string" column="RefreshToken" unique="true" unique-key="index_rsh"/>
+		<property name="FromDate" type="date" column="FromDate"/>
 		<many-to-one name="User" cascade="none" column="user_Id" class="Libragri.AuthenticationDomain.Model.User,Libragri.AuthenticationDomain.Model"/>
 	</class>
 </hibernate-mapping>

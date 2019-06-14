@@ -9,6 +9,7 @@ using Libragri.AuthenticationDomain.IServices;
 using System.Security.Cryptography;
 using Core.Common;
 using System.Linq;
+using Common.Crypto;
 
 namespace Libragri.AuthenticationDomain.Services
 {
@@ -24,8 +25,41 @@ namespace Libragri.AuthenticationDomain.Services
     	
     	public async Task DeleteAsync(Guid id)
         {
-            var repository =  _uow.GetRepository<IUserRepository>();
-            await repository.DeleteAsync(id);
+            var rshTokenRepo =_uow.GetRepository<IUserRefreshTokenRepository>();
+            var rshTokensTask = rshTokenRepo.FindAsync(x =>x.User.Id==id);
+            var activationRequestRepo =_uow.GetRepository<IUserActivationRequestRepository>();
+            var activationRequestsTask = activationRequestRepo.FindAsync(x =>x.User.Id==id);
+            var userEventRepo =_uow.GetRepository<IUserEventRepository>();
+            var userEventsTask = userEventRepo.FindAsync(x =>x.User.Id==id);
+            var rstPwdRequestRepo =_uow.GetRepository<IUserEventRepository>();
+            var rstPwdRequestsTask = rstPwdRequestRepo.FindAsync(x =>x.User.Id==id);
+            var userRepo =  _uow.GetRepository<IUserRepository>();
+
+            var beforeDeleteTasks = new List<Task>();
+            var rshTokens = rshTokensTask.Result;
+            foreach(var tok in rshTokens)
+            {
+                beforeDeleteTasks.Add(rshTokenRepo.DeleteAsync(tok.Id));
+            }
+            var activationRequests = activationRequestsTask.Result;
+            foreach(var req in activationRequests)
+            {
+                beforeDeleteTasks.Add(activationRequestRepo.DeleteAsync(req.Id));
+            }
+            var userEvents = userEventsTask.Result;
+            foreach(var evt in userEvents)
+            {
+                beforeDeleteTasks.Add(userEventRepo.DeleteAsync(evt.Id));
+            }
+            var rstPwdRequests = rstPwdRequestsTask.Result;
+            foreach(var req in rstPwdRequests)
+            {
+                beforeDeleteTasks.Add(rstPwdRequestRepo.DeleteAsync(req.Id));
+            }
+
+            Task.WaitAll(beforeDeleteTasks.ToArray());
+
+            await userRepo.DeleteAsync(id);
         }
 
         public async Task<IList<User>> GetAllAsync()
@@ -42,6 +76,8 @@ namespace Libragri.AuthenticationDomain.Services
         
         public async Task<User> AddAsync(User entity)
         {
+            entity.PwdSHA256=CryptoUtilities.ComputeSha256Hash(entity.PwdSHA256);
+            //entity.Profiles= new HashSet<Profile>();
         	var repository =  _uow.GetRepository<IUserRepository>();
             return await repository.InsertAsync(entity);
         }
@@ -56,7 +92,7 @@ namespace Libragri.AuthenticationDomain.Services
         {
             var repository =  _uow.GetRepository<IUserRepository>(); 
             var user = (await repository.FindAsync(u=>u.Login==login)).FirstOrDefault();
-            var pwdSHA256 = ComputeSha256Hash(pwd);
+            var pwdSHA256 = CryptoUtilities.ComputeSha256Hash(pwd);
             if(user == null || user?.PwdSHA256!=pwdSHA256)
             {
                 throw new BusinessException("bad authentication", "unknown user !");
@@ -64,22 +100,6 @@ namespace Libragri.AuthenticationDomain.Services
             return user;
         }
 
-        private string ComputeSha256Hash(string rawData)  
-        {  
-            // Create a SHA256   
-            using (SHA256 sha256Hash = SHA256.Create())  
-            {  
-                // ComputeHash - returns byte array  
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));  
-  
-                // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();  
-                for (int i = 0; i < bytes.Length; i++)  
-                {  
-                    builder.Append(bytes[i].ToString("x2"));  
-                }  
-                return builder.ToString();  
-            }  
-        }
+        
     }
 }

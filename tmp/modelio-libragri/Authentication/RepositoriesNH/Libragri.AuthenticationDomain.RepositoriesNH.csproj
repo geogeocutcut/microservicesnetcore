@@ -12,6 +12,7 @@
     <ProjectReference Include="..\IRepositories\Libragri.AuthenticationDomain.IRepositories.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Config\Profile.hbm.xml" />
     <EmbeddedResource Include="Config\User.hbm.xml" />
     <EmbeddedResource Include="Config\UserActivationRequest.hbm.xml" />
     <EmbeddedResource Include="Config\UserRefreshToken.hbm.xml" />

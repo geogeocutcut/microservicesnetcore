@@ -16,7 +16,6 @@ using WebapiMongodb.Infrastructure;
 
 namespace Libragri.AuthenticationDomain.Webapi.Controllers
 {
-    [Route("api/oauth")]
     [ApiController]
     public class TokensController : ControllerBase
     {
@@ -25,20 +24,25 @@ namespace Libragri.AuthenticationDomain.Webapi.Controllers
         private IUserRefreshTokenService _refreshTokenService;
         private IOptions<IdentityProviderSettings> _settings;
 
-        public TokensController(IOptions<IdentityProviderSettings> settings,IUserService service)
+        public TokensController(IOptions<IdentityProviderSettings> settings,IUserService service,IUserRefreshTokenService refreshTokenService)
     	{
     		_userService = service;
             _settings = settings;
+            _refreshTokenService=refreshTokenService;
     	}
 
         [Route("oauth/token")]
+        [HttpPost]
         public async Task<IActionResult> AuthAsync(Parameters parameters)
         {
             if (parameters == null)
             {
                 throw new BusinessException("bad request","paramters are missing.");
             }
-
+            if (parameters.client_id == null || parameters.client_id!=_settings.Value.ClientId)
+            {
+                throw new BusinessException("bad request","bad client id");
+            }
             if (parameters.grant_type == "password")
             {
                 return Ok(await DoPasswordAsync(parameters));
@@ -142,7 +146,7 @@ namespace Libragri.AuthenticationDomain.Webapi.Controllers
 
                 new Claim("UserId",user.Id.ToString()),
 
-                new Claim("UserProfiles","["+user.Profiles.Select(p =>p.Name).Aggregate((p1,p2)=>p1+","+p2)+"]")
+                new Claim("UserProfiles","["+user.Profiles.Select(p =>p.Name).Aggregate(string.Empty,(p1,p2)=>p1+","+p2)+"]")
 
             };
 

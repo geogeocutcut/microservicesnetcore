@@ -85,7 +85,7 @@ public class HbmTemplate {
 		}
 		String result = tmpl.toString();
 		result = result.replaceAll("@@name", attr.getName());
-		result = result.replaceAll("@@column", attr.getName().toUpperCase());
+		result = result.replaceAll("@@column", attr.getName());
 		result = result.replaceAll("@@type", getHbmTypeFromUmlType(attr.getType()));
 		return result;
 	}

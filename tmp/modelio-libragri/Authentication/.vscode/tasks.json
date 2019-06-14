@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/WebapiNH/Libragri.AuthenticationDomain.Webapi.csproj"
+                "${workspaceFolder}/Webapi/Libragri.AuthenticationDomain.Webapi.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/WebapiNH/Libragri.AuthenticationDomain.Webapi.csproj"
+                "${workspaceFolder}/Webapi/Libragri.AuthenticationDomain.Webapi.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/WebapiNH/Libragri.AuthenticationDomain.Webapi.csproj"
+                "${workspaceFolder}/Webapi/Libragri.AuthenticationDomain.Webapi.csproj"
             ],
             "problemMatcher": "$tsc"
         }

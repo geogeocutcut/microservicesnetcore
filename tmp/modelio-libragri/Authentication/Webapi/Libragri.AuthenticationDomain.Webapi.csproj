@@ -15,12 +15,14 @@
     <ProjectReference Include="..\Model\Libragri.AuthenticationDomain.Model.csproj"/>
     <ProjectReference Include="..\IRepositories\Libragri.AuthenticationDomain.IRepositories.csproj"/>
     <ProjectReference Include="..\RepositoriesNH\Libragri.AuthenticationDomain.RepositoriesNH.csproj"/>
+    <ProjectReference Include="..\RepositoriesMongodb\Libragri.AuthenticationDomain.RepositoriesMongodb.csproj"/>
     <ProjectReference Include="..\IServices\Libragri.AuthenticationDomain.IServices.csproj"/>
     <ProjectReference Include="..\Services\Libragri.AuthenticationDomain.Services.csproj"/>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NHibernate" Version="5.2.5"/>
     <PackageReference Include="NHibernate.Linq" Version="1.0.0"/>
+    <PackageReference Include="MongoDB.Driver" Version="2.8.1"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="hibernate.cfg.xml" CopyToOutputDirectory="Always"/>

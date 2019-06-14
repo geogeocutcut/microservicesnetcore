@@ -56,7 +56,13 @@ namespace Libragri.AuthenticationDomain.Webapi.Controllers
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {
-                _service.DeleteAsync(id).Wait();
+                try{
+            _service.DeleteAsync(id).Wait();
+                }
+                catch(Exception ex)
+                {
+                        throw ex;
+                }
         }
     }
 }

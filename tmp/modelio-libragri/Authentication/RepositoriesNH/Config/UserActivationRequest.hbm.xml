@@ -4,9 +4,9 @@
 		<id name="Id" column="Id" type="Guid" unsaved-value="00000000-0000-0000-0000-000000000000">
 			<generator class="guid.comb" />
 		</id>
-		<property name="Key" type="string" column="KEY"/>
-		<property name="FromDate" type="date" column="FROMDATE"/>
+		<property name="Key" type="string" column="KeyCode" unique="true"/>
+		<property name="FromDate" type="date" column="FromDate"/>
 		<!-- one to one -->
-		<many-to-one name="user" cascade="all-delete-orphan" column="user_Id" class="Libragri.AuthenticationDomain.Model.User,Libragri.AuthenticationDomain.Model"/>
+		<many-to-one name="User" cascade="all-delete-orphan" column="user_Id" class="Libragri.AuthenticationDomain.Model.User,Libragri.AuthenticationDomain.Model"/>
 	</class>
 </hibernate-mapping>

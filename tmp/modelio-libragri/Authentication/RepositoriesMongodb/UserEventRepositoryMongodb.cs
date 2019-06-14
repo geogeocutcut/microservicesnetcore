@@ -6,19 +6,17 @@ using System.Linq.Expressions;
 using Core.Repository;
 using Libragri.AuthenticationDomain.Model;
 using Libragri.AuthenticationDomain.IRepositories;
-using NHibernate;
-using NHibernate.Linq;
 using System.Linq;
+using MongoDB.Driver;
 
-namespace Libragri.AuthenticationDomain.RepositoriesNH
+namespace Libragri.AuthenticationDomain.RepositoriesMongodb
 {
     
-    public class ResetPwdRequestRepositoryNH:StoreNH<ResetPwdRequest>,IResetPwdRequestRepository
+    public class UserEventRepositoryMongodb:StoreMongodb<UserEvent>,IUserEventRepository
     {
-    	
-    	public ResetPwdRequestRepositoryNH(ISession nhsession): base(nhsession)
+        
+    	public UserEventRepositoryMongodb(IMongoDatabase db):base(db)
         {
         }
-    	
     }
 }

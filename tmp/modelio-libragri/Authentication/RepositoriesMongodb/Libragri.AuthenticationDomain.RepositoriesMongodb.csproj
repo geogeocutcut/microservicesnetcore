@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Common\Core.Common.csproj"/>
+    <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj"/>
+    <ProjectReference Include="..\Model\Libragri.AuthenticationDomain.Model.csproj"/>
+    <ProjectReference Include="..\IRepositories\Libragri.AuthenticationDomain.IRepositories.csproj"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Unity" Version="5.10.3"/>
+    <PackageReference Include="Unity.RegistrationByConvention" Version="5.10.0"/>
+    <PackageReference Include="MongoDB.Driver" Version="2.8.1"/>
+  </ItemGroup>
+</Project>

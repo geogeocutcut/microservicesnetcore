@@ -9,6 +9,6 @@ namespace Libragri.AuthenticationDomain.Model
 		
 		public virtual string Key { get; set; }
 		public virtual DateTime FromDate { get; set; }
-		public virtual User user { get; set; }
+		public virtual User User { get; set; }
     }
 }

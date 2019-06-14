@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true">
-	<class name="Libragri.AuthenticationDomain.Model.User,Libragri.AuthenticationDomain.Model" table="User" >
+	<class name="Libragri.AuthenticationDomain.Model.User,Libragri.AuthenticationDomain.Model" table="UserData" >
 		<id name="Id" column="Id" type="Guid" unsaved-value="00000000-0000-0000-0000-000000000000">
 			<generator class="guid.comb" />
 		</id>
-		<property name="Login" type="string" column="LOGIN"/>
-		<property name="PwdSHA256" type="string" column="PWDSHA256"/>
-		<property name="Email" type="string" column="EMAIL"/>
-		<property name="Active" type="boolean" column="ACTIVE"/>
+		<property name="Login" type="string" column="Login"/>
+		<property name="PwdSHA256" type="string" column="PwdSHA256"/>
+		<property name="Email" type="string" column="Email"/>
+		<property name="Active" type="boolean" column="Active"/>
 		<set name="Profiles" lazy="true">
-			<key column="Profile_User_Id" />
+			<key column="profile_user_id" />
 			<many-to-many class="Libragri.AuthenticationDomain.Model.Profile,Libragri.AuthenticationDomain.Model" />
 		</set>
 	</class>
