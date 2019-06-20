@@ -25,41 +25,82 @@ namespace Libragri.AuthenticationDomain.Services
     	
     	public async Task DeleteAsync(Guid id)
         {
+            
             var rshTokenRepo =_uow.GetRepository<IUserRefreshTokenRepository>();
-            var rshTokensTask = rshTokenRepo.FindAsync(x =>x.User.Id==id);
+            var rshTokens = await rshTokenRepo.FindAsync(x =>x.User.Id==id);
             var activationRequestRepo =_uow.GetRepository<IUserActivationRequestRepository>();
-            var activationRequestsTask = activationRequestRepo.FindAsync(x =>x.User.Id==id);
+            var activationRequests = await activationRequestRepo.FindAsync(x =>x.User.Id==id);
             var userEventRepo =_uow.GetRepository<IUserEventRepository>();
-            var userEventsTask = userEventRepo.FindAsync(x =>x.User.Id==id);
+            var userEvents = await userEventRepo.FindAsync(x =>x.User.Id==id);
             var rstPwdRequestRepo =_uow.GetRepository<IUserEventRepository>();
-            var rstPwdRequestsTask = rstPwdRequestRepo.FindAsync(x =>x.User.Id==id);
+            var rstPwdRequests = await rstPwdRequestRepo.FindAsync(x =>x.User.Id==id);
             var userRepo =  _uow.GetRepository<IUserRepository>();
 
-            var beforeDeleteTasks = new List<Task>();
-            var rshTokens = rshTokensTask.Result;
-            foreach(var tok in rshTokens)
+
+            using(var t = _uow.Begin())
             {
-                beforeDeleteTasks.Add(rshTokenRepo.DeleteAsync(tok.Id));
-            }
-            var activationRequests = activationRequestsTask.Result;
-            foreach(var req in activationRequests)
-            {
-                beforeDeleteTasks.Add(activationRequestRepo.DeleteAsync(req.Id));
-            }
-            var userEvents = userEventsTask.Result;
-            foreach(var evt in userEvents)
-            {
-                beforeDeleteTasks.Add(userEventRepo.DeleteAsync(evt.Id));
-            }
-            var rstPwdRequests = rstPwdRequestsTask.Result;
-            foreach(var req in rstPwdRequests)
-            {
-                beforeDeleteTasks.Add(rstPwdRequestRepo.DeleteAsync(req.Id));
+                foreach(var tok in rshTokens)
+                {
+                    await rshTokenRepo.DeleteAsync(tok.Id);
+                }
+                foreach(var req in activationRequests)
+                {
+                    await activationRequestRepo.DeleteAsync(req.Id);
+                }
+                foreach(var evt in userEvents)
+                {
+                    await userEventRepo.DeleteAsync(evt.Id);
+                }
+                foreach(var req in rstPwdRequests)
+                {
+                    await rstPwdRequestRepo.DeleteAsync(req.Id);
+                }
+
+                await userRepo.DeleteAsync(id);
+                t.Commit();
+                
             }
 
-            Task.WaitAll(beforeDeleteTasks.ToArray());
+            // using(var t = _uow.Begin())
+            // {
+            //     var rshTokenRepo =_uow.GetRepository<IUserRefreshTokenRepository>();
+            //     var rshTokensTask = rshTokenRepo.FindAsync(x =>x.User.Id==id);
+            //     var activationRequestRepo =_uow.GetRepository<IUserActivationRequestRepository>();
+            //     var activationRequestsTask = activationRequestRepo.FindAsync(x =>x.User.Id==id);
+            //     var userEventRepo =_uow.GetRepository<IUserEventRepository>();
+            //     var userEventsTask = userEventRepo.FindAsync(x =>x.User.Id==id);
+            //     var rstPwdRequestRepo =_uow.GetRepository<IUserEventRepository>();
+            //     var rstPwdRequestsTask = rstPwdRequestRepo.FindAsync(x =>x.User.Id==id);
+            //     var userRepo =  _uow.GetRepository<IUserRepository>();
 
-            await userRepo.DeleteAsync(id);
+            //     var beforeDeleteTasks = new List<Task>();
+            //     var rshTokens = rshTokensTask.Result;
+            //     foreach(var tok in rshTokens)
+            //     {
+            //         beforeDeleteTasks.Add(rshTokenRepo.DeleteAsync(tok.Id));
+            //     }
+            //     var activationRequests = activationRequestsTask.Result;
+            //     foreach(var req in activationRequests)
+            //     {
+            //         beforeDeleteTasks.Add(activationRequestRepo.DeleteAsync(req.Id));
+            //     }
+            //     var userEvents = userEventsTask.Result;
+            //     foreach(var evt in userEvents)
+            //     {
+            //         beforeDeleteTasks.Add(userEventRepo.DeleteAsync(evt.Id));
+            //     }
+            //     var rstPwdRequests = rstPwdRequestsTask.Result;
+            //     foreach(var req in rstPwdRequests)
+            //     {
+            //         beforeDeleteTasks.Add(rstPwdRequestRepo.DeleteAsync(req.Id));
+            //     }
+
+            //     Task.WaitAll(beforeDeleteTasks.ToArray());
+
+            //     await userRepo.DeleteAsync(id);
+            //     t.Commit();
+                
+            // }
         }
 
         public async Task<IList<User>> GetAllAsync()

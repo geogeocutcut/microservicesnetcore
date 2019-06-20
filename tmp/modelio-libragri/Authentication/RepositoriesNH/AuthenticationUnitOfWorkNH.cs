@@ -102,6 +102,8 @@ namespace Libragri.AuthenticationDomain.RepositoriesNH
         {
             if (_NhSession.Transaction.IsActive)
                 _NhSession.Transaction.Rollback();
+            if(_NhSession.IsOpen)
+                _NhSession.Close();
         }
 
 

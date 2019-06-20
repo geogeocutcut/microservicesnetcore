@@ -18,6 +18,13 @@ namespace Libragri.AuthenticationDomain.RepositoriesNH
     	
     	public UserRepositoryNH(ISession nhsession): base(nhsession)
         {
+            
+        }
+        public override async Task<User> GetByIdAsync(Guid id)
+        {
+            return await _nhsession.Query<User>().Where(x =>x.Id==id)
+                        .Fetch(x=>x.Profiles)
+                        .FirstOrDefaultAsync();
         }
     }
 }

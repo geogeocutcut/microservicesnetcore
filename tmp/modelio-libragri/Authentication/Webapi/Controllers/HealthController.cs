@@ -1,7 +1,8 @@
 using System.Threading.Tasks;
+using Libragri.AuthenticationDomain.Webapi.Model;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebapiNH.Controllers
+namespace Libragri.AuthenticationDomain.WebapiNH.Controllers
 {
     [ApiController]
 
@@ -11,7 +12,7 @@ namespace WebapiNH.Controllers
         [HttpGet]
         public async Task<IActionResult> HealthAsync()
         {
-            return Ok("tout va bien");
+            return Ok(new HealthStatus{Status=HealthStatusEnum.Ok.ToString(),Message="Tout va bien !!"});
         }
     }
 }

@@ -3,7 +3,7 @@
   <session-factory>
     <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
     <property name="connection.connection_string">
-        Server=AMADABLAM\SQL2014EXPRESS;initial catalog=AuthenticationDomain;Integrated Security=True;MultipleActiveResultSets=True
+        Server=AMADABLAM\SQL2014EXPRESS;initial catalog=AuthenticationDomain;Integrated Security=True
     </property>
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
