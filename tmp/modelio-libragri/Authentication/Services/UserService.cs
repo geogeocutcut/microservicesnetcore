@@ -140,7 +140,5 @@ namespace Libragri.AuthenticationDomain.Services
             }
             return user;
         }
-
-        
     }
 }

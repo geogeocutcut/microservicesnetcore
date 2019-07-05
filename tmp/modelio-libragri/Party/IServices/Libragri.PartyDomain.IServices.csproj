@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model\Smag.PartyDomain.Model.csproj" />
+    <ProjectReference Include="..\Model\Libragri.PartyDomain.Model.csproj" />
   </ItemGroup>
 
 </Project>

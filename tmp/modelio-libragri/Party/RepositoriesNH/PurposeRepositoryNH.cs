@@ -4,13 +4,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using Core.Repository;
-using Smag.PartyDomain.Model;
-using Smag.PartyDomain.IRepositories;
+using Libragri.PartyDomain.Model;
+using Libragri.PartyDomain.IRepositories;
 using NHibernate;
 using NHibernate.Linq;
 using System.Linq;
 
-namespace Smag.PartyDomain.RepositoriesNH
+namespace Libragri.PartyDomain.RepositoriesNH
 {
     
     public class PurposeRepositoryNH:IPurposeRepository

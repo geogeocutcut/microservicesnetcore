@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true">
-	<class name="Smag.PartyDomain.Model.AdressPurpose,Smag.PartyDomain.Model" table="AdressPurpose" >
+	<class name="Libragri.PartyDomain.Model.AdressPurpose,Libragri.PartyDomain.Model" table="AdressPurpose" >
 		<id name="Id" column="Id" type="Guid" unsaved-value="00000000-0000-0000-0000-000000000000">
 			<generator class="guid.comb" />
 		</id>
 		<set name="purposeEnum" cascade="all-delete-orphan" lazy="true">
 			<key column="AdressPurpose_purposeEnum_Id" />
-			<one-to-many class="Smag.PartyDomain.Model.PurposeEnum,Smag.PartyDomain.Model" />
+			<one-to-many class="Libragri.PartyDomain.Model.PurposeEnum,Libragri.PartyDomain.Model" />
 		</set>
 	</class>
 </hibernate-mapping>

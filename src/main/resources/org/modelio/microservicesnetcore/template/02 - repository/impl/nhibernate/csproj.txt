@@ -8,7 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Common\Core.Common.csproj"/>
     <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj"/>
-    <ProjectReference Include="..\Model\@@application..@@domainDomain.Model.csproj" />
+    <ProjectReference Include="..\Model\@@application.@@domainDomain.Model.csproj" />
     <ProjectReference Include="..\IRepositories\@@application.@@domainDomain.IRepositories.csproj" />
   </ItemGroup>
   <ItemGroup>

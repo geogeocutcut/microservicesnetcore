@@ -146,7 +146,10 @@ namespace Libragri.AuthenticationDomain.Webapi.Controllers
 
                 new Claim("UserId",user.Id.ToString()),
 
-                new Claim("UserProfiles","["+user.Profiles.Select(p =>p.Name).Aggregate(string.Empty,(p1,p2)=>p1+","+p2)+"]")
+                new Claim("UserProfiles","["+user.Profiles.Select(p =>p.Name).Aggregate(string.Empty,(p1,p2)=>{
+                                                                                                                if(p1==string.Empty) return p2;
+                                                                                                                return p1+","+p2;
+                                                                                                            })+"]")
 
             };
 

@@ -15,14 +15,14 @@ using Core.Common;
 using Core.Repository;
 using Core.Webapi.Middleware;
 
-using Smag.PartyDomain.Model;
-using Smag.PartyDomain.IServices;
-using Smag.PartyDomain.Services;
-using Smag.PartyDomain.IRepositories;
-using Smag.PartyDomain.RepositoriesNH;
+using Libragri.PartyDomain.Model;
+using Libragri.PartyDomain.IServices;
+using Libragri.PartyDomain.Services;
+using Libragri.PartyDomain.IRepositories;
+using Libragri.PartyDomain.RepositoriesNH;
 using NHibernate;
 
-namespace Smag.PartyDomain.Webapi
+namespace Libragri.PartyDomain.Webapi
 {
     public class Startup
     {
@@ -40,9 +40,13 @@ namespace Smag.PartyDomain.Webapi
 
         	services.AddScoped<IPartyUnitOfWork, PartyUnitOfWorkNH>();
         	
+        	services.AddScoped<IUserDataService, UserDataService>();
+        	services.AddScoped<IUserActivationRequestService, UserActivationRequestService>();
+        	services.AddScoped<IUserRefreshTokenService, UserRefreshTokenService>();
+        	services.AddScoped<IResetPwdRequestService, ResetPwdRequestService>();
+        	services.AddScoped<IUserEventService, UserEventService>();
         	services.AddScoped<IPartyService, PartyService>();
         	services.AddScoped<ICountryService, CountryService>();
-        	services.AddScoped<IPurposeService, PurposeService>();
 
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)

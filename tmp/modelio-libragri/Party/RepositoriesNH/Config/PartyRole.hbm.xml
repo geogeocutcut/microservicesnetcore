@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true">
-	<class name="Smag.PartyDomain.Model.PartyRole,Smag.PartyDomain.Model" table="PartyRole" >
+	<class name="Libragri.PartyDomain.Model.PartyRole,Libragri.PartyDomain.Model" table="PartyRole" >
 		<id name="Id" column="Id" type="Guid" unsaved-value="00000000-0000-0000-0000-000000000000">
 			<generator class="guid.comb" />
 		</id>
-		<property name="FromDate" type="date" column="FROMDATE"/>
-		<property name="ThruDate" type="date" column="THRUDATE"/>
-		<property name="Role" type="string" column="ROLE"/>
+		<property name="FromDate" type="date" column="FromDate"/>
+		<property name="ThruDate" type="date" column="ThruDate"/>
+		<many-to-one name="RoleEnum" cascade="none" column="RoleEnum_Id" class="Libragri.PartyDomain.Model.RoleEnum,Libragri.PartyDomain.Model"/>
 	</class>
 </hibernate-mapping>

@@ -8,9 +8,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
     <ProjectReference Include="..\..\Core\Specification\Core.Specification.csproj" />
-    <ProjectReference Include="..\Model\Smag.PartyDomain.Model.csproj" />
-    <ProjectReference Include="..\IRepositories\Smag.PartyDomain.IRepositories.csproj" />
-    <ProjectReference Include="..\IServices\Smag.PartyDomain.IServices.csproj" />
+    <ProjectReference Include="..\Model\Libragri.PartyDomain.Model.csproj" />
+    <ProjectReference Include="..\IRepositories\Libragri.PartyDomain.IRepositories.csproj" />
+    <ProjectReference Include="..\IServices\Libragri.PartyDomain.IServices.csproj" />
   </ItemGroup>
 
 </Project>

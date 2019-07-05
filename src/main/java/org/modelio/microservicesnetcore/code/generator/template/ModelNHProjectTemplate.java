@@ -188,7 +188,7 @@ public class ModelNHProjectTemplate implements InterfaceModelProjectTemplate {
 		}
 		
 		String result = tmpl.toString();
-		Class entity = (Class)end.getTarget();
+		Classifier entity = (Classifier)end.getTarget();
 		result = result.replaceAll("@@visibility", "public");
 		result = result.replaceAll("@@name", end.getName());
 		result = result.replaceAll("@@type", entity.getName());

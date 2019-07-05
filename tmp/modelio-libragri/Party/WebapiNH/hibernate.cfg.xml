@@ -7,14 +7,17 @@
     </property>
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Party.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Address.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Country.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.Purpose.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.RoleEnum.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.PartyRole.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.PurposeEnum.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
-    <mapping resource="Smag.PartyDomain.RepositoriesNH.Config.AdressPurpose.hbm.xml" assembly="Smag.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.UserData.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.UserActivationRequest.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.UserRefreshToken.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.ResetPwdRequest.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.UserEvent.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.Party.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.Address.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.Country.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.PartyRole.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.RoleEnum.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
+    <mapping resource="Libragri.PartyDomain.RepositoriesNH.Config.PurposeEnum.hbm.xml" assembly="Libragri.PartyDomain.RepositoriesNH" />
 
   </session-factory>
 </hibernate-configuration>

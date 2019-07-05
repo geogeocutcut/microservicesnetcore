@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Smag.PartyDomain.Webapi
+namespace Libragri.PartyDomain.Webapi
 {
     public class Program
     {

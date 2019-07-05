@@ -2,13 +2,13 @@ using System;
 using System.Threading.Tasks;
 using Core.Common;
 using Core.Repository;
-using Smag.PartyDomain.IRepositories;
+using Libragri.PartyDomain.IRepositories;
 using NHibernate;
 using Unity;
 using Unity.RegistrationByConvention;
 using Unity.Resolution;
 
-namespace Smag.PartyDomain.RepositoriesNH
+namespace Libragri.PartyDomain.RepositoriesNH
 {
    public class PartyUnitOfWorkNH : IPartyUnitOfWork
     {
@@ -114,11 +114,14 @@ namespace Smag.PartyDomain.RepositoriesNH
         {
             _container = new UnityContainer();
             
+            _container.RegisterType<IUserDataRepository,UserDataRepositoryNH>();
+            _container.RegisterType<IUserActivationRequestRepository,UserActivationRequestRepositoryNH>();
+            _container.RegisterType<IUserRefreshTokenRepository,UserRefreshTokenRepositoryNH>();
+            _container.RegisterType<IResetPwdRequestRepository,ResetPwdRequestRepositoryNH>();  
+            _container.RegisterType<IUserEventRepository,UserEventRepositoryNH>();
             _container.RegisterType<IPartyRepository,PartyRepositoryNH>();
             _container.RegisterType<ICountryRepository,CountryRepositoryNH>();
-            _container.RegisterType<IPurposeRepository,PurposeRepositoryNH>();
 
-                  
         }
         
         

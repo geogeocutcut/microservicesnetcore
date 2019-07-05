@@ -4,13 +4,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using Core.Repository;
-using Smag.PartyDomain.Model;
-using Smag.PartyDomain.IRepositories;
+using Libragri.PartyDomain.Model;
+using Libragri.PartyDomain.IRepositories;
 using NHibernate;
 using NHibernate.Linq;
 using System.Linq;
 
-namespace Smag.PartyDomain.RepositoriesNH
+namespace Libragri.PartyDomain.RepositoriesNH
 {
     
     public class PartyRepositoryNH:IPartyRepository
@@ -38,24 +38,12 @@ namespace Smag.PartyDomain.RepositoriesNH
 
         public async Task<IList<Party>> GetAllAsync()
         {
-            return await _nhsession.Query<Party>()
-            .FetchMany(x=>x.Addresses)
-            .ThenFetch(x=>x.country)
-            .FetchMany(x=>x.Addresses)
-            .ThenFetch(x=>x.purposes)
-            .FetchMany(x=>x.partyRole)
-            .ToListAsync();
+            return await _nhsession.Query<Party>().ToListAsync();
         }
 
         public async Task<Party> GetByIdAsync(Guid id)
         {
-            return await _nhsession.Query<Party>()
-            .FetchMany(x=>x.Addresses)
-            .ThenFetch(x=>x.country)
-            .FetchMany(x=>x.Addresses)
-            .ThenFetch(x=>x.purposes)
-            .FetchMany(x=>x.partyRole)
-            .FirstOrDefaultAsync(x=>x.Id==id);
+            return await _nhsession.GetAsync<Party>(id);
         }
 
         public async Task<Party> InsertAsync(Party entity)

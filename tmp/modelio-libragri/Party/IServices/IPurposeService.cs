@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using Smag.PartyDomain.Model;
+using Libragri.PartyDomain.Model;
 
-namespace Smag.PartyDomain.IServices
+namespace Libragri.PartyDomain.IServices
 {
     
     public interface IPurposeService

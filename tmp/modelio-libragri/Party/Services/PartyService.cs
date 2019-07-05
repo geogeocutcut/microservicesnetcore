@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using Smag.PartyDomain.Model;
-using Smag.PartyDomain.IRepositories;
-using Smag.PartyDomain.IServices;
+using Libragri.PartyDomain.Model;
+using Libragri.PartyDomain.IRepositories;
+using Libragri.PartyDomain.IServices;
 
-namespace Smag.PartyDomain.Services
+namespace Libragri.PartyDomain.Services
 {
     
     public class PartyService:IPartyService

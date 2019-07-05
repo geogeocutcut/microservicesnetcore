@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true">
-	<class name="Smag.PartyDomain.Model.RoleEnum,Smag.PartyDomain.Model" table="RoleEnum" >
+	<class name="Libragri.PartyDomain.Model.RoleEnum,Libragri.PartyDomain.Model" table="RoleEnum" >
 		<id name="Id" column="Id" type="Guid" unsaved-value="00000000-0000-0000-0000-000000000000">
 			<generator class="guid.comb" />
 		</id>

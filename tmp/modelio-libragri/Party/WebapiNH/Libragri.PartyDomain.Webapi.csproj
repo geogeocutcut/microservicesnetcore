@@ -14,11 +14,11 @@
     <ProjectReference Include="..\..\Core\Common\Core.Common.csproj" />
     <ProjectReference Include="..\..\Core\Repository\Core.Repository.csproj" />
     <ProjectReference Include="..\..\Core\Webapi\Core.Webapi.csproj" />
-    <ProjectReference Include="..\Model\Smag.PartyDomain.Model.csproj" />
-    <ProjectReference Include="..\IRepositories\Smag.PartyDomain.IRepositories.csproj" />
-    <ProjectReference Include="..\RepositoriesNH\Smag.PartyDomain.RepositoriesNH.csproj" />
-    <ProjectReference Include="..\IServices\Smag.PartyDomain.IServices.csproj" />
-    <ProjectReference Include="..\Services\Smag.PartyDomain.Services.csproj" />
+    <ProjectReference Include="..\Model\Libragri.PartyDomain.Model.csproj" />
+    <ProjectReference Include="..\IRepositories\Libragri.PartyDomain.IRepositories.csproj" />
+    <ProjectReference Include="..\RepositoriesNH\Libragri.PartyDomain.RepositoriesNH.csproj" />
+    <ProjectReference Include="..\IServices\Libragri.PartyDomain.IServices.csproj" />
+    <ProjectReference Include="..\Services\Libragri.PartyDomain.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Include="hibernate.cfg.xml" CopyToOutputDirectory="Always" />

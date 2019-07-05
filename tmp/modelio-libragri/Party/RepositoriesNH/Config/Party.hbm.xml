@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true">
-	<class name="Smag.PartyDomain.Model.Party,Smag.PartyDomain.Model" table="Party" >
+	<class name="Libragri.PartyDomain.Model.Party,Libragri.PartyDomain.Model" table="Party" >
 		<id name="Id" column="Id" type="Guid" unsaved-value="00000000-0000-0000-0000-000000000000">
 			<generator class="guid.comb" />
 		</id>
-		<property name="Name" type="string" column="NAME"/>
+		<property name="Name" type="string" column="Name"/>
+		<property name="FirstName" type="string" column="FirstName"/>
 		<set name="Addresses" cascade="all-delete-orphan" lazy="true">
 			<key column="Party_Addresses_Id" />
-			<one-to-many class="Smag.PartyDomain.Model.Address,Smag.PartyDomain.Model" />
+			<one-to-many class="Libragri.PartyDomain.Model.Address,Libragri.PartyDomain.Model" />
 		</set>
-		<set name="partyRole" cascade="all-delete-orphan" lazy="true">
-			<key column="Party_partyRole_Id" />
-			<one-to-many class="Smag.PartyDomain.Model.PartyRole,Smag.PartyDomain.Model" />
+		<set name="PartyRole" cascade="all-delete-orphan" lazy="true">
+			<key column="Party_PartyRole_Id" />
+			<one-to-many class="Libragri.PartyDomain.Model.PartyRole,Libragri.PartyDomain.Model" />
 		</set>
 	</class>
 </hibernate-mapping>
